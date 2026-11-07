@@ -1,0 +1,71 @@
+/* Opt-in victory presentation. Layout remains owned by the preview screen. */
+.city-reward-scene .reward-title {
+  color: #b9f6f2;
+  text-shadow: 2px 3px 0 #ad5590, -1px -1px 0 #ffe3a3;
+  transform-origin: center;
+}
+.city-reward-scene .reward-badge,
+.city-reward-scene .completed-mark {
+  color: #ffe79b;
+  background: linear-gradient(145deg, #3e8b9a, #84547d);
+  border-color: #ffd1df;
+  box-shadow: 0 0 0 5px #b6edf512, 0 9px 26px #d15caa18;
+}
+.city-reward-scene [data-reward-rep] { color: #b9f6f2; font-variant-numeric: tabular-nums; }
+.city-reward-scene [data-reward-coins] { color: #ffe49a; font-variant-numeric: tabular-nums; }
+.city-reward-scene [data-reward-balance] { display: inline-block; font-variant-numeric: tabular-nums; transform-origin: center; }
+.city-reward-wallet-active { color: #ffe49a !important; text-shadow: 0 0 14px #ffe49a38; }
+.city-reward-particles {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+}
+.city-reward-coin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #fff2b7;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 25%, #fff8ce, #ffdb78 44%, #d89c45 100%);
+  box-shadow: inset 0 0 0 2px #c78c40, 0 2px 6px #462b553d;
+  color: #875222;
+  opacity: 0;
+  font-style: normal;
+  will-change: transform, opacity;
+}
+.city-reward-coin::after {
+  content: 'C';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font: 800 12px/1 system-ui, sans-serif;
+  text-shadow: 0 1px 0 #fff2ad;
+}
+.city-reward-announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .city-reward-particles { display: none !important; }
+  .city-reward-scene .reward-title,
+  .city-reward-scene .reward-badge,
+  .city-reward-scene .completed-mark,
+  .city-reward-scene [data-reward-balance] {
+    animation: none !important;
+    transition: none !important;
+  }
+}

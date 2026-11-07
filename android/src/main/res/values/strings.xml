@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">English City Quest</string>
+    <string name="tts_loading">Озвучка готовится. Попробуй ещё раз через секунду.</string>
+    <string name="tts_unavailable">Для озвучки нужен английский голос. Добавь его в настройках синтеза речи Android.</string>
+    <string name="tts_error">Не получилось произнести слово. Проверь английский голос в настройках устройства.</string>
+</resources>

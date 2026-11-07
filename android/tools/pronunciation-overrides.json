@@ -1,0 +1,23 @@
+{
+  "documentation": "https://learn.microsoft.com/en-us/previous-versions/windows/desktop/ee431828(v=vs.85)",
+  "note": "Exact isolated dictionary forms only. Do not replace word sequences inside sentences. This Windows Zira engine accepts W3C SSML IPA; the original SAPI symbols are retained for auditing. Sentence context remains with the voice engine.",
+  "entries": {
+    "bow": {"ipa": "baʊ", "sym": "b aw", "meaning": "гнуть, наклонять, verb /baʊ/"},
+    "close": {"ipa": "kloʊs", "sym": "k l ow s", "meaning": "близко, adverb; verb card uses speechText 'to close'"},
+    "conduct": {"ipa": "ˈkɑndʌkt", "sym": "k aa 1 n - d ah k t", "meaning": "поведение, руководство, noun with first-syllable stress"},
+    "desert": {"ipa": "ˈdɛzɚt", "sym": "d eh 1 - z er t", "meaning": "пустыня, noun with first-syllable stress"},
+    "entrance": {"ipa": "ˈɛntrəns", "sym": "eh 1 n - t r ax n s", "meaning": "вход, noun with first-syllable stress"},
+    "house": {"ipa": "haʊs", "sym": "h aw s", "meaning": "дом, noun /haʊs/"},
+    "read": {"ipa": "riːd", "sym": "r iy d", "meaning": "читать, base form /riːd/"},
+    "lead": {"ipa": "liːd", "sym": "l iy d", "meaning": "лидировать, verb /liːd/"},
+    "live": {"ipa": "lɪv", "sym": "l ih v", "meaning": "жить, verb /lɪv/"},
+    "wind": {"ipa": "wɪnd", "sym": "w ih n d", "meaning": "ветер, noun /wɪnd/"},
+    "tear": {"ipa": "tɪr", "sym": "t ih r", "meaning": "слеза, noun /tɪr/ in American English"},
+    "use": {"ipa": "juːz", "sym": "y uw z", "meaning": "использовать, verb /juːz/"},
+    "extract": {"ipa": "ˈɛkstrækt", "sym": "eh 1 k s - t r ae k t", "meaning": "отрывок, noun with first-syllable stress"},
+    "minute": {"ipa": "ˈmɪnɪt", "sym": "m ih 1 - n ih t", "meaning": "минута, noun /ˈmɪnɪt/"},
+    "object": {"ipa": "ˈɑbdʒɛkt", "sym": "aa 1 b - jh eh k t", "meaning": "предмет, noun with first-syllable stress"},
+    "record": {"ipa": "ˈrɛkɚd", "sym": "r eh 1 - k er d", "meaning": "запись, isolated noun; verb card uses speechText 'to record'"},
+    "row": {"ipa": "roʊ", "sym": "r ow", "meaning": "ряд, линия, noun /roʊ/"}
+  }
+}

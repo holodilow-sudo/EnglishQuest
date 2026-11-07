@@ -1,0 +1,805 @@
+{
+  "schemaVersion": 1,
+  "title": "English Quest · Ученик",
+  "source": {
+    "path": "private-inputs/textbook.pdf",
+    "title": "Enjoy English / Английский с удовольствием, 6 класс",
+    "authors": [
+      "М. З. Биболетова",
+      "О. А. Денисенко",
+      "Н. Н. Трубанева"
+    ],
+    "edition": "3-е издание, исправленное. Дрофа, Москва, 2019",
+    "pageCount": 212,
+    "verifiedPages": [
+      2,
+      3,
+      4,
+      5,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "verification": "PDF отрисован Poppler; все перечисленные страницы просмотрены визуально. Номер PDF-страницы совпадает с печатным на с. 3–19. Текстовый слой отсутствует.",
+    "contentScope": "Прототип: 3 урока по 10 заданий из Unit 1, Section 2. Полный курс ниже пока является картой содержания, а не готовыми уроками.",
+    "authorship": "Лексика и темы проверены по учебнику; короткие предложения и тренировочные задания составлены для приложения."
+  },
+  "courseMap": [
+    {
+      "id": "unit1",
+      "title": "Meeting New Friends",
+      "titleRu": "Новые друзья",
+      "startsAtPage": 6,
+      "sections": [
+        "Join the Explorers’ Club!",
+        "Travels and Fun",
+        "The Wonders of Nature",
+        "A Host Family",
+        "My Home Is My Castle",
+        "Holidays and Events"
+      ]
+    },
+    {
+      "id": "unit2",
+      "title": "Let’s Spend Time Together",
+      "titleRu": "Проводим время вместе",
+      "startsAtPage": 50,
+      "sections": [
+        "Happy Weekends",
+        "Animals in the City",
+        "British and Russian Schools",
+        "It’s Delicious!"
+      ]
+    },
+    {
+      "id": "unit3",
+      "title": "The Fact File of the UK",
+      "titleRu": "Знакомимся с Великобританией",
+      "startsAtPage": 84,
+      "sections": [
+        "An Internet Project",
+        "More about the UK",
+        "A Trip to England",
+        "Wales and Northern Ireland",
+        "Welcome to Scotland!",
+        "Famous British People",
+        "Your Free Time"
+      ]
+    },
+    {
+      "id": "unit4",
+      "title": "An Adventure Holiday",
+      "titleRu": "Каникулы с приключениями",
+      "startsAtPage": 141,
+      "sections": [
+        "The Spirit of Adventure",
+        "Famous Explorers",
+        "Popular Sports in Britain and in Russia",
+        "Under the Sea",
+        "Traditional Festivals"
+      ]
+    }
+  ],
+  "teachingPrinciples": [
+    "Сначала показать слово с переводом и озвучиванием, затем предложить вспомнить без подсказки.",
+    "За ошибкой следует спокойное объяснение и новая попытка; не закрывать обучение из-за ошибок.",
+    "В конце повторить трудные слова, не объявлять слово выученным после единственного выбора из вариантов.",
+    "План повторений: позже в этой сессии, на следующий день, через 3 и 7 дней; корректировать по ответам.",
+    "Для произношения использовать en-GB TTS и кнопку замедленного повтора. Не подменять английские звуки русской транслитерацией.",
+    "Различать части речи и члены предложения: глагол — часть речи; подлежащее и сказуемое — роли в предложении."
+  ],
+  "lessons": [
+    {
+      "id": "travel-words",
+      "title": "Собираемся в путешествие",
+      "subtitle": "10 слов для каникул",
+      "unit": 1,
+      "section": 2,
+      "sectionTitle": "Travels and Fun",
+      "sourcePages": [
+        13,
+        14,
+        15,
+        17,
+        18
+      ],
+      "sourceExercises": [
+        19,
+        20,
+        21,
+        25,
+        33,
+        35
+      ],
+      "durationMinutes": 5,
+      "objective": "Узнавать слова о поездках и отдыхе и понимать их в коротких фразах.",
+      "items": [
+        {
+          "id": "travel-01",
+          "type": "choice",
+          "english": "cycling",
+          "russian": "езда на велосипеде",
+          "sourcePage": 13,
+          "prompt": "Как переводится cycling?",
+          "options": [
+            "езда на велосипеде",
+            "плавание",
+            "рисование",
+            "чтение"
+          ],
+          "answer": "езда на велосипеде",
+          "example": "I like cycling.",
+          "exampleRu": "Мне нравится кататься на велосипеде.",
+          "note": "Cycle — кататься на велосипеде; cycling — занятие, езда на велосипеде."
+        },
+        {
+          "id": "travel-02",
+          "type": "choice",
+          "english": "jogging",
+          "russian": "бег трусцой",
+          "sourcePage": 13,
+          "prompt": "Выбери перевод: бег трусцой",
+          "options": [
+            "cycling",
+            "jogging",
+            "shopping",
+            "sailing"
+          ],
+          "answer": "jogging",
+          "example": "My brother likes jogging.",
+          "exampleRu": "Мой брат любит бегать трусцой.",
+          "note": "Jogging — спокойный бег, не соревнование на скорость."
+        },
+        {
+          "id": "travel-03",
+          "type": "choice",
+          "english": "a trip",
+          "russian": "поездка",
+          "sourcePage": 13,
+          "prompt": "Как переводится a trip?",
+          "options": [
+            "погода",
+            "поездка",
+            "палатка",
+            "рюкзак"
+          ],
+          "answer": "поездка",
+          "example": "It was a great trip.",
+          "exampleRu": "Это была отличная поездка.",
+          "note": "A cycling trip — велосипедная поездка."
+        },
+        {
+          "id": "travel-04",
+          "type": "choice",
+          "english": "a backpack",
+          "russian": "рюкзак",
+          "sourcePage": 15,
+          "prompt": "Выбери слово: рюкзак",
+          "options": [
+            "a valley",
+            "a photo",
+            "a backpack",
+            "a ship"
+          ],
+          "answer": "a backpack",
+          "example": "My backpack is heavy.",
+          "exampleRu": "Мой рюкзак тяжёлый.",
+          "note": "Запоминай вместе: a heavy backpack — тяжёлый рюкзак."
+        },
+        {
+          "id": "travel-05",
+          "type": "choice",
+          "english": "the weather",
+          "russian": "погода",
+          "sourcePage": 15,
+          "prompt": "Как переводится the weather?",
+          "options": [
+            "время",
+            "погода",
+            "вода",
+            "город"
+          ],
+          "answer": "погода",
+          "example": "The weather is good today.",
+          "exampleRu": "Сегодня хорошая погода.",
+          "note": "Weather — неисчисляемое существительное. Не добавляй a."
+        },
+        {
+          "id": "travel-06",
+          "type": "choice",
+          "english": "exciting",
+          "russian": "увлекательный",
+          "sourcePage": 15,
+          "prompt": "Выбери перевод: увлекательный",
+          "options": [
+            "dangerous",
+            "heavy",
+            "exciting",
+            "cheap"
+          ],
+          "answer": "exciting",
+          "example": "This trip is exciting.",
+          "exampleRu": "Эта поездка увлекательная.",
+          "note": "Exciting описывает то, что вызывает интерес и восторг: an exciting trip."
+        },
+        {
+          "id": "travel-07",
+          "type": "choice",
+          "english": "dangerous",
+          "russian": "опасный",
+          "sourcePage": 15,
+          "prompt": "Как переводится dangerous?",
+          "options": [
+            "дешёвый",
+            "опасный",
+            "красивый",
+            "удобный"
+          ],
+          "answer": "опасный",
+          "example": "This road is dangerous.",
+          "exampleRu": "Эта дорога опасная.",
+          "note": "Danger — опасность; dangerous — опасный."
+        },
+        {
+          "id": "travel-08",
+          "type": "choice",
+          "english": "cheap",
+          "russian": "недорогой",
+          "sourcePage": 15,
+          "prompt": "Выбери слово: недорогой",
+          "options": [
+            "cheap",
+            "heavy",
+            "dangerous",
+            "beautiful"
+          ],
+          "answer": "cheap",
+          "example": "This trip is cheap.",
+          "exampleRu": "Эта поездка недорогая.",
+          "note": "В этом контексте cheap описывает низкую стоимость поездки."
+        },
+        {
+          "id": "travel-09",
+          "type": "choice",
+          "english": "a view",
+          "russian": "вид, пейзаж",
+          "sourcePage": 14,
+          "prompt": "Что означает a view в рассказе о путешествии?",
+          "options": [
+            "письмо",
+            "билет",
+            "вид, пейзаж",
+            "поезд"
+          ],
+          "answer": "вид, пейзаж",
+          "example": "We enjoy the beautiful view.",
+          "exampleRu": "Мы любуемся красивым видом.",
+          "note": "Enjoy a view — любоваться видом. Это удобнее учить целой фразой."
+        },
+        {
+          "id": "travel-10",
+          "type": "choice",
+          "english": "to repair",
+          "russian": "чинить",
+          "sourcePage": 15,
+          "prompt": "Выбери глагол: чинить",
+          "options": [
+            "to travel",
+            "to repair",
+            "to relax",
+            "to visit"
+          ],
+          "answer": "to repair",
+          "example": "I can repair my bike.",
+          "exampleRu": "Я умею чинить свой велосипед.",
+          "note": "После can нужен глагол без to: can repair."
+        }
+      ]
+    },
+    {
+      "id": "go-phrases",
+      "title": "Один go — много смыслов",
+      "subtitle": "Выражения из заданий 38–39",
+      "unit": 1,
+      "section": 2,
+      "sectionTitle": "Travels and Fun",
+      "sourcePages": [
+        19
+      ],
+      "sourceExercises": [
+        38,
+        39
+      ],
+      "durationMinutes": 5,
+      "objective": "Узнавать устойчивые выражения с go и выбирать нужное по смыслу.",
+      "items": [
+        {
+          "id": "go-01",
+          "type": "choice",
+          "english": "go sightseeing",
+          "russian": "осматривать достопримечательности",
+          "sourcePage": 19,
+          "prompt": "Как сказать «осматривать достопримечательности»?",
+          "options": [
+            "go shopping",
+            "go sightseeing",
+            "go to bed",
+            "go away"
+          ],
+          "answer": "go sightseeing",
+          "example": "We go sightseeing in London.",
+          "exampleRu": "Мы осматриваем достопримечательности Лондона.",
+          "note": "Sightseeing уже означает осмотр достопримечательностей. To после go не нужно."
+        },
+        {
+          "id": "go-02",
+          "type": "choice",
+          "english": "go shopping",
+          "russian": "ходить за покупками",
+          "sourcePage": 19,
+          "prompt": "Как перевести go shopping?",
+          "options": [
+            "уезжать",
+            "ходить за покупками",
+            "ложиться спать",
+            "идти гулять"
+          ],
+          "answer": "ходить за покупками",
+          "example": "I go shopping with my dad.",
+          "exampleRu": "Я хожу за покупками с папой.",
+          "note": "Запомни фразу целиком: go shopping, без to."
+        },
+        {
+          "id": "go-03",
+          "type": "choice",
+          "english": "go out",
+          "russian": "выходить куда-нибудь, чтобы провести время",
+          "sourcePage": 19,
+          "prompt": "Что значит go out with friends?",
+          "options": [
+            "делать уроки с друзьями",
+            "ходить куда-нибудь с друзьями",
+            "ехать в школу",
+            "идти спать"
+          ],
+          "answer": "ходить куда-нибудь с друзьями",
+          "example": "We go out on Sundays.",
+          "exampleRu": "По воскресеньям мы куда-нибудь ходим.",
+          "note": "В контексте отдыха go out — выйти куда-нибудь развлечься или встретиться с людьми."
+        },
+        {
+          "id": "go-04",
+          "type": "choice",
+          "english": "go away",
+          "russian": "уезжать",
+          "sourcePage": 19,
+          "prompt": "Как сказать «уезжать»?",
+          "options": [
+            "go away",
+            "go on",
+            "go shopping",
+            "go to bed"
+          ],
+          "answer": "go away",
+          "example": "We go away in summer.",
+          "exampleRu": "Летом мы уезжаем.",
+          "note": "В рассказе о каникулах go away означает уехать из привычного места."
+        },
+        {
+          "id": "go-05",
+          "type": "gap",
+          "english": "go to bed",
+          "russian": "ложиться спать",
+          "sourcePage": 19,
+          "prompt": "I ___ at ten. — Я ложусь спать в десять.",
+          "options": [
+            "go to bed",
+            "go by bed",
+            "go for bed",
+            "go on bed"
+          ],
+          "answer": "go to bed",
+          "example": "I go to bed at ten.",
+          "exampleRu": "Я ложусь спать в десять.",
+          "note": "Go to bed — устойчивое выражение. Перед bed не нужен the."
+        },
+        {
+          "id": "go-06",
+          "type": "gap",
+          "english": "go for a walk",
+          "russian": "идти на прогулку",
+          "sourcePage": 19,
+          "prompt": "Let's ___. — Давай пойдём на прогулку.",
+          "options": [
+            "go a walk",
+            "go to walk",
+            "go for a walk",
+            "go by walk"
+          ],
+          "answer": "go for a walk",
+          "example": "Let's go for a walk.",
+          "exampleRu": "Давай пойдём на прогулку.",
+          "note": "Не теряй for и a: go for a walk."
+        },
+        {
+          "id": "go-07",
+          "type": "gap",
+          "english": "go on doing something",
+          "russian": "продолжать что-либо делать",
+          "sourcePage": 19,
+          "prompt": "After a break, I ___ reading. — После перерыва я продолжаю читать.",
+          "options": [
+            "go away",
+            "go on",
+            "go by",
+            "go out"
+          ],
+          "answer": "go on",
+          "example": "After a break, I go on reading.",
+          "exampleRu": "После перерыва я продолжаю читать.",
+          "note": "Для продолжения того же занятия: go on + глагол с -ing."
+        },
+        {
+          "id": "go-08",
+          "type": "gap",
+          "english": "go to the cinema",
+          "russian": "ходить в кино",
+          "sourcePage": 19,
+          "prompt": "We ___ on Saturday. — В субботу мы идём в кино.",
+          "options": [
+            "go by the cinema",
+            "go the cinema",
+            "go to the cinema",
+            "go for cinema"
+          ],
+          "answer": "go to the cinema",
+          "example": "We go to the cinema on Saturday.",
+          "exampleRu": "В субботу мы идём в кино.",
+          "note": "Запомни сочетание с to the: go to the cinema."
+        },
+        {
+          "id": "go-09",
+          "type": "gap",
+          "english": "go by bus",
+          "russian": "ехать на автобусе",
+          "sourcePage": 19,
+          "prompt": "I ___ bus. — Я еду на автобусе.",
+          "options": [
+            "go by",
+            "go for",
+            "go on doing",
+            "go to"
+          ],
+          "answer": "go by",
+          "example": "I go to school by bus.",
+          "exampleRu": "Я езжу в школу на автобусе.",
+          "note": "By указывает транспорт: by bus. Если bus уже написано, вставляй только go by."
+        },
+        {
+          "id": "go-10",
+          "type": "choice",
+          "english": "go by train",
+          "russian": "ехать на поезде",
+          "sourcePage": 19,
+          "prompt": "Как сказать «ехать на поезде»?",
+          "options": [
+            "go to train",
+            "go by train",
+            "go for a train",
+            "go on train"
+          ],
+          "answer": "go by train",
+          "example": "We go there by train.",
+          "exampleRu": "Мы едем туда на поезде.",
+          "note": "Тот же образец: by train, by car, by bus, by bike — без артикля."
+        }
+      ]
+    },
+    {
+      "id": "build-sentences",
+      "title": "Говорю о своих поездках",
+      "subtitle": "Собери 10 предложений",
+      "unit": 1,
+      "section": 2,
+      "sectionTitle": "Travels and Fun",
+      "sourcePages": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "sourceExercises": [
+        19,
+        21,
+        25,
+        29,
+        33,
+        35,
+        36,
+        38,
+        39
+      ],
+      "durationMinutes": 7,
+      "objective": "Строить короткие предложения по смыслу; различать, кто действует и что делает.",
+      "items": [
+        {
+          "id": "sentence-01",
+          "type": "build",
+          "english": "I like cycling.",
+          "russian": "Мне нравится кататься на велосипеде.",
+          "sourcePage": 13,
+          "prompt": "Собери: Мне нравится кататься на велосипеде.",
+          "tokens": [
+            "cycling",
+            "I",
+            "like"
+          ],
+          "answerTokens": [
+            "I",
+            "like",
+            "cycling"
+          ],
+          "answer": "I like cycling.",
+          "subject": "I",
+          "predicate": "like",
+          "note": "I — кто? Я. Like — что делаю? Люблю. Cycling — занятие, которое нравится."
+        },
+        {
+          "id": "sentence-02",
+          "type": "build",
+          "english": "My brother likes jogging.",
+          "russian": "Мой брат любит бегать трусцой.",
+          "sourcePage": 14,
+          "prompt": "Собери: Мой брат любит бегать трусцой.",
+          "tokens": [
+            "likes",
+            "jogging",
+            "My",
+            "brother"
+          ],
+          "answerTokens": [
+            "My",
+            "brother",
+            "likes",
+            "jogging"
+          ],
+          "answer": "My brother likes jogging.",
+          "subject": "My brother",
+          "predicate": "likes",
+          "note": "My brother можно заменить на he. В Present Simple добавляем -s: likes."
+        },
+        {
+          "id": "sentence-03",
+          "type": "build",
+          "english": "We go to school by bus.",
+          "russian": "Мы ездим в школу на автобусе.",
+          "sourcePage": 19,
+          "prompt": "Собери: Мы ездим в школу на автобусе.",
+          "tokens": [
+            "by",
+            "school",
+            "We",
+            "bus",
+            "to",
+            "go"
+          ],
+          "answerTokens": [
+            "We",
+            "go",
+            "to",
+            "school",
+            "by",
+            "bus"
+          ],
+          "answer": "We go to school by bus.",
+          "subject": "We",
+          "predicate": "go",
+          "note": "To school отвечает «куда?», by bus — «на чём?». После we форма go."
+        },
+        {
+          "id": "sentence-04",
+          "type": "build",
+          "english": "I can repair my bike.",
+          "russian": "Я умею чинить свой велосипед.",
+          "sourcePage": 15,
+          "prompt": "Собери: Я умею чинить свой велосипед.",
+          "tokens": [
+            "my",
+            "repair",
+            "I",
+            "bike",
+            "can"
+          ],
+          "answerTokens": [
+            "I",
+            "can",
+            "repair",
+            "my",
+            "bike"
+          ],
+          "answer": "I can repair my bike.",
+          "subject": "I",
+          "predicate": "can repair",
+          "note": "Can repair — умею чинить. После can используем repair без to и без -s."
+        },
+        {
+          "id": "sentence-05",
+          "type": "build",
+          "english": "We visited a museum yesterday.",
+          "russian": "Вчера мы посетили музей.",
+          "sourcePage": 16,
+          "prompt": "Начни с We: Вчера мы посетили музей.",
+          "tokens": [
+            "a",
+            "yesterday",
+            "visited",
+            "We",
+            "museum"
+          ],
+          "answerTokens": [
+            "We",
+            "visited",
+            "a",
+            "museum",
+            "yesterday"
+          ],
+          "answer": "We visited a museum yesterday.",
+          "subject": "We",
+          "predicate": "visited",
+          "note": "Yesterday — вчера, конкретное время в прошлом. Visit превращается в visited."
+        },
+        {
+          "id": "sentence-06",
+          "type": "build",
+          "english": "I took photos in the park.",
+          "russian": "Я фотографировал в парке.",
+          "sourcePage": 18,
+          "prompt": "Собери: Я фотографировал в парке.",
+          "tokens": [
+            "photos",
+            "the",
+            "I",
+            "park",
+            "took",
+            "in"
+          ],
+          "answerTokens": [
+            "I",
+            "took",
+            "photos",
+            "in",
+            "the",
+            "park"
+          ],
+          "answer": "I took photos in the park.",
+          "subject": "I",
+          "predicate": "took",
+          "note": "Take photos — фотографировать. Прошедшая форма take — took."
+        },
+        {
+          "id": "sentence-07",
+          "type": "build",
+          "english": "We went sightseeing yesterday.",
+          "russian": "Вчера мы осматривали достопримечательности.",
+          "sourcePage": 18,
+          "prompt": "Начни с We: Вчера мы осматривали достопримечательности.",
+          "tokens": [
+            "yesterday",
+            "sightseeing",
+            "We",
+            "went"
+          ],
+          "answerTokens": [
+            "We",
+            "went",
+            "sightseeing",
+            "yesterday"
+          ],
+          "answer": "We went sightseeing yesterday.",
+          "subject": "We",
+          "predicate": "went sightseeing",
+          "note": "Go в прошедшем времени — went. Выражение go sightseeing становится went sightseeing."
+        },
+        {
+          "id": "sentence-08",
+          "type": "build",
+          "english": "I have already done my homework.",
+          "russian": "Я уже сделал домашнее задание.",
+          "sourcePage": 16,
+          "prompt": "Собери: Я уже сделал домашнее задание.",
+          "tokens": [
+            "done",
+            "already",
+            "I",
+            "my",
+            "have",
+            "homework"
+          ],
+          "answerTokens": [
+            "I",
+            "have",
+            "already",
+            "done",
+            "my",
+            "homework"
+          ],
+          "answer": "I have already done my homework.",
+          "subject": "I",
+          "predicate": "have done",
+          "note": "Результат сейчас: работа готова. Have + третья форма do, то есть done. Already — уже."
+        },
+        {
+          "id": "sentence-09",
+          "type": "build",
+          "english": "I have never been to London.",
+          "russian": "Я никогда не был в Лондоне.",
+          "sourcePage": 16,
+          "prompt": "Собери: Я никогда не был в Лондоне.",
+          "tokens": [
+            "to",
+            "never",
+            "been",
+            "I",
+            "London",
+            "have"
+          ],
+          "answerTokens": [
+            "I",
+            "have",
+            "never",
+            "been",
+            "to",
+            "London"
+          ],
+          "answer": "I have never been to London.",
+          "subject": "I",
+          "predicate": "have been",
+          "note": "Говорим о жизненном опыте до настоящего момента. Never означает «никогда»; дополнительное not не нужно."
+        },
+        {
+          "id": "sentence-10",
+          "type": "build",
+          "english": "We are going to visit Scotland.",
+          "russian": "Мы собираемся посетить Шотландию.",
+          "sourcePage": 18,
+          "prompt": "Собери: Мы собираемся посетить Шотландию.",
+          "tokens": [
+            "visit",
+            "are",
+            "Scotland",
+            "We",
+            "to",
+            "going"
+          ],
+          "answerTokens": [
+            "We",
+            "are",
+            "going",
+            "to",
+            "visit",
+            "Scotland"
+          ],
+          "answer": "We are going to visit Scotland.",
+          "subject": "We",
+          "predicate": "are going to visit",
+          "note": "Be going to + глагол — план. С we используем are: we are going to visit."
+        }
+      ]
+    }
+  ],
+  "editorNotes": [
+    "Travels and Fun — Section 2 внутри Unit 1 Meeting New Friends; не называть его Unit 1 Travels and Fun как точное заглавие раздела.",
+    "В исходном письме на с.18 напечатано spend в рассказе о завершённом дне; в учебных примерах использовать spent.",
+    "Не переносить сочетание Although ..., but ... из письма с.18; в нормативном примере оставить только although или только but.",
+    "На с.18 напечатано far from London Bridge. Не выдавать прежнее утверждение not far за дословный текст этого PDF.",
+    "Слова ‘the next day’ переводить в зависимости от конструкции: ‘на следующий день’ либо ‘следующий день’ как дополнение к spent.",
+    "Оглавление проверено целиком, но лексика следующих разделов ещё не извлечена. Счётчики прототипа должны отражать только 30 заданий, а не будто бы весь учебник уже оцифрован."
+  ]
+}

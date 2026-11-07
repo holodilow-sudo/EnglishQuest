@@ -1,0 +1,562 @@
+[
+  {
+    "unit": 4,
+    "section": 1,
+    "title": "The Spirit of Adventure",
+    "titleRu": "Навстречу приключениям",
+    "page": 141,
+    "pageSpan": "141–149",
+    "verifiedPages": [
+      141,
+      147
+    ],
+    "words": [
+      {
+        "en": "an adventure",
+        "ru": "приключение",
+        "example": "Our adventure starts on Monday.",
+        "exampleRu": "Наше приключение начинается в понедельник.",
+        "note": "Adventure — приключение. Перед названием дня недели ставим on: on Monday.",
+        "page": 141,
+        "accepted": [
+          "On Monday our adventure starts."
+        ]
+      },
+      {
+        "en": "hiking",
+        "ru": "пеший туризм",
+        "example": "We enjoy hiking in the hills.",
+        "exampleRu": "Нам нравится ходить в походы по холмам.",
+        "note": "Hiking — пешие походы. После enjoy действие часто выражается формой с -ing.",
+        "page": 141,
+        "accepted": [
+          "In the hills we enjoy hiking."
+        ]
+      },
+      {
+        "en": "mountain biking",
+        "ru": "езда на горном велосипеде",
+        "example": "My cousin likes mountain biking.",
+        "exampleRu": "Моему двоюродному брату нравится ездить на горном велосипеде.",
+        "note": "Mountain — гора, biking — езда на велосипеде. Likes относится к одному человеку: my cousin.",
+        "page": 141,
+        "accepted": []
+      },
+      {
+        "en": "snowboarding",
+        "ru": "катание на сноуборде",
+        "example": "They go snowboarding in winter.",
+        "exampleRu": "Зимой они катаются на сноуборде.",
+        "note": "Go snowboarding — кататься на сноуборде. Перед временем года используем in: in winter.",
+        "page": 141,
+        "accepted": [
+          "In winter they go snowboarding."
+        ]
+      },
+      {
+        "en": "diving",
+        "ru": "подводное плавание",
+        "example": "My uncle enjoys diving.",
+        "exampleRu": "Мой дядя увлекается подводным плаванием.",
+        "note": "В теме путешествий diving означает погружение под воду. Enjoys — форма для he, she, it.",
+        "page": 141,
+        "accepted": []
+      },
+      {
+        "en": "exciting",
+        "ru": "увлекательный",
+        "example": "This adventure film is exciting.",
+        "exampleRu": "Этот приключенческий фильм увлекательный.",
+        "note": "Exciting описывает то, что вызывает интерес. Excited описывает чувство человека.",
+        "page": 141,
+        "accepted": []
+      },
+      {
+        "en": "dangerous",
+        "ru": "опасный",
+        "example": "This mountain road is dangerous.",
+        "exampleRu": "Эта горная дорога опасная.",
+        "note": "Dangerous — опасный. Сказуемое is dangerous: в английском здесь нужен глагол is.",
+        "page": 141,
+        "accepted": []
+      },
+      {
+        "en": "a pair of trousers",
+        "ru": "брюки (одна пара)",
+        "example": "I need a pair of trousers.",
+        "exampleRu": "Мне нужна пара брюк.",
+        "note": "Trousers употребляется во множественном числе. Одну пару обозначаем a pair of trousers.",
+        "page": 147,
+        "accepted": []
+      },
+      {
+        "en": "sunglasses",
+        "ru": "солнцезащитные очки",
+        "example": "My sunglasses are in my bag.",
+        "exampleRu": "Мои солнцезащитные очки в моей сумке.",
+        "note": "Sunglasses — множественное число, поэтому are. In my bag — в моей сумке.",
+        "page": 147,
+        "accepted": []
+      },
+      {
+        "en": "hiking boots",
+        "ru": "походные ботинки",
+        "example": "These hiking boots are comfortable.",
+        "exampleRu": "Эти походные ботинки удобные.",
+        "note": "Boots — ботинки, множественное число. These — эти; после boots ставим are.",
+        "page": 147,
+        "accepted": []
+      }
+    ]
+  },
+  {
+    "unit": 4,
+    "section": 2,
+    "title": "Famous Explorers",
+    "titleRu": "Знаменитые исследователи",
+    "page": 150,
+    "pageSpan": "150–157",
+    "verifiedPages": [
+      150,
+      151,
+      153
+    ],
+    "words": [
+      {
+        "en": "an explorer",
+        "ru": "исследователь-путешественник",
+        "example": "The explorer visited a small island.",
+        "exampleRu": "Исследователь посетил небольшой остров.",
+        "note": "Explorer — путешественник, изучающий новые места. Visited — прошедшее время от visit.",
+        "page": 150,
+        "accepted": []
+      },
+      {
+        "en": "to discover",
+        "ru": "открывать, обнаруживать",
+        "example": "We hope to discover new places.",
+        "exampleRu": "Мы надеемся открыть для себя новые места.",
+        "note": "Discover — обнаружить или открыть. После hope можно поставить to и глагол.",
+        "page": 151,
+        "accepted": []
+      },
+      {
+        "en": "a discovery",
+        "ru": "открытие",
+        "example": "This discovery is very important.",
+        "exampleRu": "Это открытие очень важное.",
+        "note": "Discovery — существительное, открытие; discover — глагол, открывать.",
+        "page": 151,
+        "accepted": []
+      },
+      {
+        "en": "unknown",
+        "ru": "неизвестный",
+        "example": "The team explored an unknown island.",
+        "exampleRu": "Команда исследовала неизвестный остров.",
+        "note": "Unknown — неизвестный. Перед unknown island ставим an: слово unknown начинается с гласного звука.",
+        "page": 150,
+        "accepted": []
+      },
+      {
+        "en": "to reach",
+        "ru": "достигать, добираться до",
+        "example": "They reached the village before dark.",
+        "exampleRu": "Они добрались до деревни до наступления темноты.",
+        "note": "После reach место называем без to: reached the village. Reached — прошедшая форма.",
+        "page": 151,
+        "accepted": [
+          "Before dark they reached the village."
+        ]
+      },
+      {
+        "en": "a journey",
+        "ru": "путешествие, путь",
+        "example": "Our journey took three days.",
+        "exampleRu": "Наше путешествие заняло три дня.",
+        "note": "Journey — путешествие, путь. Took — прошедшая форма take; took three days — заняло три дня.",
+        "page": 153,
+        "accepted": []
+      },
+      {
+        "en": "to overcome difficulties",
+        "ru": "преодолевать трудности",
+        "example": "We can overcome difficulties together.",
+        "exampleRu": "Мы можем вместе преодолеть трудности.",
+        "note": "Overcome difficulties — преодолевать трудности. После can глагол используется без to.",
+        "page": 153,
+        "accepted": [
+          "Together we can overcome difficulties."
+        ]
+      },
+      {
+        "en": "to provide first aid",
+        "ru": "оказывать первую помощь",
+        "example": "The instructor can provide first aid.",
+        "exampleRu": "Инструктор умеет оказывать первую помощь.",
+        "note": "First aid — первая помощь. Запоминай целиком: provide first aid.",
+        "page": 153,
+        "accepted": []
+      },
+      {
+        "en": "to work in a team",
+        "ru": "работать в команде",
+        "example": "We learn to work in a team.",
+        "exampleRu": "Мы учимся работать в команде.",
+        "note": "Work in a team — работать в команде. Learn to work — учиться работать.",
+        "page": 153,
+        "accepted": []
+      },
+      {
+        "en": "to put up a tent",
+        "ru": "ставить палатку",
+        "example": "They helped us put up a tent.",
+        "exampleRu": "Они помогли нам поставить палатку.",
+        "note": "Put up a tent — поставить палатку. Helped us — помогли нам; после help возможен глагол без to.",
+        "page": 153,
+        "accepted": [
+          "They helped us put a tent up."
+        ]
+      }
+    ]
+  },
+  {
+    "unit": 4,
+    "section": 3,
+    "title": "Popular Sports in Britain and in Russia",
+    "titleRu": "Спорт и своё мнение",
+    "page": 158,
+    "pageSpan": "158–162",
+    "verifiedPages": [
+      158,
+      161
+    ],
+    "words": [
+      {
+        "en": "football",
+        "ru": "футбол",
+        "example": "We play football after school.",
+        "exampleRu": "Мы играем в футбол после школы.",
+        "note": "Play football — играть в футбол. Перед названием игры артикль не нужен.",
+        "page": 158,
+        "accepted": [
+          "After school we play football."
+        ]
+      },
+      {
+        "en": "tennis",
+        "ru": "теннис",
+        "example": "My sister plays tennis well.",
+        "exampleRu": "Моя сестра хорошо играет в теннис.",
+        "note": "My sister заменяется на she, поэтому plays. Well — хорошо.",
+        "page": 158,
+        "accepted": []
+      },
+      {
+        "en": "basketball",
+        "ru": "баскетбол",
+        "example": "Our school has a basketball team.",
+        "exampleRu": "В нашей школе есть баскетбольная команда.",
+        "note": "A basketball team — баскетбольная команда. Our school has — у нашей школы есть.",
+        "page": 158,
+        "accepted": []
+      },
+      {
+        "en": "volleyball",
+        "ru": "волейбол",
+        "example": "They are playing volleyball now.",
+        "exampleRu": "Они сейчас играют в волейбол.",
+        "note": "Действие происходит сейчас: are playing. Now — сейчас.",
+        "page": 158,
+        "accepted": [
+          "Now they are playing volleyball.",
+          "They are now playing volleyball."
+        ]
+      },
+      {
+        "en": "rugby",
+        "ru": "регби",
+        "example": "My brother wants to try rugby.",
+        "exampleRu": "Мой брат хочет попробовать играть в регби.",
+        "note": "Wants to try — хочет попробовать. Rugby — название спортивной игры.",
+        "page": 158,
+        "accepted": []
+      },
+      {
+        "en": "cricket",
+        "ru": "крикет",
+        "example": "We watched a cricket match yesterday.",
+        "exampleRu": "Вчера мы посмотрели матч по крикету.",
+        "note": "A cricket match — матч по крикету. Yesterday подсказывает прошедшее время: watched.",
+        "page": 158,
+        "accepted": [
+          "Yesterday we watched a cricket match."
+        ]
+      },
+      {
+        "en": "skiing",
+        "ru": "катание на лыжах",
+        "example": "I enjoy skiing with my friends.",
+        "exampleRu": "Мне нравится кататься на лыжах с друзьями.",
+        "note": "Skiing — катание на лыжах. With my friends — с моими друзьями.",
+        "page": 158,
+        "accepted": [
+          "With my friends I enjoy skiing."
+        ]
+      },
+      {
+        "en": "ice hockey",
+        "ru": "хоккей с шайбой",
+        "example": "My dad likes watching ice hockey.",
+        "exampleRu": "Мой папа любит смотреть хоккей с шайбой.",
+        "note": "Ice — лёд; ice hockey — хоккей на льду. Likes watching — любит смотреть.",
+        "page": 158,
+        "accepted": []
+      },
+      {
+        "en": "I agree",
+        "ru": "я согласен",
+        "example": "I agree with your idea.",
+        "exampleRu": "Я согласен с твоей идеей.",
+        "note": "Agree — глагол: I agree, без am. Agree with — соглашаться с.",
+        "page": 161,
+        "accepted": []
+      },
+      {
+        "en": "I think that",
+        "ru": "я думаю, что",
+        "example": "I think that sport is useful.",
+        "exampleRu": "Я думаю, что спорт полезен.",
+        "note": "I think that помогает выразить своё мнение. После that идёт предложение: sport is useful.",
+        "page": 161,
+        "accepted": []
+      }
+    ]
+  },
+  {
+    "unit": 4,
+    "section": 4,
+    "title": "Under the Sea",
+    "titleRu": "Подводный мир",
+    "page": 163,
+    "pageSpan": "163–171",
+    "verifiedPages": [
+      168,
+      169
+    ],
+    "words": [
+      {
+        "en": "a sea creature",
+        "ru": "морское существо",
+        "example": "This sea creature lives near the coast.",
+        "exampleRu": "Это морское существо живёт у побережья.",
+        "note": "Sea creature — морское животное, морское существо. Lives — форма для it.",
+        "page": 168,
+        "accepted": []
+      },
+      {
+        "en": "an octopus",
+        "ru": "осьминог",
+        "example": "We saw an octopus in the aquarium.",
+        "exampleRu": "Мы видели осьминога в океанариуме.",
+        "note": "Saw — прошедшее время от see. Перед octopus ставим an.",
+        "page": 168,
+        "accepted": [
+          "In the aquarium we saw an octopus."
+        ]
+      },
+      {
+        "en": "a sea turtle",
+        "ru": "морская черепаха",
+        "example": "A sea turtle is swimming nearby.",
+        "exampleRu": "Рядом плывёт морская черепаха.",
+        "note": "Is swimming — плывёт сейчас. В слове swimming при добавлении -ing удваивается m.",
+        "page": 168,
+        "accepted": [
+          "Nearby a sea turtle is swimming."
+        ]
+      },
+      {
+        "en": "a jellyfish",
+        "ru": "медуза",
+        "example": "The jellyfish looks like an umbrella.",
+        "exampleRu": "Медуза похожа на зонтик.",
+        "note": "Looks like — выглядит как, похожа на. Перед umbrella нужен артикль an.",
+        "page": 168,
+        "accepted": []
+      },
+      {
+        "en": "a seahorse",
+        "ru": "морской конёк",
+        "example": "The seahorse is very small.",
+        "exampleRu": "Морской конёк очень маленький.",
+        "note": "Seahorse — морской конёк. Very small — очень маленький.",
+        "page": 168,
+        "accepted": []
+      },
+      {
+        "en": "a shark",
+        "ru": "акула",
+        "example": "I like reading books about sharks.",
+        "exampleRu": "Мне нравится читать книги об акулах.",
+        "note": "Shark — одна акула, sharks — акулы. Like reading — любить читать.",
+        "page": 168,
+        "accepted": []
+      },
+      {
+        "en": "to sting",
+        "ru": "жалить",
+        "example": "Some jellyfish can sting people.",
+        "exampleRu": "Некоторые медузы могут жалить людей.",
+        "note": "Sting — жалить. После can ставим глагол без to. Some — некоторые.",
+        "page": 168,
+        "accepted": []
+      },
+      {
+        "en": "a shell",
+        "ru": "панцирь, раковина",
+        "example": "The turtle has a hard shell.",
+        "exampleRu": "У черепахи твёрдый панцирь.",
+        "note": "Для черепахи shell — панцирь, для моллюска — раковина. Hard — твёрдый.",
+        "page": 169,
+        "accepted": []
+      },
+      {
+        "en": "a beach",
+        "ru": "пляж",
+        "example": "We walked along the beach.",
+        "exampleRu": "Мы гуляли вдоль пляжа.",
+        "note": "Along the beach — вдоль пляжа. Walked — прошедшая форма от walk.",
+        "page": 169,
+        "accepted": [
+          "Along the beach we walked."
+        ]
+      },
+      {
+        "en": "a dolphin",
+        "ru": "дельфин",
+        "example": "The dolphin jumped out of the water.",
+        "exampleRu": "Дельфин выпрыгнул из воды.",
+        "note": "Jumped — прыгнул. Out of the water — из воды.",
+        "page": 169,
+        "accepted": []
+      }
+    ]
+  },
+  {
+    "unit": 4,
+    "section": 5,
+    "title": "Traditional Festivals",
+    "titleRu": "Праздники и традиции",
+    "page": 172,
+    "pageSpan": "172–176",
+    "verifiedPages": [
+      172,
+      175
+    ],
+    "words": [
+      {
+        "en": "a holiday",
+        "ru": "праздник",
+        "example": "This holiday is important to my family.",
+        "exampleRu": "Этот праздник важен для моей семьи.",
+        "note": "Holiday здесь означает праздник. School holidays — школьные каникулы.",
+        "page": 172,
+        "accepted": [
+          "To my family this holiday is important."
+        ]
+      },
+      {
+        "en": "to celebrate",
+        "ru": "праздновать",
+        "example": "We celebrated together last year.",
+        "exampleRu": "В прошлом году мы праздновали вместе.",
+        "note": "Celebrate — праздновать; celebrated — праздновали. Last year — в прошлом году.",
+        "page": 172,
+        "accepted": [
+          "Last year we celebrated together.",
+          "We celebrated last year together.",
+          "Together we celebrated last year."
+        ]
+      },
+      {
+        "en": "Christmas",
+        "ru": "Рождество",
+        "example": "My grandparents visit us at Christmas.",
+        "exampleRu": "Мои бабушка и дедушка навещают нас на Рождество.",
+        "note": "Christmas пишется с большой буквы. At Christmas — в рождественские праздники.",
+        "page": 172,
+        "accepted": [
+          "At Christmas my grandparents visit us."
+        ]
+      },
+      {
+        "en": "New Year",
+        "ru": "Новый год",
+        "example": "We are getting ready for New Year.",
+        "exampleRu": "Мы готовимся к Новому году.",
+        "note": "Get ready for — готовиться к. Are getting ready — готовимся сейчас.",
+        "page": 172,
+        "accepted": []
+      },
+      {
+        "en": "to decorate",
+        "ru": "украшать",
+        "example": "We will decorate our classroom tomorrow.",
+        "exampleRu": "Завтра мы украсим наш класс.",
+        "note": "Tomorrow — завтра. Will decorate — украсим; после will используем глагол без to.",
+        "page": 175,
+        "accepted": [
+          "Tomorrow we will decorate our classroom."
+        ]
+      },
+      {
+        "en": "a national costume",
+        "ru": "национальный костюм",
+        "example": "She is wearing a national costume.",
+        "exampleRu": "На ней национальный костюм.",
+        "note": "Is wearing описывает, во что человек одет сейчас. Costume — костюм для особого случая.",
+        "page": 175,
+        "accepted": []
+      },
+      {
+        "en": "a folk song",
+        "ru": "народная песня",
+        "example": "My grandmother knows many folk songs.",
+        "exampleRu": "Моя бабушка знает много народных песен.",
+        "note": "Folk songs — народные песни. После many нужно множественное число: songs.",
+        "page": 175,
+        "accepted": []
+      },
+      {
+        "en": "to invite relatives",
+        "ru": "приглашать родственников",
+        "example": "We want to invite our relatives.",
+        "exampleRu": "Мы хотим пригласить наших родственников.",
+        "note": "Want to invite — хотеть пригласить. Relatives — родственники.",
+        "page": 175,
+        "accepted": []
+      },
+      {
+        "en": "a special dish",
+        "ru": "особое блюдо",
+        "example": "My father has cooked a special dish.",
+        "exampleRu": "Мой отец приготовил особое блюдо.",
+        "note": "Has cooked — приготовил, результат готов сейчас. Dish здесь означает блюдо, еду.",
+        "page": 175,
+        "accepted": []
+      },
+      {
+        "en": "fireworks",
+        "ru": "фейерверк",
+        "example": "We watched the fireworks from our window.",
+        "exampleRu": "Мы смотрели фейерверк из нашего окна.",
+        "note": "Fireworks — фейерверк, салют. From our window — из нашего окна.",
+        "page": 175,
+        "accepted": [
+          "From our window we watched the fireworks."
+        ]
+      }
+    ]
+  }
+]
