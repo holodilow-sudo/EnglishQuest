@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       signed:
-        description: 'Sign APK for installation (main only; never publishes a release)'
+        description: 'Sign APK and prepare a draft release (main only; never publishes)'
         type: boolean
         default: false
 
@@ -128,3 +128,117 @@ jobs:
             signed/build-info.json
           if-no-files-found: error
           retention-days: 30
+
+  draft-release:
+    needs: sign
+    if: github.event_name == 'workflow_dispatch' && inputs.signed && github.ref == 'refs/heads/main' && github.repository == 'holodilow-sudo/EnglishQuest'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: installable-apk-${{ github.run_number }}
+          path: signed
+      - name: Prepare draft only; never publish or replace a published release
+        shell: python
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          import hashlib, json, os, pathlib, re, urllib.error, urllib.parse, urllib.request
+
+          repo = 'holodilow-sudo/EnglishQuest'
+          api = 'https://api.github.com/repos/' + repo
+          token = os.environ['GH_TOKEN']
+          def request(url, method='GET', payload=None, binary=False):
+              headers = {'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json',
+                         'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'EnglishQuest-draft-release'}
+              data = payload if binary else (json.dumps(payload).encode() if payload is not None else None)
+              if data is not None:
+                  headers['Content-Type'] = 'application/octet-stream' if binary else 'application/json'
+              with urllib.request.urlopen(urllib.request.Request(url, data=data, headers=headers, method=method), timeout=120) as response:
+                  return json.load(response)
+
+          def summary(message):
+              with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as stream:
+                  stream.write(message + '\n')
+
+          def prepare():
+              folder = pathlib.Path('signed')
+              meta = json.loads((folder / 'build-info.json').read_text(encoding='utf-8-sig'))
+              version = meta['version']
+              if not re.fullmatch(r'\d+\.\d+\.\d+', version):
+                  raise RuntimeError('Invalid release version')
+              name = 'EnglishQuest-' + version + '.apk'
+              cert = '78675df290e5190b39be40c609fffc3060e0b754462a2cbfd2172cf35c9ad246'
+              if (meta.get('apk') != name or meta.get('package') != 'ru.arseniy.englishquest'
+                      or meta.get('signed') is not True or meta.get('signingCertificateSha256') != cert
+                      or meta.get('sourceCommit') != os.environ['GITHUB_SHA']):
+                  raise RuntimeError('Untrusted signed build metadata')
+              files = {name: (folder / name).read_bytes(), name + '.sha256': (folder / (name + '.sha256')).read_bytes(),
+                       'build-info.json': (folder / 'build-info.json').read_bytes()}
+              digest = hashlib.sha256(files[name]).hexdigest()
+              if digest != meta['sha256'] or files[name + '.sha256'].decode().strip() != digest + '  ' + name:
+                  raise RuntimeError('Signed APK checksum mismatch')
+              releases = []
+              page = 1
+              while True:
+                  batch = request(api + '/releases?per_page=100&page=' + str(page))
+                  releases.extend(batch)
+                  if len(batch) < 100:
+                      break
+                  page += 1
+              tag = 'v' + version
+              existing = next((item for item in releases if item['tag_name'] == tag), None)
+              if existing and not existing['draft']:
+                  summary('### Draft skipped\nVersion ' + tag + ' is already published. Its files were not changed. Increase versionName and versionCode for the next release.')
+                  return
+              stable = [item for item in releases if not item['draft'] and not item['prerelease'] and re.fullmatch(r'v\d+\.\d+\.\d+', item['tag_name'])]
+              semver = lambda value: tuple(map(int, value.lstrip('v').split('.')))
+              if stable:
+                  latest = max(stable, key=lambda item: semver(item['tag_name']))
+                  if semver(version) <= semver(latest['tag_name']):
+                      raise RuntimeError('Release version must be newer than published versions')
+                  info_asset = next((asset for asset in latest['assets'] if asset['name'] == 'build-info.json'), None)
+                  if info_asset:
+                      # Published metadata is public; no token is sent to download redirects.
+                      with urllib.request.urlopen(info_asset['browser_download_url'], timeout=120) as response:
+                          previous_code = json.loads(response.read().decode('utf-8-sig'))['versionCode']
+                  elif latest['tag_name'] == 'v1.2.2':
+                      previous_code = 6
+                  else:
+                      raise RuntimeError('Published release needs build-info.json to verify versionCode')
+                  if type(meta['versionCode']) is not int or meta['versionCode'] <= previous_code:
+                      raise RuntimeError('versionCode must be greater than the latest published APK')
+              if existing and existing['target_commitish'] != os.environ['GITHUB_SHA']:
+                  raise RuntimeError('A draft for this version already exists from a different commit; review it before replacing anything')
+              release = existing or request(api + '/releases', 'POST', {
+                  'tag_name': tag, 'target_commitish': os.environ['GITHUB_SHA'],
+                  'name': 'EnglishQuest ' + version, 'draft': True, 'prerelease': False,
+                  'body': 'Черновик для согласования. Публиковать только после одобрения владельца.\n\n'
+                          + 'APK подписана прежним ключом; пакет приложения сохранён. Устанавливайте поверх предыдущей версии без удаления данных.\n\n'
+                          + 'Версия: ' + version + ' (versionCode ' + str(meta['versionCode']) + ').\n'
+                          + 'Сборка: https://github.com/' + repo + '/actions/runs/' + os.environ['GITHUB_RUN_ID'] + '\n'
+                          + 'Коммит: ' + os.environ['GITHUB_SHA'] + '\n\nПеред публикацией проверьте APK и дополните описание изменениями.'})
+              release_url = api + '/releases/' + str(release['id'])
+              for filename, data in files.items():
+                  current = request(release_url)
+                  if not current['draft']:
+                      raise RuntimeError('Release is no longer a draft; stopping without changes')
+                  asset = next((item for item in current['assets'] if item['name'] == filename), None)
+                  expected_digest = 'sha256:' + hashlib.sha256(data).hexdigest()
+                  if asset:
+                      if asset.get('digest') != expected_digest:
+                          raise RuntimeError('Draft asset differs; refusing to overwrite ' + filename)
+                  else:
+                      uploaded = request('https://uploads.github.com/repos/' + repo + '/releases/' + str(release['id'])
+                                         + '/assets?name=' + urllib.parse.quote(filename, safe=''), 'POST', data, binary=True)
+                      if uploaded.get('digest') != expected_digest:
+                          raise RuntimeError('Uploaded asset checksum mismatch')
+              final = request(release_url)
+              if not final['draft'] or not set(files).issubset({item['name'] for item in final['assets']}):
+                  raise RuntimeError('Draft verification failed')
+              summary('### Draft ready for approval\n[' + tag + '](' + final['html_url'] + ') contains the APK, SHA-256 and build metadata. Nothing was published.')
+
+          prepare()
