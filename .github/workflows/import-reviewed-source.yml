@@ -1,0 +1,64 @@
+name: Import reviewed public source
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: import-reviewed-public-source
+  cancel-in-progress: false
+
+jobs:
+  import:
+    if: github.repository == 'holodilow-sudo/EnglishQuest' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: main
+      - name: Verify and import the fixed reviewed source archive
+        shell: python
+        run: |
+          import hashlib, io, json, pathlib, stat, subprocess, urllib.request, zipfile
+          url = 'https://github.com/holodilow-sudo/EnglishQuest/releases/download/v1.2.2/EnglishQuest-1.2.2-public-source.zip'
+          expected = 'e68ca109f2f495725ca652c47c158a239f8a1f08a01a81065b1987fd33b3d5c8'
+          with urllib.request.urlopen(url, timeout=60) as response:
+              data = response.read(50 * 1024 * 1024 + 1)
+          assert len(data) <= 50 * 1024 * 1024
+          assert hashlib.sha256(data).hexdigest() == expected, 'Archive checksum mismatch'
+          root = pathlib.Path.cwd().resolve()
+          with zipfile.ZipFile(io.BytesIO(data)) as archive:
+              assert len(archive.namelist()) == len(set(archive.namelist()))
+              manifest = json.loads(archive.read('source-manifest.json'))
+              expected_files = {item['path']: item for item in manifest['files']}
+              assert set(archive.namelist()) == set(expected_files) | {'source-manifest.json'}
+              assert sum(item.file_size for item in archive.infolist()) < 100 * 1024 * 1024
+              for item in archive.infolist():
+                  name = pathlib.PurePosixPath(item.filename)
+                  assert not name.is_absolute() and '..' not in name.parts and '\\' not in item.filename
+                  assert not set(name.parts) & {'.git', '.github', '.local', '.toolchain', 'dist', 'build', 'work', 'preview', 'private-inputs'}
+                  assert not stat.S_ISLNK(item.external_attr >> 16)
+                  target = (root / item.filename).resolve()
+                  assert target.is_relative_to(root)
+                  payload = archive.read(item)
+                  if item.filename in expected_files:
+                      record = expected_files[item.filename]
+                      assert len(payload) == record['bytes']
+                      assert hashlib.sha256(payload).hexdigest() == record['sha256']
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(payload)
+          subprocess.run(['git', 'add', '--', *expected_files, 'source-manifest.json'], check=True)
+          print('Verified and staged', len(expected_files) + 1, 'public source files; signing material and device data are excluded.')
+      - name: Validate course
+        run: node scripts/validate-content.cjs
+      - name: Commit reviewed source
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git diff --cached --quiet; then
+            git commit -m "Add reviewed 1.2.2 public source without personal data or signing secrets"
+            git push origin HEAD:main
+          fi
