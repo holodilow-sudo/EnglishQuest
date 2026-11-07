@@ -1,0 +1,127 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main]
+    paths: ['app/**', 'android/**', 'scripts/build-android.py', 'scripts/validate-content.cjs', '.github/workflows/build-apk.yml']
+  pull_request:
+    paths: ['app/**', 'android/**', 'scripts/build-android.py', 'scripts/validate-content.cjs', '.github/workflows/build-apk.yml']
+  workflow_dispatch:
+    inputs:
+      signed:
+        description: 'Sign APK for installation (main only; never publishes a release)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: apk-${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  build:
+    runs-on: windows-2025
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Validate course
+        run: node scripts/validate-content.cjs
+      - name: Build unsigned APK without secrets
+        run: |
+          $env:ENGLISHQUEST_JDK = $env:JAVA_HOME_17_X64
+          $env:ENGLISHQUEST_BUILD_TOOLS = Join-Path $env:ANDROID_HOME 'build-tools/35.0.0'
+          $env:ENGLISHQUEST_ANDROID_JAR = Join-Path $env:ANDROID_HOME 'platforms/android-35/android.jar'
+          python scripts/build-android.py --unsigned --allow-system-city-speech --allow-system-travel-speech
+          if ($LASTEXITCODE -ne 0) { throw 'APK build failed' }
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: unsigned-apk-${{ github.run_number }}
+          path: |
+            dist/*-unsigned.apk
+            dist/*-unsigned.apk.sha256
+            dist/build-info.json
+          if-no-files-found: error
+          retention-days: 7
+
+  sign:
+    needs: build
+    if: github.event_name == 'workflow_dispatch' && inputs.signed && github.ref == 'refs/heads/main' && github.repository == 'holodilow-sudo/EnglishQuest'
+    environment: android-signing
+    runs-on: windows-2025
+    timeout-minutes: 10
+    steps:
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: unsigned-apk-${{ github.run_number }}
+          path: unsigned
+      - name: Sign with existing private key and verify update compatibility
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ENGLISHQUEST_KEYSTORE_BASE64 }}
+          ENGLISHQUEST_STORE_PASSWORD: ${{ secrets.ENGLISHQUEST_STORE_PASSWORD }}
+          ENGLISHQUEST_KEY_PASSWORD: ${{ secrets.ENGLISHQUEST_KEY_PASSWORD }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if (-not $env:KEYSTORE_BASE64 -or -not $env:ENGLISHQUEST_STORE_PASSWORD) { throw 'Configure private signing secrets in the android-signing environment first' }
+          if (-not $env:ENGLISHQUEST_KEY_PASSWORD) { $env:ENGLISHQUEST_KEY_PASSWORD = $env:ENGLISHQUEST_STORE_PASSWORD }
+          $keyPath = Join-Path $env:RUNNER_TEMP 'englishquest-signing.keystore'
+          try {
+            [IO.File]::WriteAllBytes($keyPath, [Convert]::FromBase64String($env:KEYSTORE_BASE64))
+            $env:KEYSTORE_BASE64 = $null
+            $java = Join-Path $env:JAVA_HOME_17_X64 'bin/java.exe'
+            $sdkTools = Join-Path $env:ANDROID_HOME 'build-tools/35.0.0'
+            $signer = Join-Path $sdkTools 'lib/apksigner.jar'
+            $metadata = Get-Content unsigned/build-info.json -Raw | ConvertFrom-Json
+            if ($metadata.version -notmatch '^\d+\.\d+\.\d+$' -or $metadata.package -ne 'ru.arseniy.englishquest') { throw 'Unexpected package metadata' }
+            $inputs = @(Get-ChildItem unsigned -Filter '*-unsigned.apk')
+            if ($inputs.Count -ne 1) { throw 'Expected exactly one unsigned APK' }
+            $inputApk = $inputs[0].FullName
+            if ((Get-FileHash $inputApk -Algorithm SHA256).Hash.ToLowerInvariant() -ne $metadata.sha256) { throw 'Unsigned APK checksum mismatch' }
+            $badging = & "$sdkTools/aapt2.exe" dump badging $inputApk
+            if ($LASTEXITCODE -ne 0) { throw 'Cannot read Android manifest' }
+            if ($badging[0] -notmatch "name='ru\.arseniy\.englishquest' versionCode='(\d+)' versionName='([^']+)'") { throw 'Unexpected Android package' }
+            if ([int]$Matches[1] -ne $metadata.versionCode -or $Matches[2] -ne $metadata.version) { throw 'Manifest version mismatch' }
+            if ($badging -match '^application-debuggable') { throw 'Refusing to sign a debug build' }
+            New-Item -ItemType Directory signed | Out-Null
+            $name = "EnglishQuest-$($metadata.version).apk"
+            $outputApk = Join-Path 'signed' $name
+            & $java -jar $signer sign --ks $keyPath --ks-key-alias englishquesttest --ks-pass env:ENGLISHQUEST_STORE_PASSWORD --key-pass env:ENGLISHQUEST_KEY_PASSWORD --out $outputApk $inputApk
+            if ($LASTEXITCODE -ne 0) { throw 'Signing failed' }
+            $verification = & $java -jar $signer verify --verbose --print-certs $outputApk
+            if ($LASTEXITCODE -ne 0) { throw 'Signature verification failed' }
+            $expected = '78675df290e5190b39be40c609fffc3060e0b754462a2cbfd2172cf35c9ad246'
+            if (-not ($verification -match "Signer #1 certificate SHA-256 digest: $expected")) { throw 'Signing certificate differs from installed app' }
+            & "$sdkTools/zipalign.exe" -c 4 $outputApk
+            if ($LASTEXITCODE -ne 0) { throw 'APK alignment check failed' }
+            $metadata.apk = $name
+            $metadata.bytes = (Get-Item $outputApk).Length
+            $metadata.sha256 = (Get-FileHash $outputApk -Algorithm SHA256).Hash.ToLowerInvariant()
+            $metadata.signed = $true
+            $metadata.variant = 'github-release'
+            $metadata | Add-Member -NotePropertyName signingCertificateSha256 -NotePropertyValue $expected
+            $metadata | Add-Member -NotePropertyName sourceCommit -NotePropertyValue $env:GITHUB_SHA
+            $metadata | ConvertTo-Json -Depth 20 | Set-Content signed/build-info.json -Encoding utf8
+            "$($metadata.sha256)  $name" | Set-Content "$outputApk.sha256" -Encoding ascii
+            "### Signed APK ready`nCertificate matches previous releases. No release was published." >> $env:GITHUB_STEP_SUMMARY
+          } finally {
+            if (Test-Path -LiteralPath $keyPath) { Remove-Item -LiteralPath $keyPath -Force }
+            $env:KEYSTORE_BASE64 = $null
+            $env:ENGLISHQUEST_STORE_PASSWORD = $null
+            $env:ENGLISHQUEST_KEY_PASSWORD = $null
+          }
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: installable-apk-${{ github.run_number }}
+          path: |
+            signed/*.apk
+            signed/*.sha256
+            signed/build-info.json
+          if-no-files-found: error
+          retention-days: 30
