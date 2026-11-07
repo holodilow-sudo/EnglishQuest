@@ -51,16 +51,18 @@ def run(label, args, use_ascii=False):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument('--unsigned', action='store_true', help='Build a verification APK without any signing secrets')
     parser.add_argument('--debug', action='store_true', help='Enable WebView diagnostics in a separate test APK')
     parser.add_argument('--allow-system-city-speech', action='store_true', help='Allow unbundled city dialogue to use an installed offline Android English voice; record the limitation in build metadata')
     parser.add_argument('--allow-system-travel-speech', action='store_true', help='Allow travel phrases to use the installed Android English voice; record missing bundled audio explicitly')
     args = parser.parse_args()
-    if not os.environ.get('ENGLISHQUEST_KEYSTORE') or not os.environ.get('ENGLISHQUEST_STORE_PASSWORD'):
-        raise RuntimeError('Set ENGLISHQUEST_KEYSTORE and ENGLISHQUEST_STORE_PASSWORD privately before building. Never commit the signing key or password.')
-    if not Path(os.environ['ENGLISHQUEST_KEYSTORE']).expanduser().is_file():
-        raise RuntimeError('Configured signing key is missing. Refusing to generate a replacement key.')
-    if not os.environ.get('ENGLISHQUEST_KEY_PASSWORD'):
-        os.environ['ENGLISHQUEST_KEY_PASSWORD'] = os.environ['ENGLISHQUEST_STORE_PASSWORD']
+    if not args.unsigned:
+        if not os.environ.get('ENGLISHQUEST_KEYSTORE') or not os.environ.get('ENGLISHQUEST_STORE_PASSWORD'):
+            raise RuntimeError('Set ENGLISHQUEST_KEYSTORE and ENGLISHQUEST_STORE_PASSWORD privately before building. Never commit the signing key or password.')
+        if not Path(os.environ['ENGLISHQUEST_KEYSTORE']).expanduser().is_file():
+            raise RuntimeError('Configured signing key is missing. Refusing to generate a replacement key.')
+        if not os.environ.get('ENGLISHQUEST_KEY_PASSWORD'):
+            os.environ['ENGLISHQUEST_KEY_PASSWORD'] = os.environ['ENGLISHQUEST_STORE_PASSWORD']
     travel = json.loads(subprocess.check_output(['node', '-e',
         "const fs=require('fs'),vm=require('vm'),ctx={window:{}};vm.runInNewContext(fs.readFileSync('app/travel-content.js','utf8'),ctx);process.stdout.write(JSON.stringify(ctx.window.TravelContent));"],
         cwd=ROOT, encoding='utf-8'))
@@ -86,9 +88,9 @@ def main():
         raise RuntimeError(f'Travel audio is not fully bundled: {len(missing_travel)} phrases. Prepare audio or explicitly use --allow-system-travel-speech.')
     if list(speech_root.glob('*.wav')):
         raise RuntimeError('Uncompressed source WAV files must stay outside APK assets')
-    jdk = find(TOOLS / 'jdk', 'javac.exe').parent
-    buildtools = find(TOOLS / 'sdk-build', 'aapt2.exe').parent
-    platform = find(TOOLS / 'sdk-platform', 'android.jar')
+    jdk = Path(os.environ['ENGLISHQUEST_JDK']) / 'bin' if os.environ.get('ENGLISHQUEST_JDK') else find(TOOLS / 'jdk', 'javac.exe').parent
+    buildtools = Path(os.environ['ENGLISHQUEST_BUILD_TOOLS']) if os.environ.get('ENGLISHQUEST_BUILD_TOOLS') else find(TOOLS / 'sdk-build', 'aapt2.exe').parent
+    platform = Path(os.environ['ENGLISHQUEST_ANDROID_JAR']) if os.environ.get('ENGLISHQUEST_ANDROID_JAR') else find(TOOLS / 'sdk-platform', 'android.jar')
     for part in ['generated', 'classes', 'dex']:
         (BUILD / part).mkdir(parents=True, exist_ok=True)
     DIST.mkdir(exist_ok=True)
@@ -144,17 +146,20 @@ def main():
             if pad: info.extra=struct.pack('<HH',0xFFFF,pad)+bytes(pad)
             archive.writestr(info,file.read_bytes())
     run('Verify unsigned alignment', [buildtools/'zipalign.exe','-c','4',aligned])
-    key = Path(os.environ['ENGLISHQUEST_KEYSTORE']).expanduser().resolve()
-    apk = DIST/('EnglishQuest-'+version+('-test' if args.debug else '')+'.apk')
-    signer = [jdk/'java.exe','-jar',buildtools/'lib'/'apksigner.jar']
-    run('6/7 Sign local APK', [*signer,'sign','--ks',key,'--ks-key-alias',os.environ.get('ENGLISHQUEST_KEY_ALIAS','englishquesttest'),'--ks-pass','env:ENGLISHQUEST_STORE_PASSWORD','--key-pass','env:ENGLISHQUEST_KEY_PASSWORD','--out',apk,aligned])
-    run('7/7 Verify APK signature', [*signer,'verify','--verbose','--print-certs',apk])
+    apk = DIST/('EnglishQuest-'+version+('-test' if args.debug else '')+('-unsigned' if args.unsigned else '')+'.apk')
+    if args.unsigned:
+        shutil.copyfile(aligned, apk)
+    else:
+        key = Path(os.environ['ENGLISHQUEST_KEYSTORE']).expanduser().resolve()
+        signer = [jdk/'java.exe','-jar',buildtools/'lib'/'apksigner.jar']
+        run('6/7 Sign local APK', [*signer,'sign','--ks',key,'--ks-key-alias',os.environ.get('ENGLISHQUEST_KEY_ALIAS','englishquesttest'),'--ks-pass','env:ENGLISHQUEST_STORE_PASSWORD','--key-pass','env:ENGLISHQUEST_KEY_PASSWORD','--out',apk,aligned])
+        run('7/7 Verify APK signature', [*signer,'verify','--verbose','--print-certs',apk])
     run('Verify alignment', [buildtools/'zipalign.exe','-c','4',apk])
     digest=hashlib.sha256(apk.read_bytes()).hexdigest()
     content_text=(ROOT/'app'/'content.js').read_text(encoding='utf-8')
     content=json.loads(content_text.split('const CONTENT = ',1)[1].strip().rstrip(';'))
     audio_manifest=SOURCE/'assets'/'speech'/'index.json'
-    metadata={'apk':apk.name,'version':version,'versionCode':int(manifest.getroot().get(android_ns+'versionCode')),'package':manifest.getroot().get('package'),'bytes':apk.stat().st_size,'sha256':digest,'variant':'local-debug' if args.debug else 'local-release','compileSdk':35,'minSdk':26,'source':content.get('source',{}),'units':len(content['units']),'lessons':len(content['lessons']),'tasks':sum(len(l['tasks']) for l in content['lessons']),'words':len(content['words']),'bundledAudio':audio_manifest.exists(),'build':str(BUILD)}
+    metadata={'apk':apk.name,'version':version,'versionCode':int(manifest.getroot().get(android_ns+'versionCode')),'package':manifest.getroot().get('package'),'bytes':apk.stat().st_size,'sha256':digest,'signed':not args.unsigned,'variant':'unsigned' if args.unsigned else ('local-debug' if args.debug else 'local-release'),'compileSdk':35,'minSdk':26,'source':content.get('source',{}),'units':len(content['units']),'lessons':len(content['lessons']),'tasks':sum(len(l['tasks']) for l in content['lessons']),'words':len(content['words']),'bundledAudio':audio_manifest.exists(),'build':str(BUILD)}
     metadata.update({'sections':sum(len(u['sections']) for u in content['units']),
                      'dictionaryCards':sum(bool(w.get('dictionary')) for w in content['words']),
                      'thematicTasks':sum(len(l['tasks']) for l in content['lessons'] if not l.get('dictionary')),
