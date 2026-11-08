@@ -15,10 +15,10 @@ const stub=path.join(out,'R.java');fs.writeFileSync(stub,'package ru.arseniy.eng
 const boot=[path.join(root,'.toolchain/sdk-build/android-15/core-lambda-stubs.jar'),path.join(root,'.toolchain/sdk-platform/android-35/android.jar')].join(path.delimiter);
 run(java,[path.join(root,'android/tools/CompileAndroid.java'),boot,native,...fs.readdirSync(pkg).filter(f=>f.endsWith('.java')).map(f=>path.join(pkg,f)),stub]);
 const manifest=fs.readFileSync(path.join(root,'android/src/main/AndroidManifest.xml'),'utf8'),main=fs.readFileSync(path.join(pkg,'MainActivity.java'),'utf8');
-assert(manifest.includes('android:versionCode="6"')&&manifest.includes('android:versionName="1.2.2"'));
+assert(manifest.includes('android:versionCode="7"')&&manifest.includes('android:versionName="1.2.3"'));
 assert(manifest.includes('package="ru.arseniy.englishquest"')&&manifest.includes('android.permission.INTERNET'));
 assert(manifest.includes('REQUEST_INSTALL_PACKAGES')&&!manifest.includes('WRITE_EXTERNAL_STORAGE'));
 assert(main.includes('settings.setBlockNetworkLoads(true)')&&main.includes("connect-src 'none'"));
 assert(main.includes('if (updates != null) updates.check(false)'));
-const report={passed:true,releasePolicyChecks:36,transferChecks:19,reminderScheduleChecks:49,allAndroidJavaTypechecked:true,plannedVersion:'1.2.2',plannedVersionCode:6,apkBuilt:false,deviceTested:false};
+const report={passed:true,releasePolicyChecks:36,transferChecks:19,reminderScheduleChecks:49,allAndroidJavaTypechecked:true,plannedVersion:'1.2.3',plannedVersionCode:7,apkBuilt:false,deviceTested:false};
 fs.writeFileSync(path.join(out,'native-verification.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report));
