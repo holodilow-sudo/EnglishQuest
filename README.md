@@ -4,7 +4,7 @@ Android-тренажёр английского: учебный курс, пов
 
 ## Скачать и обновить
 
-[Скачать APK 1.2.2](https://github.com/holodilow-sudo/EnglishQuest/releases/download/v1.2.2/EnglishQuest-1.2.2.apk) · [Все выпуски](https://github.com/holodilow-sudo/EnglishQuest/releases). Требуется Android 8.0 или новее.
+[Скачать APK 1.2.3](https://github.com/holodilow-sudo/EnglishQuest/releases/download/v1.2.3/EnglishQuest-1.2.3.apk) · [Все выпуски](https://github.com/holodilow-sudo/EnglishQuest/releases). Требуется Android 8.0 или новее.
 
 Устанавливайте новую APK **поверх существующего приложения**, не удаляя его и не очищая данные. Это сохраняет локальный прогресс, слова и награды.
 
