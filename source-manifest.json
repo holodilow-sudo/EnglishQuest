@@ -11,8 +11,8 @@
     },
     {
       "path": ".github/workflows/build-apk.yml",
-      "bytes": 14846,
-      "sha256": "97fd1671cb5177290afe20bba8cf757435e0f5acc8205d3bdc195a44a3944adf"
+      "bytes": 15697,
+      "sha256": "5b644ac27d41e39543d3543a2ddf16504dd80d5c97cb9a7749e402712006c47b"
     },
     {
       "path": ".github/workflows/import-reviewed-source.yml",
