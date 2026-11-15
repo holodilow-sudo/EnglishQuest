@@ -13,52 +13,104 @@ concurrency:
 jobs:
   import:
     if: github.repository == 'holodilow-sudo/EnglishQuest' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           ref: main
-      - name: Verify and import the fixed reviewed source archive
+          fetch-depth: 0
+      - name: Verify and import the fixed reviewed 1.3.0 source archive
         shell: python
         run: |
           import hashlib, io, json, pathlib, stat, subprocess, urllib.request, zipfile
-          url = 'https://github.com/holodilow-sudo/EnglishQuest/releases/download/v1.2.2/EnglishQuest-1.2.2-public-source.zip'
-          expected = 'e68ca109f2f495725ca652c47c158a239f8a1f08a01a81065b1987fd33b3d5c8'
-          with urllib.request.urlopen(url, timeout=60) as response:
-              data = response.read(50 * 1024 * 1024 + 1)
-          assert len(data) <= 50 * 1024 * 1024
-          assert hashlib.sha256(data).hexdigest() == expected, 'Archive checksum mismatch'
+          import xml.etree.ElementTree as ET
+          url = 'https://github.com/holodilow-sudo/EnglishQuest/releases/download/v1.3.0/EnglishQuest-1.3.0-public-source.zip'
+          expected = 'da2cac689e190bff23dc5b8db1d229b84627c1f9f1870da75018fcf0f4a5954e'
           root = pathlib.Path.cwd().resolve()
+          ns = '{http://schemas.android.com/apk/res/android}'
+          current = ET.parse(root / 'android/src/main/AndroidManifest.xml').getroot()
+          code = int(current.get(ns + 'versionCode'))
+          assert current.get('package') == 'ru.arseniy.englishquest'
+          assert code <= 8, 'Refusing to overwrite a newer app version'
+          if code == 8:
+              prior = json.loads((root / 'source-manifest.json').read_text(encoding='utf-8'))
+              assert prior.get('importArchiveSha256') == expected, 'Version 8 has other changes; review manually'
+              print('Reviewed 1.3.0 source was already imported; no files changed.')
+              raise SystemExit(0)
+          assert code == 7, 'Expected the published 1.2.3 source as the import base'
+          with urllib.request.urlopen(url, timeout=60) as response:
+              data = response.read(100 * 1024 * 1024 + 1)
+          assert len(data) <= 100 * 1024 * 1024
+          assert hashlib.sha256(data).hexdigest() == expected, 'Archive checksum mismatch'
           with zipfile.ZipFile(io.BytesIO(data)) as archive:
-              assert len(archive.namelist()) == len(set(archive.namelist()))
+              names = archive.namelist()
+              assert len(names) == len(set(names))
               manifest = json.loads(archive.read('source-manifest.json'))
+              assert manifest['basisVersion'] == '1.3.0'
               expected_files = {item['path']: item for item in manifest['files']}
-              assert set(archive.namelist()) == set(expected_files) | {'source-manifest.json'}
-              assert sum(item.file_size for item in archive.infolist()) < 100 * 1024 * 1024
+              assert len(expected_files) == len(manifest['files'])
+              assert set(names) == set(expected_files) | {'source-manifest.json'}
+              assert sum(item.file_size for item in archive.infolist()) < 120 * 1024 * 1024
+              # Allow workflow-only preparation commits; reject other concurrent edits.
+              subprocess.run(['git', 'diff', '--quiet', manifest['sourceBaseCommit'], 'HEAD', '--', '.', ':(exclude).github/**'], check=True)
+              files = {}
               for item in archive.infolist():
                   name = pathlib.PurePosixPath(item.filename)
-                  assert not name.is_absolute() and '..' not in name.parts and '\\' not in item.filename
-                  assert not set(name.parts) & {'.git', '.github', '.local', '.toolchain', 'dist', 'build', 'work', 'preview', 'private-inputs'}
+                  assert not name.is_absolute() and '..' not in name.parts and '\\' not in item.filename and ':' not in item.filename
+                  assert not set(name.parts) & {'.git', '.local', '.toolchain', 'dist', 'build', 'work', 'tmp', 'preview', 'outputs', 'private-inputs', 'node_modules'}
+                  assert name.suffix.lower() not in {'.keystore', '.jks', '.p12', '.pfx', '.pem', '.key', '.credentials', '.apk', '.aab', '.idsig', '.sqlite', '.db'}
+                  assert not name.name.startswith('.env') or name.name == '.env.example'
                   assert not stat.S_ISLNK(item.external_attr >> 16)
-                  target = (root / item.filename).resolve()
-                  assert target.is_relative_to(root)
+                  assert (root / item.filename).resolve().is_relative_to(root)
                   payload = archive.read(item)
                   if item.filename in expected_files:
                       record = expected_files[item.filename]
                       assert len(payload) == record['bytes']
                       assert hashlib.sha256(payload).hexdigest() == record['sha256']
-                  target.parent.mkdir(parents=True, exist_ok=True)
-                  target.write_bytes(payload)
-          subprocess.run(['git', 'add', '--', *expected_files, 'source-manifest.json'], check=True)
-          print('Verified and staged', len(expected_files) + 1, 'public source files; signing material and device data are excluded.')
-      - name: Validate course
-        run: node scripts/validate-content.cjs
-      - name: Commit reviewed source
+                  # Workflow files are updated separately through the owner-authorized web commit.
+                  if name.parts[0] != '.github' and item.filename != 'source-manifest.json':
+                      files[item.filename] = payload
+              incoming = ET.fromstring(files['android/src/main/AndroidManifest.xml'])
+              assert incoming.get(ns + 'versionName') == '1.3.0' and incoming.get(ns + 'versionCode') == '8'
+              assert incoming.get('package') == 'ru.arseniy.englishquest'
+              assert files['app/content.js'].replace(b'\r\n', b'\n') == (root / 'app/content.js').read_bytes().replace(b'\r\n', b'\n')
+          # Refresh pre-publication status text without changing application files.
+          readme = files['README.md'].decode('utf-8')
+          readme = readme.replace('Подготовлено обновление **1.3.0**:', 'Обновление **1.3.0**:')
+          readme = readme.replace(' До публикации новой версии ссылка ниже ведёт на последний стабильный выпуск 1.2.3.', '')
+          readme = readme.replace('[Скачать APK 1.2.3]', '[Скачать APK 1.3.0]').replace('/v1.2.3/EnglishQuest-1.2.3.apk', '/v1.3.0/EnglishQuest-1.3.0.apk')
+          files['README.md'] = readme.encode('utf-8')
+          paragraphs = files['docs/textbook-study.md'].decode('utf-8').split('\n\n')
+          paragraphs[1] = 'Разбор всех 22 тем Enjoy English 6 (издание 2019 года) включён в опубликованную версию 1.3.0. APK подписан прежним ключом. Исходники перенесены в main из проверенного архива релиза; контрольная сумма зафиксирована в source-manifest.json. [Релиз 1.3.0](https://github.com/holodilow-sudo/EnglishQuest/releases/tag/v1.3.0).'
+          files['docs/textbook-study.md'] = '\n\n'.join(paragraphs).encode('utf-8')
+          notes = files['docs/release-notes-1.3.0.md'].decode('utf-8').replace('Публикация этого релиза пока не выполнена.', 'Релиз опубликован: https://github.com/holodilow-sudo/EnglishQuest/releases/tag/v1.3.0')
+          files['docs/release-notes-1.3.0.md'] = notes.encode('utf-8')
+          development = files['docs/source-development.md'].decode('utf-8').replace('на основе выпущенной версии 1.2.2', 'версии 1.3.0 (versionCode 8)')
+          development = development.replace('Скан учебника и исходные WAV в репозиторий не включаются.', '212 подготовленных страниц пользовательского PDF включены в app/textbook-pages; исходный PDF и WAV не публикуются.')
+          development += '\n\n## Автоматическая сборка 1.3.0\n\nИзменения приложения или workflow в main запускают Build APK без доступа к ключам. Результат — unsigned-apk с APK и build-info.json. Для подписанной сборки и черновика релиза используйте Run workflow с signed=true; публикация требует отдельного согласования. Уже опубликованный APK 1.3.0 не заменяется.\n'
+          files['docs/source-development.md'] = development.encode('utf-8')
+          for name, payload in files.items():
+              target = root / name
+              target.parent.mkdir(parents=True, exist_ok=True)
+              target.write_bytes(payload)
+          manifest['importArchiveSha256'] = expected
+          manifest['importArchiveUrl'] = url
+          manifest['files'] = [{'path': name, 'bytes': (root / name).stat().st_size, 'sha256': hashlib.sha256((root / name).read_bytes()).hexdigest()} for name in sorted(expected_files)]
+          (root / 'source-manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          paths = '\0'.join([*files, 'source-manifest.json']) + '\0'
+          subprocess.run(['git', 'add', '--pathspec-from-file=-', '--pathspec-file-nul'], input=paths.encode('utf-8'), check=True)
+          print('Verified and staged', len(files) + 1, 'source files. Workflow files and signing secrets are not imported.')
+      - name: Validate course and all 22 textbook sections
+        run: |
+          node scripts/validate-content.cjs
+          node scripts/verify-section-coverage.cjs
+          git diff --cached --check
+      - name: Commit reviewed 1.3.0 source
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if ! git diff --cached --quiet; then
-            git commit -m "Add reviewed 1.2.2 public source without personal data or signing secrets"
+            git commit -m "Import reviewed 1.3.0 textbook source and preserve app progress IDs"
             git push origin HEAD:main
           fi
