@@ -3,9 +3,9 @@ name: Build APK
 on:
   push:
     branches: [main]
-    paths: ['app/**', 'android/**', 'scripts/build-android.py', 'scripts/validate-content.cjs', '.github/workflows/build-apk.yml']
+    paths: ['app/**', 'android/**', 'scripts/build-android.py', 'scripts/load-content.cjs', 'scripts/validate-content.cjs', 'scripts/verify-section-coverage.cjs', '.github/workflows/build-apk.yml']
   pull_request:
-    paths: ['app/**', 'android/**', 'scripts/build-android.py', 'scripts/validate-content.cjs', '.github/workflows/build-apk.yml']
+    paths: ['app/**', 'android/**', 'scripts/build-android.py', 'scripts/load-content.cjs', 'scripts/validate-content.cjs', 'scripts/verify-section-coverage.cjs', '.github/workflows/build-apk.yml']
   workflow_dispatch:
     inputs:
       signed:
@@ -37,6 +37,8 @@ jobs:
           persist-credentials: false
       - name: Validate course
         run: node scripts/validate-content.cjs
+      - name: Verify all textbook sections
+        run: node scripts/verify-section-coverage.cjs
       - name: Build unsigned APK without secrets
         run: |
           $env:ENGLISHQUEST_JDK = $env:JAVA_HOME_17_X64
@@ -44,6 +46,10 @@ jobs:
           $env:ENGLISHQUEST_ANDROID_JAR = Join-Path $env:ANDROID_HOME 'platforms/android-35/android.jar'
           python scripts/build-android.py --unsigned --allow-system-city-speech --allow-system-travel-speech
           if ($LASTEXITCODE -ne 0) { throw 'APK build failed' }
+          $metadata = Get-Content dist/build-info.json -Raw | ConvertFrom-Json
+          [xml]$manifest = Get-Content android/src/main/AndroidManifest.xml -Raw
+          if ($metadata.version -ne $manifest.manifest.versionName -or $metadata.versionCode -ne [int]$manifest.manifest.versionCode) { throw 'APK metadata differs from source version' }
+          "### APK $($metadata.version) (versionCode $($metadata.versionCode)) built from main source`n$($metadata.textbookStudy.reviewedSections) sections, $($metadata.tasks) questions. Unsigned verification artifact; no signing secrets used." >> $env:GITHUB_STEP_SUMMARY
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: unsigned-apk-${{ github.run_number }}
