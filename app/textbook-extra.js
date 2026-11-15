@@ -1,0 +1,71 @@
+/* Additional printed material and homework; never substitutes invented listening transcripts. */
+(() => {
+ const d=window.TextbookStudy;
+ function add(id,unit,section,page,exercise,title,kind,rows,note='Перевод для понимания текста из предоставленного учебника. Озвучка синтезированная.'){
+  d.materials.push({id,unit,section,page,exercise,title,kind,instruction:kind==='dialogue'?'Прочитай и разыграй по ролям.':'Прочитай текст, раскрой перевод, затем перескажи самостоятельно.',note,lines:rows.trim().split('\n').map(row=>{const [speaker,en,ru]=row.split('|');return {speaker,en,ru}})});
+ }
+ add('tb-dialogue-1-2B',1,1,7,'2B','Мелисса и Антонио','dialogue',`
+Melissa|Hi! I’m Melissa Olby. I’m from Canada. I live in Toronto. [Where are you from?]|Привет! Я Мелисса Олби. Я из Канады, живу в Торонто. А ты откуда?
+Antonio|Hi, Melissa. Nice [to meet you]. I’m Antonio. I’m from Italy. Have you been to Britain before?|Привет, Мелисса. Приятно познакомиться. Я Антонио, я из Италии. Ты раньше бывала в Британии?
+Melissa|Never. It’s my first visit to England. But you live in Europe. I think you [have been to] the UK before, haven’t you?|Никогда. Это моя первая поездка в Англию. Но ты живёшь в Европе. Думаю, ты уже бывал в Соединённом Королевстве, правда?
+Antonio|Yes, I have. It was a couple of years ago. I got the invitation and took part in the Explorers’ Club. [Let’s] go to our seats. The meeting is starting.|Да. Это было пару лет назад. Я получил приглашение и участвовал в работе Клуба исследователей. Давай займём места. Встреча начинается.`,'Пропуски заполнены словами из рамки и выделены квадратными скобками.');
+ add('tb-dialogue-1-2C',1,1,7,'2C','Дон, Кианг и панда','dialogue',`
+Don|Morning! [What a] funny teddy bear! I’m Don. What is your name?|Доброе утро! Какой забавный плюшевый мишка! Я Дон. Как тебя зовут?
+Kiang|Morning! I’m Kiang. It’s not a teddy bear. It’s a panda. I’ve brought it here because I’m going to speak about pandas at the meeting. You see, pandas live only in my country.|Доброе утро! Я Кианг. Это не плюшевый мишка, а панда. Я принесла её, потому что собираюсь рассказать о пандах на встрече. Видишь ли, панды живут только в моей стране.
+Don|Oh, [I see]. You are from China, aren’t you?|А, понятно. Ты из Китая, верно?
+Kiang|Yes! [Let’s hurry up] and go into the hall.|Да! Давай поторопимся и пройдём в зал.`,'Пропуски заполнены словами из рамки и выделены квадратными скобками. Речь героя о пандах относится к их естественной среде обитания.');
+ add('tb-homework-1-5A',1,2,42,'ДЗ 5.1','Бывал ли ты в Швеции?','dialogue',`
+A|[Have you ever been] to Sweden?|Ты когда-нибудь бывал в Швеции?
+B|Yes, I [have]. It’s a beautiful country.|Да. Это красивая страна.
+A|When [did you go] there?|Когда ты туда ездил?
+B|A month ago.|Месяц назад.`,'Пропуски заполнены Present Perfect и Past Simple. Ever — опыт; when и a month ago — конкретное прошлое.');
+ add('tb-homework-1-5B',1,2,42,'ДЗ 5.2','Велосипед снова в порядке','dialogue',`
+A|You look happy! What has happened to you?|Ты выглядишь счастливым! Что случилось?
+B|You know that my bike was out of order. I [have just repaired] it.|Ты знаешь, мой велосипед был сломан. Я только что его починил.
+A|That’s great. When [did you repair] it? Who [helped] you?|Здорово. Когда ты его починил? Кто помогал?
+B|I [finished] repairing it two hours ago. I [did] it myself. Now I can join our cycling trip.|Закончил ремонт два часа назад. Я всё сделал сам. Теперь могу поехать с вами на велосипедах.`,'Пропуски заполнены для самопроверки. Just + Present Perfect; two hours ago + Past Simple.');
+ add('tb-homework-1-5C',1,2,42,'ДЗ 5.3','Новый центр отдыха','dialogue',`
+A|I [went] to the new recreation centre last Saturday.|В прошлую субботу я ходил в новый центр отдыха.
+B|Really? I [haven’t been] there yet. Is it worth visiting?|Правда? Я там ещё не был. Его стоит посетить?
+A|Yes, sure. There are a lot of sports activities there.|Да, конечно. Там можно заниматься многими видами спорта.`,'Пропуски заполнены для самопроверки. Last Saturday + Past Simple; yet + Present Perfect.');
+ add('tb-homework-2-9',2,3,76,'ДЗ 9','Присмотри за питомцами','dialogue',`
+Carol|Harry, I’m going on a school trip for three days. Can you help me with my pets? [Can] you take any of them when I’m away?|Гарри, я еду в школьную поездку на три дня. Поможешь с питомцами? Можешь взять кого-нибудь из них, пока меня нет?
+Harry|No problem.|Без проблем.
+Carol|You [must] feed the animals twice a day. You [needn’t] clean the parrot’s cage. I have already done it. But you will [have to] speak with Jimmy for 5 minutes in the morning and 5 minutes in the afternoon. But you [mustn’t] teach him silly words.|Животных нужно кормить дважды в день. Клетку попугая чистить не нужно: я уже это сделала. Но тебе придётся разговаривать с Джимми по пять минут утром и днём. Только не учи его глупым словам.
+Carol|Now about the cat. You won’t have much trouble with Tom. But you will [have to] find him in the evening to be sure he is at home. You [needn’t] wash Tom, I’ve already done it. You [mustn’t] give him meat or fish, only special dry food. He [can] fall ill.|Теперь о коте. С Томом много хлопот не будет. Но вечером нужно найти его и убедиться, что он дома. Мыть Тома не нужно: я уже это сделала. Ему нельзя давать мясо или рыбу, только специальный сухой корм. Он может заболеть.
+Carol|Don’t forget to give carrots and apples to the rabbit. But you [mustn’t] take her into the garden. She [can] hop away.|Не забудь дать крольчихе морковь и яблоки. Но нельзя выносить её в сад: она может ускакать.
+Harry|OK. Don’t worry! Have a nice trip!|Хорошо. Не волнуйся! Приятной поездки!`,'Учебный вариант вставки модальных глаголов выделен скобками. Это разговор о конкретных питомцах персонажа, а не универсальные правила ухода за животными.');
+ add('tb-homework-2-11',2,4,77,'ДЗ 11','Покупатель в магазине','dialogue',`
+Shop assistant|Good morning, Madam. Can I help you?|Доброе утро, мадам. Могу я вам помочь?
+Customer|Yes, I’d like some strawberry juice, please.|Да, я хотела бы клубничного сока, пожалуйста.
+Shop assistant|Sorry. But we haven’t got [any] strawberry juice. There is only apple and tomato juice.|Извините, клубничного сока нет. Есть только яблочный и томатный.
+Customer|Two bottles of tomato juice, then. What about milk? Have you got [any]?|Тогда две бутылки томатного сока. А молоко? Оно есть?
+Shop assistant|Sorry. I sold the last two bottles five minutes ago.|Извините. Последние две бутылки я продал пять минут назад.
+Customer|I see. Is there [any] green tea? I also need [some] apricot jam.|Понятно. Есть зелёный чай? Ещё мне нужно абрикосовое варенье.
+Shop assistant|Here is your tea. How many jars of jam would you like?|Вот ваш чай. Сколько банок варенья вы хотите?
+Customer|Eight, please. Let me see my shopping list. Oranges! Have you got [any] oranges?|Восемь, пожалуйста. Посмотрю список покупок. Апельсины! У вас есть апельсины?
+Shop assistant|No, there aren’t [any]. Sorry, I don’t sell fruit and vegetables.|Нет. Извините, я не продаю фрукты и овощи.`,'Some / any вставлены в квадратных скобках. В конце скана перепутаны обозначения A/B; здесь роли указаны по смыслу.');
+ add('tb-reading-3-88',3,4,108,'88','Северная Ирландия: вопросы путешественников','reading',`
+Adventurer|I dream of visiting places which haven’t changed for years. What can you suggest?|Мечтаю посетить места, которые много лет не менялись. Что можете предложить?
+Sea soul|I’m really interested in ships, seas and oceans. Where could I find some interesting information about them?|Меня очень интересуют корабли, моря и океаны. Где можно найти о них интересную информацию?
+JoJo|My friends and I like to spend time outdoors. What activities could we find in Northern Ireland?|Мы с друзьями любим проводить время на свежем воздухе. Чем можно заняться в Северной Ирландии?
+Happy|My grandparents would like to have a peaceful rest in a calm place. Is Northern Ireland the right place for them?|Мои бабушка и дедушка хотели бы спокойно отдохнуть в тихом месте. Подойдёт ли им Северная Ирландия?`,'Найди ответы в буклете на следующей странице PDF (109): старинные места, морские музеи, активный отдых, сады и театр.');
+ add('tb-reading-4-37',4,2,153,'37','Клуб приключений','reading',`
+|The Adventure Club is the best opportunity you can have to overcome difficulties, to change yourself and to feel proud of yourself. You can choose to go on a hiking trip, to travel by boat along the river or by bicycle through the forest.|Клуб приключений — прекрасная возможность преодолеть трудности, изменить себя и почувствовать гордость за себя. Можно выбрать пеший поход, путешествие на лодке по реке или на велосипеде по лесу.
+|It’s better to stay here for some time. During the first few days in the camp you will learn how to make a fire, to cook simple meals, put up tents, to provide first aid, sail on boats and ride bicycles.|Лучше остаться здесь на некоторое время. В первые несколько дней в лагере ты научишься разводить костёр, готовить простую еду, ставить палатки, оказывать первую помощь, ходить на лодках и кататься на велосипедах.
+|You will do special exercises which help your body to be stronger. You will learn to work in a team. The group activities will help you to build team spirit. All these skills can be helpful in your future trips. Together with your instructors and new friends you can choose the most suitable way to travel.|Ты будешь делать специальные упражнения, которые помогут стать сильнее. Ты научишься работать в команде. Групповые занятия укрепят командный дух. Все эти навыки пригодятся в будущих поездках. Вместе с инструкторами и новыми друзьями ты выберешь самый подходящий способ путешествия.
+|If you come here on winter holidays you can learn how to drive a dog team and you can take part in a winter tour which is a real adventure! Come and spend your holidays with us.|Если приехать на зимних каникулах, можно научиться управлять собачьей упряжкой и отправиться в зимний тур — настоящее приключение! Приезжай провести каникулы с нами.`);
+ add('tb-reading-4-53',4,3,158,'53','Спорт в Британии','reading',`
+Tennis|Tennis is very popular in Britain. This game first appeared in England. Every June the biggest competition in the world takes place at Wimbledon. This world centre of tennis is located not far from the centre of London. Lots of fans and tourists come there to watch games between famous players. Millions of people watch the Wimbledon Championship on TV.|В тексте говорится о популярности тенниса в Британии и его появлении в Англии. Уимблдон описан как мировой центр тенниса недалеко от центра Лондона, где в июне проходит крупнейшее соревнование. Болельщики и туристы приезжают посмотреть игры знаменитых теннисистов, а миллионы людей смотрят чемпионат по телевизору.
+Racing|The English also like all kinds of racing. Horse racing, motor racing and boat racing are very popular in England. The most famous boat racing in England is between Oxford and Cambridge. It first started in 1829 and has been held almost every spring since 1836. A lot of people come to watch this competition between the two leading English universities.|Англичане также любят разные виды гонок. В Англии популярны скачки, автогонки и гребные гонки. Самая известная гребная гонка — между Оксфордом и Кембриджем. Впервые она состоялась в 1829 году, а с 1836 года проводилась почти каждую весну. Многие приезжают посмотреть соревнование двух ведущих английских университетов.
+Football|Most people think that the British invented football. The game is very popular there. Most British towns and cities have a football team. There are four football championships: in England, Scotland, Wales and Northern Ireland. The strongest football team in the British Isles is Manchester United, although Arsenal and Chelsea in London are also very good.|Многие считают, что футбол придумали британцы. Там он очень популярен. В большинстве британских городов есть футбольная команда. Проводятся четыре чемпионата: в Англии, Шотландии, Уэльсе и Северной Ирландии. В учебном тексте сильнейшей командой назван «Манчестер Юнайтед», а лондонские «Арсенал» и «Челси» тоже оцениваются высоко.
+Cricket|The national English game is cricket. Cricket is a summer game: it is usually played in schools, colleges and universities. Cricket is a very long and slow game. There are two teams. Each team consists of eleven men. The ‘bowler’ throws the ball, and a ‘batsman’ hits it with his bat.|Национальная английская игра — крикет. Это летняя игра, в которую часто играют в школах, колледжах и университетах. Крикет — очень долгая и неспешная игра. Участвуют две команды по одиннадцать игроков. Подающий бросает мяч, а отбивающий бьёт по нему битой.`,'Сохранён учебный текст из издания 2019 года. Даты турниров, оценки команд и утверждения о происхождении спорта не используются как актуальные проверочные факты. Перевод первых и третьих абзацев передаёт смысл с указанием контекста книги.');
+ add('tb-translation-4-90',4,5,172,'90','Пять времён на одном примере','translation',`
+Present Simple|I usually celebrate all holidays with my family.|Я обычно отмечаю все праздники со своей семьёй.
+Present Continuous|I am writing a special ‘Mother’s Day’ card now.|Я сейчас подписываю маме поздравительную открытку.
+Present Perfect|I have just written a special ‘Mother’s Day’ card.|Я только что подписала маме поздравительную открытку.
+Past Simple|Yesterday I celebrated the holiday with my family.|Вчера я отмечал праздник со своей семьёй.
+Future Simple|I’ll celebrate the holiday with my family tomorrow.|Завтра я буду отмечать праздник со своей семьёй.`,'Английские примеры и их русские переводы из таблицы задания 90. Обрати внимание на usually, now, just, yesterday, tomorrow.');
+ const sea=d.materials.find(m=>m.id==='tb-translation-4-ДЗ 10');
+ sea.lines.push({speaker:'',en:'Cousteau’s team made an interesting film about the underwater world of this lake.',ru:'Команда Кусто сняла интересный фильм о подводном мире этого озера.'},{speaker:'',en:'The expedition to Lake Baikal became an exciting adventure for Cousteau’s team.',ru:'Экспедиция на озеро Байкал стала захватывающим приключением для команды Кусто.'});sea.note+=' Продолжение задания — на странице PDF 178 (печатная 179).';
+})();

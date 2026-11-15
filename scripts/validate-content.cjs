@@ -4,11 +4,20 @@ const path = require('node:path');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
 const root = path.resolve(__dirname, '..');
-const content = vm.runInNewContext(fs.readFileSync(path.join(root, 'app/content.js'), 'utf8') + ';CONTENT;');
+const {content,study,pages} = require('./load-content.cjs')(root);
 const norm = s => s.toLowerCase().replace(/[.!?,]/g, '').replace(/\s+/g, ' ').trim();
 const bag = s => norm(s).split(' ').sort().join('|');
 const unique = (list, label) => assert.equal(new Set(list).size, list.length, 'Duplicate ' + label);
 const nonempty = (s, label) => assert(typeof s === 'string' && s.trim(), 'Missing ' + label);
+unique(study.materials.map(m=>m.id),'study material IDs');
+assert.equal(pages.pageCount,pages.pages.length,'Page manifest count');
+pages.pages.forEach((p,i)=>{assert.equal(p.pdfPage,i+1);assert(/^textbook-pages\/\d{3}\.webp$/.test(p.file));assert(fs.statSync(path.join(root,'app',p.file)).size>1000,p.file)});
+for(const m of study.materials){
+ nonempty(m.title,m.id+'.title');nonempty(m.instruction,m.id+'.instruction');
+ assert(content.units.some(u=>u.id===m.unit&&m.section>=1&&m.section<=u.sections.length));
+ assert(m.page>=1&&m.page<=pages.pageCount);assert(m.lines.length>0);
+ for(const line of m.lines){nonempty(line.en,m.id+'.en');nonempty(line.ru,m.id+'.ru')}
+}
 unique(content.words.map(w => w.id), 'word IDs');
 unique(content.lessons.map(l => l.id), 'lesson IDs');
 unique(content.lessons.flatMap(l => l.tasks.map(q => q.id)), 'task IDs');
@@ -18,6 +27,7 @@ assert.equal(content.units.reduce((n, u) => n + u.sections.length, 0), 22);
 const report = [];
 for (const unit of content.units) {
   unit.sections.forEach((section, index) => {
+    assert(study.materials.some(m=>m.unit===unit.id&&m.section===index+1),'Missing study material in section');
     const lessons = content.lessons.filter(l => l.unit === unit.id && l.section === index + 1);
     assert(lessons.length >= 2, `Unit ${unit.id} Section ${index + 1}: fewer than two lessons`);
     const ids = new Set(lessons.flatMap(l => l.wordIds));

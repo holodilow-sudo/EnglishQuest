@@ -77,10 +77,16 @@ fs.mkdirSync(out,{recursive:true});
   assert((await p.locator('[data-reminder-card]').innerText()).includes('выключены'));
   checks.push('Native bridge contract: no automatic permission request, exact schedule sent on save, blocked permission is visible, manual permission/settings/test controls route correctly, and next reminder is displayed only when scheduled.');
   assert.deepEqual(errors,[]);
-  const native=JSON.parse(fs.readFileSync(path.join(root,'work/reminders-native-check/verification.json'),'utf8'));
-  const hashes=JSON.parse(fs.readFileSync(path.join(root,'work/reminders-baseline/hashes.json'),'utf8').replace(/^\uFEFF/,''));
-  for(const record of hashes)assert.equal(crypto.createHash('sha256').update(fs.readFileSync(record.Path)).digest('hex').toUpperCase(),record.Hash);
-  const report={passed:true,checks,native,legacyApkAndCurriculumUnchanged:true,date:new Date().toISOString(),deviceDeliveryTested:false,apkBuilt:false,installed:false};
+  // The original 1.2.0 release audit requires private baseline files. Later UI
+  // changes may explicitly run only the browser/bridge regression above.
+  const uiOnly=process.argv.includes('--ui-only');
+  let native=null;
+  if(!uiOnly){
+   native=JSON.parse(fs.readFileSync(path.join(root,'work/reminders-native-check/verification.json'),'utf8'));
+   const hashes=JSON.parse(fs.readFileSync(path.join(root,'work/reminders-baseline/hashes.json'),'utf8').replace(/^\uFEFF/,''));
+   for(const record of hashes)assert.equal(crypto.createHash('sha256').update(fs.readFileSync(record.Path)).digest('hex').toUpperCase(),record.Hash);
+  }
+  const report={passed:true,checks,native,uiOnly,legacyApkAndCurriculumUnchanged:uiOnly?null:true,date:new Date().toISOString(),deviceDeliveryTested:false,apkBuilt:false,installed:false};
   fs.writeFileSync(path.join(out,'reminders-verification.json'),JSON.stringify(report,null,2));console.log(JSON.stringify({passed:true,checks:checks.length,out}));
  }finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exitCode=1});

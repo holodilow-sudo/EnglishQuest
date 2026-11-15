@@ -104,7 +104,7 @@
     const q=byId.get(a.ids[a.index]);
     if(q.type==='order'){if(!a.tokens)a.tokens=shuffle(q.tokens.map((_,i)=>i))}
     else if(!a.options)a.options=shuffle(q.options);
-    const prompt=q.travel?q.prompt:q.type==='order'?'Собери предложение':q.type==='gap'?'Заполни пропуск':q.reverse?'Как сказать по-английски?':'Выбери перевод';
+    const prompt=q.study?q.prompt:q.travel?q.prompt:q.type==='order'?'Собери предложение':q.type==='gap'?'Заполни пропуск':q.reverse?'Как сказать по-английски?':'Выбери перевод';
     const title=q.type==='order'?q.ru:q.display||q.en;
     const content=q.type==='order'?`<div class="answer-tray" aria-label="Твоё предложение">${a.answer.map((j,i)=>action(esc(q.tokens[j]),'unpick',`data-index="${i}" ${a.checked?'disabled':''}`,'word-chip in-answer')).join('')}</div><div class="word-bank">${a.tokens.map(j=>action(esc(q.tokens[j]),'pick',`data-index="${j}" ${a.checked||a.answer.includes(j)?'disabled':''}`,'word-chip')).join('')}</div>`:
       `<div class="options">${a.options.map((o,i)=>action(`<span class="letter">${String.fromCharCode(65+i)}</span>${esc(o)}`,'select',`data-index="${i}" ${a.checked?'disabled':''}`,`option ${a.selected===i?'selected':''} ${a.checked&&o===q.answer?'correct':''} ${a.checked&&a.selected===i&&!a.correct?'incorrect':''}`)).join('')}</div>`;

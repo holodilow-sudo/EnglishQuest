@@ -64,8 +64,8 @@ const checks=[];
    if(offset%500===0)console.log(`Marathon: ${Math.min(offset+50,marathonTotal)} / ${marathonTotal}`);
   }
   const textbookMarathon=await p.evaluate(()=>({total:state.training.lastRun.total,score:state.training.lastRun.score,completed:state.completed.length,xp:state.xp}));
-  assert.deepEqual(textbookMarathon,{total:2585,score:2585,completed:0,xp:2585*5});
-  checks.push('Entire 2,585-question textbook marathon passes through the new renderer and checker, including gaps, reverse translations and sentence assembly.');
+  assert.deepEqual(textbookMarathon,{total:marathonTotal,score:marathonTotal,completed:0,xp:marathonTotal*5});
+  checks.push(`Entire ${marathonTotal}-question textbook marathon passes through the renderer and checker, including gaps, reverse translations and sentence assembly.`);
   await initialize();await installAnswerHelper();
   const allTravel=await p.evaluate(()=>{
    CityTraining.begin({mode:'mixed',source:'travel',count:'all'});

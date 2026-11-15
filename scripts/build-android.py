@@ -156,8 +156,8 @@ def main():
         run('7/7 Verify APK signature', [*signer,'verify','--verbose','--print-certs',apk])
     run('Verify alignment', [buildtools/'zipalign.exe','-c','4',apk])
     digest=hashlib.sha256(apk.read_bytes()).hexdigest()
-    content_text=(ROOT/'app'/'content.js').read_text(encoding='utf-8')
-    content=json.loads(content_text.split('const CONTENT = ',1)[1].strip().rstrip(';'))
+    curriculum=json.loads(subprocess.check_output(['node',str(ROOT/'scripts/load-content.cjs')],cwd=ROOT,encoding='utf-8'))
+    content=curriculum['content']
     audio_manifest=SOURCE/'assets'/'speech'/'index.json'
     metadata={'apk':apk.name,'version':version,'versionCode':int(manifest.getroot().get(android_ns+'versionCode')),'package':manifest.getroot().get('package'),'bytes':apk.stat().st_size,'sha256':digest,'signed':not args.unsigned,'variant':'unsigned' if args.unsigned else ('local-debug' if args.debug else 'local-release'),'compileSdk':35,'minSdk':26,'source':content.get('source',{}),'units':len(content['units']),'lessons':len(content['lessons']),'tasks':sum(len(l['tasks']) for l in content['lessons']),'words':len(content['words']),'bundledAudio':audio_manifest.exists(),'build':str(BUILD)}
     metadata.update({'sections':sum(len(u['sections']) for u in content['units']),
@@ -172,6 +172,14 @@ def main():
                               'travelSystemVoiceRequired':len(missing_travel),
                               'travelSystemVoicePhrases':missing_travel,
                               'travelFallback':'installed Android English TTS; offline availability depends on the device' if missing_travel else None}})
+    metadata['build'] = BUILD.name
+    metadata['textbookStudy'] = {'pdfPages':curriculum['pages']['pageCount'],
+        'materials':len(curriculum['study']['materials']),
+        'reviewedSections':len(curriculum['study']['sectionCoverage']),
+        'exerciseGuides':len(curriculum['study']['activities'])-sum(len(gap.get('exercises',[])) for gap in curriculum['study']['sourceGaps']),
+        'missingPrintedPages':[gap['printedPage'] for gap in curriculum['study']['sourceGaps']],
+        'sourcePdfSha256':curriculum['pages']['sha256'],
+        'originalPublisherAudio':False,'newSpeech':'installed Android English voice'}
     metadata['practice'] = {'textbookTasks':metadata['tasks'], 'travelTopics':len(travel['topics']),
         'travelPhrases':sum(len(topic['phrases']) for topic in travel['topics']), 'travelTasks':len(travel['tasks']),
         'totalTasks':metadata['tasks'] + len(travel['tasks']), 'lengths':[10,25,50,100,'all']}

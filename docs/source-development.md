@@ -1,6 +1,6 @@
 # Исходники и сборка
 
-В репозитории размещены исходники на основе выпущенной версии 1.2.2: Android-оболочка, интерфейс, учебные задания, изображения, безопасные аудиоресурсы и скрипты подготовки/проверки.
+В репозитории размещены исходники версии 1.3.0 (versionCode 8): Android-оболочка, интерфейс, учебные задания, изображения, безопасные аудиоресурсы и скрипты подготовки/проверки.
 
 ## Приватность
 
@@ -37,4 +37,9 @@ python scripts/build-android.py --allow-system-city-speech --allow-system-travel
 
 Java-проверки без устройства находятся в `android/tools/UpdateReleaseTest.java`, `UpdateTransferTest.java`, `ReminderScheduleTest.java`. Для JSON-тестов нужен `org.json:json:20240303` как зависимость только тестов; в APK библиотека не входит. `scripts/check-inapp-updates-native.cjs` ожидает эту JAR в `work/github-update-check/json-20240303.jar` и указанные в нём локальные каталоги SDK/JDK.
 
-Учебные материалы и AAC уже включены. Скрипты `android/tools/prepare-speech.cjs`, `generate-speech.ps1` и `encode-speech.py` позволяют подготовить новые записи через Windows SAPI и локальный ffmpeg. Скан учебника и исходные WAV в репозиторий не включаются.
+Учебные материалы и AAC уже включены. Скрипты `android/tools/prepare-speech.cjs`, `generate-speech.ps1` и `encode-speech.py` позволяют подготовить новые записи через Windows SAPI и локальный ffmpeg. 212 подготовленных страниц пользовательского PDF включены в app/textbook-pages; исходный PDF и WAV не публикуются.
+
+
+## Автоматическая сборка 1.3.0
+
+Изменения приложения или workflow в main запускают Build APK без доступа к ключам. Результат — unsigned-apk с APK и build-info.json. Для подписанной сборки и черновика релиза используйте Run workflow с signed=true; публикация требует отдельного согласования. Уже опубликованный APK 1.3.0 не заменяется.

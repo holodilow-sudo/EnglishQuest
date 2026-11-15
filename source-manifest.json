@@ -1,12 +1,23 @@
 {
   "format": 1,
-  "basisVersion": "1.2.2",
-  "privacy": "Anonymized public source; no signing key, passwords, device saves or local user paths. Two personalized speech recordings excluded.",
+  "basisVersion": "1.3.0",
+  "sourceBaseCommit": "eadd5bb4c47f96f5d58d70161deb0d4d54b750ac",
+  "privacy": "No signing material, passwords, personal local paths or device progress. Stable app identifiers preserved.",
   "files": [
     {
       "path": ".gitattributes",
       "bytes": 45,
       "sha256": "72fc8c25729609dc2c7a258a4924829f470f1359632d18fb8b4007ad0e912c96"
+    },
+    {
+      "path": ".github/workflows/build-apk.yml",
+      "bytes": 14846,
+      "sha256": "97fd1671cb5177290afe20bba8cf757435e0f5acc8205d3bdc195a44a3944adf"
+    },
+    {
+      "path": ".github/workflows/import-reviewed-source.yml",
+      "bytes": 9042,
+      "sha256": "ed1bd7dedcec690a75756f30d4260f4ced9e8d719aa1bfcc70fd701c50788ca0"
     },
     {
       "path": ".gitignore",
@@ -15,13 +26,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 4850,
-      "sha256": "72ea1f031c6bd5ac53ecfd772ad44bf7c9f1a57046c6ef8a14b9ba769e693fd0"
+      "bytes": 5060,
+      "sha256": "1317ec13c4adb3a38b66888036b92dd06662503dbb2cfec8966f724ac9ce930a"
     },
     {
       "path": "android/src/main/AndroidManifest.xml",
-      "bytes": 2640,
-      "sha256": "67281bf06a6af25389a49a9cb164a638d56f76c06c294f5255b9506179337eda"
+      "bytes": 2585,
+      "sha256": "bcb8e584539470169d5b86135cd95f19c496ce3c3948d20d566ffc6da85fb3c7"
     },
     {
       "path": "android/src/main/assets/speech/000c285457fc971f862a79b7.m4a",
@@ -13180,163 +13191,163 @@
     },
     {
       "path": "android/src/main/assets/speech/index.json",
-      "bytes": 132684,
-      "sha256": "ed276c2a8125955697a7f730ad6286ee9cf8faabd0d16d1edb668ab7bef54701"
+      "bytes": 130044,
+      "sha256": "85c0ae2817439988ee033a34c65e807389c94faa8b1feea8b2c05c73b0843520"
     },
     {
       "path": "android/src/main/assets/speech/phrases.json",
-      "bytes": 419196,
-      "sha256": "66caff7ad73fe1b77a98b22958bd4e6af1863ee82bd7491540ef11c728cd16f5"
+      "bytes": 403374,
+      "sha256": "39d38c0264bd368913aef9d71ac538362ad971c7534eba1d77903c41c4fdd620"
     },
     {
       "path": "android/src/main/java/ru/arseniy/englishquest/MainActivity.java",
-      "bytes": 23029,
-      "sha256": "5cf20139b4fdd5e2de8829cc076c9fa5127cea59092ce04e910db6a0ddaa32e1"
+      "bytes": 22594,
+      "sha256": "e643c461e1ca34db08e88a9a91ec22af3f4c134ad5cbf7d9617a74a4cc39dae9"
     },
     {
       "path": "android/src/main/java/ru/arseniy/englishquest/ReminderController.java",
-      "bytes": 8144,
-      "sha256": "0194b7ab5ab9ad8dc9a97bfe3063f4500e88e75d0dcd85bf1794d9c9aca4f784"
+      "bytes": 8019,
+      "sha256": "20208f030f0d2fd7bd68630585a8c005b10b7e102340a92f20a234f51beb010f"
     },
     {
       "path": "android/src/main/java/ru/arseniy/englishquest/ReminderReceiver.java",
-      "bytes": 759,
-      "sha256": "49d4af47ce45d94301b5aaf76a8ba84db3cd1ff72c9f80793f1b68785b526a2c"
+      "bytes": 743,
+      "sha256": "261106b955dc589c04dabce140f0bf2dc6f971caadbcf7e18e003a2475770e44"
     },
     {
       "path": "android/src/main/java/ru/arseniy/englishquest/ReminderSchedule.java",
-      "bytes": 2672,
-      "sha256": "f5a5cdabd3b3810bcf850124a49db5d42951644da976ce91e59f5478795dd5d1"
+      "bytes": 2615,
+      "sha256": "66cfbdffbc20c4a059c7ccb85330ffa42301e021b2eb2191cf3ed1a24ce649c4"
     },
     {
       "path": "android/src/main/java/ru/arseniy/englishquest/ResultImageProvider.java",
-      "bytes": 3706,
-      "sha256": "65e059e0e750b2a9854e8e974d7482209896f41cd1935f2d7597d0782c33a802"
+      "bytes": 3634,
+      "sha256": "1311bc5293b2e8f7f8c54d98c755e70db5df4740223793ad4af9d9bfd72719d8"
     },
     {
       "path": "android/src/main/java/ru/arseniy/englishquest/ResultShareController.java",
-      "bytes": 6840,
-      "sha256": "607536598a2d08627b364404240b22ca8d04df4bfd7e0298245e6accd092d2ba"
+      "bytes": 6716,
+      "sha256": "583322a6c0c354596b0f74568356f243304512502caa8b88670226dc2a32ef42"
     },
     {
       "path": "android/src/main/java/ru/arseniy/englishquest/SpeechController.java",
-      "bytes": 13048,
-      "sha256": "e0d66383876391a00eb0690e8b260cfe3c688fb8b65cb7f75c1815cfb473fe06"
+      "bytes": 12765,
+      "sha256": "7075d9dcdb8e4326aa162e8093da07cb75372b8a76ef8a8d6ebb3472e6912b54"
     },
     {
       "path": "android/src/main/java/ru/arseniy/englishquest/UpdateApkProvider.java",
-      "bytes": 2458,
-      "sha256": "6fc208e72e516dae6e9aa2fe954e62f370d398b094f47e42598d9485060da2ea"
+      "bytes": 2426,
+      "sha256": "c7545400b9011108dfbb6bd49f7f6c8793562b073f1cea4debf21ab21a5a159b"
     },
     {
       "path": "android/src/main/java/ru/arseniy/englishquest/UpdateApkVerifier.java",
-      "bytes": 2046,
-      "sha256": "a8235ec6e570e2c4345bc74d597f67ee3ec3fa990bb87f6dacf71db23b11a7dd"
+      "bytes": 2016,
+      "sha256": "6251f54518a9d70df701eb31de0798b8815929a2e22e808bb9271e7cdcbdefa1"
     },
     {
       "path": "android/src/main/java/ru/arseniy/englishquest/UpdateController.java",
-      "bytes": 7172,
-      "sha256": "fafba84b9300d8feefdd5e534ce8eb956ff4d2497a1c67afcbdbbe5df8b5261a"
+      "bytes": 7047,
+      "sha256": "eb9cda236d8ad354b14768b501b92b06e256acc03e75b3e5727f57b36c1e4f20"
     },
     {
       "path": "android/src/main/java/ru/arseniy/englishquest/UpdateInstaller.java",
-      "bytes": 7410,
-      "sha256": "a8909d24dcfca809e415d7c3e210dad4f35b16b587217dfad45fabfa0cee85b7"
+      "bytes": 7288,
+      "sha256": "17c7f1fc4b8211d75a852400d617418810bbb85d5a1ef4169068026fa74a6c4e"
     },
     {
       "path": "android/src/main/java/ru/arseniy/englishquest/UpdateRelease.java",
-      "bytes": 3195,
-      "sha256": "5d6195fcc2696328e2e7c8f4d9ad091902c3796df9fcd30226d096a9cea01f0e"
+      "bytes": 3139,
+      "sha256": "a98a35bbeea6deda315317b5975553fb4951712edb8b52c6f36efba0e658363f"
     },
     {
       "path": "android/src/main/java/ru/arseniy/englishquest/UpdateTransfer.java",
-      "bytes": 4338,
-      "sha256": "45172ab50d5f5b810f174aef6b2f9e996c28c09c4ff326d6fef6bfeae8e42d4b"
+      "bytes": 4268,
+      "sha256": "d56af65db7893a86b39805279f9f20f4fbe3211e8cc6087808b78a31bbadf634"
     },
     {
       "path": "android/src/main/res/drawable/ic_compass.xml",
-      "bytes": 801,
-      "sha256": "b453743408652936a31cebf305071c84ee60e2a4bb4d22af5f8b83fc08449546"
+      "bytes": 789,
+      "sha256": "3a6723220ff86397147e2c64e23d3b36a12beaf8350b68e60c95db0b0010634b"
     },
     {
       "path": "android/src/main/res/drawable/ic_word_reminder.xml",
-      "bytes": 394,
-      "sha256": "b69aa457bfd37e0a80cb2c7b1b574ab6212040a17394b5ddb4b87d01a6e75872"
+      "bytes": 390,
+      "sha256": "0404380ad6740859a9d0d6d45f3b022a2ddb485ad00a76d12bd9c2556a187d3e"
     },
     {
       "path": "android/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
-      "bytes": 260,
-      "sha256": "8623362685f19a049a21acb7ee69e433c33151e41d9a1414a46ba10a7c0764b7"
+      "bytes": 255,
+      "sha256": "e2476b0f8e1f863198286bec925afe4e698f64683b83835fff6f88dabaea94b2"
     },
     {
       "path": "android/src/main/res/mipmap-anydpi-v33/ic_launcher.xml",
-      "bytes": 320,
-      "sha256": "2400e668a0c4c3b1e3510cd77493797ea568fb7b7f402d62c8072af7946c9bce"
+      "bytes": 314,
+      "sha256": "06c59fab5eaf8f6ae52db62476656a9c7ab6fdb6cd93a4317a2fd2f56cad7640"
     },
     {
       "path": "android/src/main/res/values/strings.xml",
-      "bytes": 637,
-      "sha256": "2f6fc1ee1c69b5a6e0a6fc1219a1d02e8b60b50d6da2c8561bfeaf20c01c06f8"
+      "bytes": 630,
+      "sha256": "708678fa149d68dd52edac22cd8365ad2633b6b6268a3d5c921e8cc50d88e6ad"
     },
     {
       "path": "android/src/main/res/values/styles.xml",
-      "bytes": 713,
-      "sha256": "ebee429bd34ebd4f715552fc18858be46172d11a0bd93818323638c6dc0210fe"
+      "bytes": 699,
+      "sha256": "f5cec48eba0e418f451fbe2b06c010a39d5a99eef48a542c159424539b860b8c"
     },
     {
       "path": "android/tools/CompileAndroid.java",
-      "bytes": 2206,
-      "sha256": "1232e348c9bbd57df994387194f5dfbb342c5a7a4c5f18fac987774ed7f05151"
+      "bytes": 2167,
+      "sha256": "9e6aff63004edaed3afee0f4adea7565ff0d88c083036b305c8ffc732a008787"
     },
     {
       "path": "android/tools/ReminderScheduleTest.java",
-      "bytes": 3836,
-      "sha256": "46e2a41bb163b24052a6c36ddd4ab23fc2468fc7c085bff4eefd439c43605a70"
+      "bytes": 3778,
+      "sha256": "dbfe718ef60b1fa8d321db9761bede06057f69cb0302152a4c6c27295595c01a"
     },
     {
       "path": "android/tools/UpdateReleaseTest.java",
-      "bytes": 3802,
-      "sha256": "f2b6d3819b42688f0540fd85d101669dc3dddce9cabb78f072f910961ef82848"
+      "bytes": 3748,
+      "sha256": "ac67ee6263450210ef0e34a0184a308dfbc1a51c9b6af4bab7ca7853592adc5e"
     },
     {
       "path": "android/tools/UpdateTransferTest.java",
-      "bytes": 2402,
-      "sha256": "68935468c3ffa13cdf455292f97d02e7eeb5da659094fa15f0073c4f58aeac83"
+      "bytes": 2370,
+      "sha256": "7e390c2ab8a068e2f8dd4709d9c95193901665cec0f7cfff13e8b3c23273f3fa"
     },
     {
       "path": "android/tools/encode-speech.py",
-      "bytes": 1861,
-      "sha256": "c8117692ef0e48e1b5b13f2deacf3db4c0b4791545e4689f8f0046f1b79ce234"
+      "bytes": 1826,
+      "sha256": "57601d700233851562a53c2509b1deefd5181b9f328ad385c99883062267a6a8"
     },
     {
       "path": "android/tools/generate-speech.ps1",
-      "bytes": 2244,
-      "sha256": "355c2ba2e9ebc001e437807af1d213c5cced66fb384c6efbf583a29078088f68"
+      "bytes": 2207,
+      "sha256": "f5fb9d69b7b43860e23cd05ed792ace4a0248f7ec55f6bf7ae4203148b4a0b0a"
     },
     {
       "path": "android/tools/prepare-speech.cjs",
-      "bytes": 3447,
-      "sha256": "3befe466be8e7ca8fa0f55e29af320322b1ec1ac72766781ba4391c145690b29"
+      "bytes": 3402,
+      "sha256": "f257d4af6ec40295d57e144187840579e4e9416a4848e7a39eca76045239f483"
     },
     {
       "path": "android/tools/pronunciation-overrides.json",
-      "bytes": 2282,
-      "sha256": "aaa5fb48208cec9d60234d40e5069cc3002b361ae62d74f3a0b701f54ac0b1d6"
+      "bytes": 2259,
+      "sha256": "667de3a9bf932c6b9806845d2c5f75f27216b5b94d4f4c31220bb2589ec68aca"
     },
     {
       "path": "android/tools/verify-speech-coverage.cjs",
-      "bytes": 2030,
-      "sha256": "66c2ad10cd3412c90e0189a75276b53b7e5b4293c05b232f29b233fd553bcc72"
+      "bytes": 2005,
+      "sha256": "142192be956f0659ad3065c1cb31acffc760439227a7448fe091627857f9a6a5"
     },
     {
       "path": "android/tools/verify-speech.py",
-      "bytes": 4367,
-      "sha256": "49346a562f3442a5b884b4797f0ea46e72e0844c62b333a82cb7d5d0e4b56b4f"
+      "bytes": 4293,
+      "sha256": "3393b32548c36f058b4cca7a7ec04c1f6a5b2e9c24659ac0930d55417bbca254"
     },
     {
       "path": "app/app.js",
-      "bytes": 52387,
-      "sha256": "27f406ba9135597a1233e60c698b4d8d05a88d881304351d4f18ef72a332801f"
+      "bytes": 52482,
+      "sha256": "5a8d207412576029fb1ba404ae6bc08f83f941e802373934bf1dc595e9e5ef68"
     },
     {
       "path": "app/city-assets/city-map.svg",
@@ -13370,218 +13381,1470 @@
     },
     {
       "path": "app/city-integration.js",
-      "bytes": 15337,
-      "sha256": "9fcf7623f233a7012a0a7d9bdab69a2f1be2f204561933be62acc2099aeacffd"
+      "bytes": 15273,
+      "sha256": "56d86dc0e77c88d183014c2cb0e2b5baf39f0cbc6ec39bac6f57a89b28e7a818"
     },
     {
       "path": "app/city-play.css",
-      "bytes": 25465,
-      "sha256": "5e4c0c184f6530d4b36f1110bdba133388b4d618c1f4c3a3f5735855e3a58387"
+      "bytes": 25456,
+      "sha256": "9c902245d5a5d381f4c22185655d385026e7c5101cef17d16f13bdd71f7734a9"
     },
     {
       "path": "app/city-play.js",
-      "bytes": 25033,
-      "sha256": "d194f0696f1d69590bafc2cda6a6f551b4e58255a50a995c5fcc7fecbddd91f4"
+      "bytes": 24976,
+      "sha256": "b40c3578f5462e9b2f9c57f9a0492c0fd4742d58a493235163a3ea4aeb43eec6"
     },
     {
       "path": "app/city-result.css",
-      "bytes": 3834,
-      "sha256": "3fb0113b2b17e9864444a3d588785b4fc894d596833bb6acf2a9a762947ff9eb"
+      "bytes": 3824,
+      "sha256": "5c1c5c785b08727c085fc93f27e4bbb592f324f25a2746dc5548dee2406b773f"
     },
     {
       "path": "app/city-sfx.js",
-      "bytes": 2885,
-      "sha256": "0264eb54b6fc5d36099e2215144b895f17e8a83e0271e3584aa588ae2a6912d8"
+      "bytes": 2863,
+      "sha256": "79edf5e716b446bc41df77e7e8da53932a887364578c67fe7878ccf5eb6ff432"
     },
     {
       "path": "app/city-share.css",
-      "bytes": 2574,
-      "sha256": "4a40b34ce23314412789150753a6c550fb34d0e21f2150d77db80be7d761a73b"
+      "bytes": 2565,
+      "sha256": "7679b25ecd78bbf638f8f0c5d1218cf098404ee7e200c6c3490ac18b47d2d8de"
     },
     {
       "path": "app/city-share.js",
-      "bytes": 15013,
-      "sha256": "e30daaa7d00f7c4ad3859ec7896421b1e341b647a9823e8e46c5de915d1d982b"
+      "bytes": 14795,
+      "sha256": "bc94c71ecf887365a27e64873214541904aff99d8227302eee826454cce15b81"
     },
     {
       "path": "app/city-speech.json",
-      "bytes": 2132,
-      "sha256": "24691bcaa1dacf43cf9df8b910a5e22ddc50cd66a4b566bf721c5e4580d33cd1"
+      "bytes": 2078,
+      "sha256": "cbd660e8a881f48df2648a0f3e03c9ba3e40110a6ffb2df7f22879cf6f2b37b3"
     },
     {
       "path": "app/city-story.js",
-      "bytes": 18417,
-      "sha256": "6b924fda3146fd1ed9ebacf83ce20d6cf3db04b76f8c452353f619bb975b1906"
+      "bytes": 18314,
+      "sha256": "67a0d19774b7b901bcd6f4fda60a30e7acbe337f40af736c7ad067df299ac222"
     },
     {
       "path": "app/city-theme.css",
-      "bytes": 28173,
-      "sha256": "ff9c39f1bc6afb80284d103e3d1d46a4cf1549ab4e645276ef0a84be450a6e01"
+      "bytes": 27852,
+      "sha256": "62b2e28ac269b01d7c020e68415abe644737fc42f8e09d43d7e4f8c6f6d3b75f"
     },
     {
       "path": "app/content.js",
-      "bytes": 3541228,
-      "sha256": "898c5dae4a65b93667e9b1edd3930c99c630beee8761d527b7aeeaa9de8e23be"
+      "bytes": 3429411,
+      "sha256": "e0eb705e09b67fcc1ed1acc3f9d27dfcfb660d56606f2beceb09f04f53bc2034"
     },
     {
       "path": "app/index.html",
-      "bytes": 1300,
-      "sha256": "576e91e78dfd7f9d255b8c492e92f90ea0993f6e4b34b973e87bcc7f5a45118e"
+      "bytes": 2668,
+      "sha256": "5c79f6c6f3615f3010d9729b741fe3077ce120fd2103c719336e0ecb4b95bfed"
     },
     {
       "path": "app/reminders.css",
-      "bytes": 2690,
-      "sha256": "9e3d0d40e4f61bbebbc6e3e84e6564759faa495f5c48d4b9febf1fc7e387499c"
+      "bytes": 2681,
+      "sha256": "738af65615c0aa25b40f7fcb20b00fc0ed78d2c560138fc0756e4a819a70519d"
     },
     {
       "path": "app/reminders.js",
-      "bytes": 10161,
-      "sha256": "e6532b6c748fad9f5adbcefcd2ac6c327cf955e49f90adc1247143aa20c97ff0"
+      "bytes": 10063,
+      "sha256": "e5fcb08bd3ab5a30a06b1320eca8e2111227f09d419fecf5ee48f0655777cc15"
     },
     {
       "path": "app/reward-motion.css",
-      "bytes": 2172,
-      "sha256": "42f9187f0d3824294fd3c49c4855b36e39bd3b57598c89771142699baebeb287"
+      "bytes": 2101,
+      "sha256": "a7f5fae4a45309d555bd4271364078662cbb76a87e5a0c903520f5386e553550"
     },
     {
       "path": "app/reward-motion.js",
-      "bytes": 10127,
-      "sha256": "b4037b154ce19d4a104fa3d45b552f324d875f035c7311953d4374a2748b3091"
+      "bytes": 9898,
+      "sha256": "3980ced8297f632d597a11011dae934895ad93d5625a56e9b4b130869bb80f8b"
     },
     {
       "path": "app/styles.css",
-      "bytes": 29312,
-      "sha256": "162d0ab9ab98cf14edd537535eda9dae18018e0c6ca212a5c3e031d7728f8b18"
+      "bytes": 29186,
+      "sha256": "44ba4c3a570badf08f054962ca0f7c63d924836f30e78f2375f85c6fed91c7e6"
+    },
+    {
+      "path": "app/textbook-builder.js",
+      "bytes": 2778,
+      "sha256": "990c6c5d028facd8cc5d1e1adb2d50f709856077de9472bdd0e0a4ffe0e0c79e"
+    },
+    {
+      "path": "app/textbook-content.js",
+      "bytes": 23339,
+      "sha256": "aebff3d0598e8f26dcfd022304943f22a46e46b2e80d7d294165097428578fc8"
+    },
+    {
+      "path": "app/textbook-dialogues.js",
+      "bytes": 42080,
+      "sha256": "ca28e9e2d91afc01312697e88a47e0620153fca8ed09f91d166be6d0cb951b53"
+    },
+    {
+      "path": "app/textbook-extra.js",
+      "bytes": 19809,
+      "sha256": "235ad945302299fa973687461224ba983f38eb32cf05c0fb831ae785c384006c"
+    },
+    {
+      "path": "app/textbook-pages.js",
+      "bytes": 17998,
+      "sha256": "83609c6a16840e4ce2349315e187e405b322a2406e130ba3d3578d0d6c628590"
+    },
+    {
+      "path": "app/textbook-pages/001.webp",
+      "bytes": 95276,
+      "sha256": "4b509c34612daf9a10a48fda6a52a866397be4213ed6d4c8b764654c8b5baf9b"
+    },
+    {
+      "path": "app/textbook-pages/002.webp",
+      "bytes": 86522,
+      "sha256": "ed464f807deae52876493e79cd9012f966e8518b8ff0677de50b10890bbaec7b"
+    },
+    {
+      "path": "app/textbook-pages/003.webp",
+      "bytes": 205388,
+      "sha256": "37f6c7dfc1481508bfe56f64c8b5a68c7f7d9e671f37c7bf127eb209b2b93543"
+    },
+    {
+      "path": "app/textbook-pages/004.webp",
+      "bytes": 214996,
+      "sha256": "7bcca6c1ce3385b5037299c5acce73f150cba1794cb8f14b15b83d359b8feda0"
+    },
+    {
+      "path": "app/textbook-pages/005.webp",
+      "bytes": 140656,
+      "sha256": "11c4bd0a4e9aa4bbb6a67e595121133fe9680e017fed8c22eb940b827f6f0081"
+    },
+    {
+      "path": "app/textbook-pages/006.webp",
+      "bytes": 261770,
+      "sha256": "3d9c971a218a2781aeda486da56e1bf6e2ce4918ead6b5b9aee8600dcb24e0f4"
+    },
+    {
+      "path": "app/textbook-pages/007.webp",
+      "bytes": 192172,
+      "sha256": "ab151cca58a33ee50108fb63f59b3990ec34ea1b4077ae80ff49fcbc5b3273e0"
+    },
+    {
+      "path": "app/textbook-pages/008.webp",
+      "bytes": 209538,
+      "sha256": "42f51ebdf17c199caa9ca1749de5ec112977509ade5ca75ddc1546ad4ab88d95"
+    },
+    {
+      "path": "app/textbook-pages/009.webp",
+      "bytes": 285676,
+      "sha256": "bae9b6736f614ca0e8d9e2e48a6b5db7f0a7af9d97c56acc6b13ecdce0172b65"
+    },
+    {
+      "path": "app/textbook-pages/010.webp",
+      "bytes": 230354,
+      "sha256": "c459896a6ef680860e1511480f70fdfd8d76266ed76d5d558e5fb33dd6ba6dfc"
+    },
+    {
+      "path": "app/textbook-pages/011.webp",
+      "bytes": 204634,
+      "sha256": "798ace557f1052f251eb2623062412fb981b6c46885985b6d2fdb54a13eeb26f"
+    },
+    {
+      "path": "app/textbook-pages/012.webp",
+      "bytes": 208384,
+      "sha256": "aaebb311c0152f152e47c7f5c11d95e2015f505edcddf7579106e2e77b33f7e0"
+    },
+    {
+      "path": "app/textbook-pages/013.webp",
+      "bytes": 218226,
+      "sha256": "767fd5c2ec664b96c1b03883695c6b46f4baf78ab09753709941b00910021be3"
+    },
+    {
+      "path": "app/textbook-pages/014.webp",
+      "bytes": 279170,
+      "sha256": "66a80884f5c16f9168b582987734eb3bb48416a14bd088cc348acc36640f0043"
+    },
+    {
+      "path": "app/textbook-pages/015.webp",
+      "bytes": 245968,
+      "sha256": "178c6d9201fb239488ae759c603f7a44c4986322c12128a0975442b490925435"
+    },
+    {
+      "path": "app/textbook-pages/016.webp",
+      "bytes": 241132,
+      "sha256": "343c840f52cbfd306934484b73d186260e6958ac023691022eb94f5d90012b55"
+    },
+    {
+      "path": "app/textbook-pages/017.webp",
+      "bytes": 140638,
+      "sha256": "7740da33d8aed2ce9dc7c766248bd285db31b3959dde1e26967d138df5c65508"
+    },
+    {
+      "path": "app/textbook-pages/018.webp",
+      "bytes": 292530,
+      "sha256": "bd2012545e08f9c58dcff8d74a587e89ced3d1c54585f29eba486334acc43ee2"
+    },
+    {
+      "path": "app/textbook-pages/019.webp",
+      "bytes": 258034,
+      "sha256": "8f9af3edcf4c35d4cb1507bac5c0eb901f48a6e7832c2afdace218ee7436648b"
+    },
+    {
+      "path": "app/textbook-pages/020.webp",
+      "bytes": 239446,
+      "sha256": "34160dab5ebd916e38b13d7be5012447da77f009178c8538cae3a4c2fd336778"
+    },
+    {
+      "path": "app/textbook-pages/021.webp",
+      "bytes": 260104,
+      "sha256": "27698c306a9c73b30abf6d2221a2c73d86a8ccf0f5f8af85ce0eae271533b28e"
+    },
+    {
+      "path": "app/textbook-pages/022.webp",
+      "bytes": 232704,
+      "sha256": "f95d11a73d9d4b8cf68de85a7dfd60e8ebed649004b62db283e1d45f3ee20b1b"
+    },
+    {
+      "path": "app/textbook-pages/023.webp",
+      "bytes": 259990,
+      "sha256": "3afe0510db8a53f1286a8c636cfa1465ec6a68dd1c5d6ac69e4e1e2de83e9870"
+    },
+    {
+      "path": "app/textbook-pages/024.webp",
+      "bytes": 274234,
+      "sha256": "0f6930c8581b073e6ca856262f68a4cdad3be4901be0c6fab2b386adaa0a415d"
+    },
+    {
+      "path": "app/textbook-pages/025.webp",
+      "bytes": 239596,
+      "sha256": "98a6abbd9fe3ac7c45b367e61521d95fdf337402b557480bd5ec3216dc098bb4"
+    },
+    {
+      "path": "app/textbook-pages/026.webp",
+      "bytes": 264634,
+      "sha256": "7f2fb6b820b7ba021d1822be2d4c77f0ef3c8b7f69ed5706a13509795ffdf00c"
+    },
+    {
+      "path": "app/textbook-pages/027.webp",
+      "bytes": 211924,
+      "sha256": "bdba4d672fcd5d0acd3676dffe229b6a352e9360e1c1bc14ca70c3d3b51597a4"
+    },
+    {
+      "path": "app/textbook-pages/028.webp",
+      "bytes": 203952,
+      "sha256": "59fbb8eed26dded559870cdff3f4d3bacdcb97ee66abb5db58e736f0e2c135ca"
+    },
+    {
+      "path": "app/textbook-pages/029.webp",
+      "bytes": 229700,
+      "sha256": "749504e054afd2ca482909d47f1d4250b4c8f98b274a31f38263116f965bece7"
+    },
+    {
+      "path": "app/textbook-pages/030.webp",
+      "bytes": 311406,
+      "sha256": "dd3ddd0d865545f2dfc9160681a7a28706c0eae602fb92ded73b4d3858bc932c"
+    },
+    {
+      "path": "app/textbook-pages/031.webp",
+      "bytes": 309698,
+      "sha256": "0ea1795b0ca668fa81b77ec0d4948e7f674d298743dc5a831714e9c64bfb9b82"
+    },
+    {
+      "path": "app/textbook-pages/032.webp",
+      "bytes": 227666,
+      "sha256": "1ad20c711ac2f934d30c2a5ef80964e3c64bff9f60177e2ad8dc7236a2a2d17f"
+    },
+    {
+      "path": "app/textbook-pages/033.webp",
+      "bytes": 206094,
+      "sha256": "3c9211fafbde642ea29309ebe418e3596c865a517beff6b7cf2caf64e0f75f81"
+    },
+    {
+      "path": "app/textbook-pages/034.webp",
+      "bytes": 246066,
+      "sha256": "5d6664a9ccee3ab7fb284408c9a01d36a68eab8f5284023c5261e58378317bff"
+    },
+    {
+      "path": "app/textbook-pages/035.webp",
+      "bytes": 287156,
+      "sha256": "b72b54a34cbd899087ffa21c477247fb5adf89e3a5d21e6e25b471d03c1e8bd0"
+    },
+    {
+      "path": "app/textbook-pages/036.webp",
+      "bytes": 256864,
+      "sha256": "c5edd16ca598dd2e3546472fc7fe6fb12f08e23d691e0448701c82f35ef26e06"
+    },
+    {
+      "path": "app/textbook-pages/037.webp",
+      "bytes": 247344,
+      "sha256": "56a2e124b5604a80c3f51819401de52b365c4dc0a3e33ed2f4c1c13664dcb5d1"
+    },
+    {
+      "path": "app/textbook-pages/038.webp",
+      "bytes": 291338,
+      "sha256": "13bdb113187d1d6f42f6ba92cc994126113877f30b36bd148c8b3570a3ee0ceb"
+    },
+    {
+      "path": "app/textbook-pages/039.webp",
+      "bytes": 280354,
+      "sha256": "7afc72d372371aebcca31ab7668c20f16aecd3f868febf9a3178171491eec3f5"
+    },
+    {
+      "path": "app/textbook-pages/040.webp",
+      "bytes": 222076,
+      "sha256": "fee5a3a43cef720151b660fba9d313ace73bfa6365f2c78af493b1e0e28c3986"
+    },
+    {
+      "path": "app/textbook-pages/041.webp",
+      "bytes": 220116,
+      "sha256": "bc5ec1612157b5def87a18509a560380359c555aa06d20620c69772d58ff714a"
+    },
+    {
+      "path": "app/textbook-pages/042.webp",
+      "bytes": 204702,
+      "sha256": "e58e1491c4b801e5babc8ff1e223950aa778c2ac67534d834a776f414b7298e8"
+    },
+    {
+      "path": "app/textbook-pages/043.webp",
+      "bytes": 195770,
+      "sha256": "7ef0c7a3016e350f23d5780e7dd600acdbd1fa37422c755f911210d78d053cb3"
+    },
+    {
+      "path": "app/textbook-pages/044.webp",
+      "bytes": 195958,
+      "sha256": "55f7af487e1574e7b29aa7a723c1bd642c65cfbe05df28dfaf8840b30468432b"
+    },
+    {
+      "path": "app/textbook-pages/045.webp",
+      "bytes": 106254,
+      "sha256": "86955d32ba2e7bd7ed0fd1663a1cc9b8d7a530c491661f50b4f6f2b22bda0fd5"
+    },
+    {
+      "path": "app/textbook-pages/046.webp",
+      "bytes": 210690,
+      "sha256": "fdc46b331bc7c99556550bdb80eb90f0195896b7d436b39d1f1f21df2b5fba59"
+    },
+    {
+      "path": "app/textbook-pages/047.webp",
+      "bytes": 116242,
+      "sha256": "5b3bbd25a67df989cb3894b23f02fb6ff02ec7b6e363a7cfcf420215d1d4ad69"
+    },
+    {
+      "path": "app/textbook-pages/048.webp",
+      "bytes": 141012,
+      "sha256": "26750b922b0c05ef11c37344307166c6559ecf7b2554ccf7472e2095d28634b2"
+    },
+    {
+      "path": "app/textbook-pages/049.webp",
+      "bytes": 101690,
+      "sha256": "3a5c4e9d0b0fbace95dbc7f946a45baa20c459503bf725827c380f9c869fc8a3"
+    },
+    {
+      "path": "app/textbook-pages/050.webp",
+      "bytes": 249532,
+      "sha256": "76653d2a60c7446d1154718209872eb7a5602d2f8d2a04f57db3e73dc91ef473"
+    },
+    {
+      "path": "app/textbook-pages/051.webp",
+      "bytes": 258636,
+      "sha256": "55b319d7b7ccdf0e1cb8b71be40c482380e3ebb04c5801f943914ea76c73a0c3"
+    },
+    {
+      "path": "app/textbook-pages/052.webp",
+      "bytes": 266802,
+      "sha256": "c15a44e0c03af374073e4fa3a3d694fd0a98cc84dfdaeef41390b7844f008a4d"
+    },
+    {
+      "path": "app/textbook-pages/053.webp",
+      "bytes": 204550,
+      "sha256": "b36b68c895b0542f175a6a3c79f4e45987dde6d1ba04e0c66c0bbe4aa675091d"
+    },
+    {
+      "path": "app/textbook-pages/054.webp",
+      "bytes": 193898,
+      "sha256": "72a2cb35906f3ebcd192cbd50a0ea8a65f017c566707b892e15bb86e77e504fd"
+    },
+    {
+      "path": "app/textbook-pages/055.webp",
+      "bytes": 284842,
+      "sha256": "bfff469f77f0b6b202b0c02ec2a326e4a1ff316ad4b200a76a44c0168fb597dc"
+    },
+    {
+      "path": "app/textbook-pages/056.webp",
+      "bytes": 293064,
+      "sha256": "899fb8e80586f1866f89005d5e9eeff7f8dc339bd9dc4d5b0f03871b7e5764ef"
+    },
+    {
+      "path": "app/textbook-pages/057.webp",
+      "bytes": 278466,
+      "sha256": "f991bb079011609e1923a77d752a20b71c1bb5cd43a0aa472303a6f23c03ccc2"
+    },
+    {
+      "path": "app/textbook-pages/058.webp",
+      "bytes": 195390,
+      "sha256": "be8e5b0c427b118106b59a2bdef88d6a527d443dc3d24455dc173170686d3dae"
+    },
+    {
+      "path": "app/textbook-pages/059.webp",
+      "bytes": 301926,
+      "sha256": "d8d07539e07c47535f81d3d7c9a58f3bc0d9ba4d1d832bfd93dc07dc349b094a"
+    },
+    {
+      "path": "app/textbook-pages/060.webp",
+      "bytes": 297192,
+      "sha256": "7d3709d2d66fe1e8a42b955babff011c971b5f03f5f639c9033464a26f35cd06"
+    },
+    {
+      "path": "app/textbook-pages/061.webp",
+      "bytes": 257592,
+      "sha256": "90b2eac97053a93cfeba3ae40b0beb77e105245063dbe68e3c983d77a276f0ad"
+    },
+    {
+      "path": "app/textbook-pages/062.webp",
+      "bytes": 272344,
+      "sha256": "9560ba2819a72d9fbc94fc5120b7495ce69eb28b98376e75cbe92e9e41b5cefa"
+    },
+    {
+      "path": "app/textbook-pages/063.webp",
+      "bytes": 300002,
+      "sha256": "171a6f5cb21d0f13f659aaed88220b4beede55e40a1c0e415701d58087c772cb"
+    },
+    {
+      "path": "app/textbook-pages/064.webp",
+      "bytes": 277092,
+      "sha256": "45d39e2d2bb2658e2b3a4786895c52303aeb2716f3f1fe3032eadace983db021"
+    },
+    {
+      "path": "app/textbook-pages/065.webp",
+      "bytes": 267194,
+      "sha256": "947393c5dbfec94f8b4a639ea39887e3ea9048acd14f88318789537f2824acf6"
+    },
+    {
+      "path": "app/textbook-pages/066.webp",
+      "bytes": 236150,
+      "sha256": "50f73b1abe9394bfb39d7b008fc73d65999e215fda18b23245cc8de7aca48589"
+    },
+    {
+      "path": "app/textbook-pages/067.webp",
+      "bytes": 291166,
+      "sha256": "957710a359907a56c6623908ee16ec994c52653d1798c67c37bb09b1c38cd2c7"
+    },
+    {
+      "path": "app/textbook-pages/068.webp",
+      "bytes": 316898,
+      "sha256": "7349bcc627c85eb755199bdd705c37457b9b925b32eea36ded5baa784cd2ec90"
+    },
+    {
+      "path": "app/textbook-pages/069.webp",
+      "bytes": 278820,
+      "sha256": "9b1fb4358429921edda9c72f43e4330e44a2f0156bff8c7f0651c1035c7a397f"
+    },
+    {
+      "path": "app/textbook-pages/070.webp",
+      "bytes": 201132,
+      "sha256": "8282e54465eab47ab4517895b0741e74665db44cde2f2ae3b1059d0b82643d6a"
+    },
+    {
+      "path": "app/textbook-pages/071.webp",
+      "bytes": 239896,
+      "sha256": "dac0c1b1ed48807d3ac06064c95edb128d792c64c90d9babb9ee132793068129"
+    },
+    {
+      "path": "app/textbook-pages/072.webp",
+      "bytes": 267666,
+      "sha256": "b0b202f5798755fdb13cadf6d840e5f960372e3a4d5cdb44a16387f52a7e6e17"
+    },
+    {
+      "path": "app/textbook-pages/073.webp",
+      "bytes": 212986,
+      "sha256": "908c7da2342f651f86d5794b00f3c8cdeb6954ca8a1ffa3a8aed6423fe18f529"
+    },
+    {
+      "path": "app/textbook-pages/074.webp",
+      "bytes": 258978,
+      "sha256": "8537f8d4b4ec2036b59bbf3a227ada1ce8ca6978d4c5aaa956fce452c10d0708"
+    },
+    {
+      "path": "app/textbook-pages/075.webp",
+      "bytes": 283420,
+      "sha256": "29e3dc3794322737c14850185b5a1a8050bf87bdec40b676eb331674163b2886"
+    },
+    {
+      "path": "app/textbook-pages/076.webp",
+      "bytes": 267142,
+      "sha256": "bdcb3c872d4d926dfa76f1b9a3c04100f6b15869794c547a2d3281508d33e926"
+    },
+    {
+      "path": "app/textbook-pages/077.webp",
+      "bytes": 132890,
+      "sha256": "10f0db397a3aea9a69d1755d6e1756ae5aefa965be01198b4dc620d2fbb28b4a"
+    },
+    {
+      "path": "app/textbook-pages/078.webp",
+      "bytes": 101398,
+      "sha256": "b8c4c18bae0917dc6933af786252b9b56e4845ac65b23babcf9b977dff0e5470"
+    },
+    {
+      "path": "app/textbook-pages/079.webp",
+      "bytes": 246186,
+      "sha256": "19ceef66d23a8f426b9b967ca8ff9b56de8c9cb58bec65cc499e007de72471d7"
+    },
+    {
+      "path": "app/textbook-pages/080.webp",
+      "bytes": 111340,
+      "sha256": "b56b433c797ca9476c4a28df27d4798bfbbb3b7d22e295b02c9762262c84f4f7"
+    },
+    {
+      "path": "app/textbook-pages/081.webp",
+      "bytes": 79542,
+      "sha256": "5bc9ac3d8cb4863083f3388ce5e7dad491c0a4ee888620460ea9b00f375f5f81"
+    },
+    {
+      "path": "app/textbook-pages/082.webp",
+      "bytes": 121254,
+      "sha256": "73b985e27a13e50d92074606bf77afce62e54b4bf31313897b75c24aed8905fa"
+    },
+    {
+      "path": "app/textbook-pages/083.webp",
+      "bytes": 57424,
+      "sha256": "ae7566fb8e90dd9267047e49af7446cd57ee62d496e2e7420cb2686ce77f3f90"
+    },
+    {
+      "path": "app/textbook-pages/084.webp",
+      "bytes": 243334,
+      "sha256": "1c571e0f7ad7ffc64ec6854757dfa5a94b9425b6f1fad172f286db04991439b6"
+    },
+    {
+      "path": "app/textbook-pages/085.webp",
+      "bytes": 209552,
+      "sha256": "83ca621dfec089c3f8bd59de79c671d592f189926714e78edf0bec290507d5bd"
+    },
+    {
+      "path": "app/textbook-pages/086.webp",
+      "bytes": 201304,
+      "sha256": "ded29e0c1a34c77040ef7ce49c90dd73319d6760547ba16882fe2ad662682fbe"
+    },
+    {
+      "path": "app/textbook-pages/087.webp",
+      "bytes": 179158,
+      "sha256": "b7e64794b42e28a4c6ab9ffdb81584ccf99f6e865b871df8bfac033a33685c88"
+    },
+    {
+      "path": "app/textbook-pages/088.webp",
+      "bytes": 257620,
+      "sha256": "358926c8f35d41eec646a0195f6878c54fbd1a78ecfcebc496cb175e5810aab0"
+    },
+    {
+      "path": "app/textbook-pages/089.webp",
+      "bytes": 181996,
+      "sha256": "4015a9dc364a922ec79fc8f025bd42ffb8f45df70cb3ed9dd467cbde5e67228b"
+    },
+    {
+      "path": "app/textbook-pages/090.webp",
+      "bytes": 268812,
+      "sha256": "f2da7a80e34c2aad7a8621991eecd96661fed1c7da51ac6a9dec9da99aebaaac"
+    },
+    {
+      "path": "app/textbook-pages/091.webp",
+      "bytes": 238708,
+      "sha256": "6e03afc23efd5ae85b6c1db2c49ee8a04f11c1f86b4734e51883273f9f9c45dd"
+    },
+    {
+      "path": "app/textbook-pages/092.webp",
+      "bytes": 199880,
+      "sha256": "89cbc9064eb72ee5d8d0b8eaed34f3b3fb32cc83183ddddacdf6bb3e14b428e0"
+    },
+    {
+      "path": "app/textbook-pages/093.webp",
+      "bytes": 279330,
+      "sha256": "b569a1543b65898e08997ed23ac15f906a1c5a2d23e9e609a53005e54873b297"
+    },
+    {
+      "path": "app/textbook-pages/094.webp",
+      "bytes": 182948,
+      "sha256": "c2e527094bb6f9d9706190ea0d7a437da30aa71eeef7d433041713d53b63dd0e"
+    },
+    {
+      "path": "app/textbook-pages/095.webp",
+      "bytes": 258262,
+      "sha256": "354b4b18c372ea33000d504514c3f65bdcb4b9fb2151b513d57756f9dabf69fc"
+    },
+    {
+      "path": "app/textbook-pages/096.webp",
+      "bytes": 219300,
+      "sha256": "03034aba7cc30a766d91b7b03e14258987fd86bcd48a6b3b2c3b091c50a3a256"
+    },
+    {
+      "path": "app/textbook-pages/097.webp",
+      "bytes": 228338,
+      "sha256": "98e777a8b2f16e0255b6f1da8771f9de8115af7d9c34c13151e3b8f5b21e3262"
+    },
+    {
+      "path": "app/textbook-pages/098.webp",
+      "bytes": 199784,
+      "sha256": "0ced021952c47781f97567997f9ae1cddf28a22d3c74e80dc49d3438e75cd2bd"
+    },
+    {
+      "path": "app/textbook-pages/099.webp",
+      "bytes": 190462,
+      "sha256": "d9a94acea23db3c9b3ab6fdd7fa58407052eeadb3a95bcc8d22b29372e7d1d11"
+    },
+    {
+      "path": "app/textbook-pages/100.webp",
+      "bytes": 190374,
+      "sha256": "1e262eb0398fdf6ac6b06d578af8390cda1a8e88768c83df7a87b496ee5168b8"
+    },
+    {
+      "path": "app/textbook-pages/101.webp",
+      "bytes": 227484,
+      "sha256": "8de8e8af01942325162b456d8f57be3b4562f0a99207f60ba4ae679cee039563"
+    },
+    {
+      "path": "app/textbook-pages/102.webp",
+      "bytes": 199792,
+      "sha256": "79b0d7a7061f32386ec37a921c93989ba862484eba706efbdfed4bc40e8f77fa"
+    },
+    {
+      "path": "app/textbook-pages/103.webp",
+      "bytes": 202568,
+      "sha256": "44116f7d3c024be80353499c783dc9ca10729389fb16e4fbf76aee9f13643ce1"
+    },
+    {
+      "path": "app/textbook-pages/104.webp",
+      "bytes": 294194,
+      "sha256": "83d687d149d68a6d41b957684e518576863897edbc09aded4d7ad0612ffef2b5"
+    },
+    {
+      "path": "app/textbook-pages/105.webp",
+      "bytes": 226882,
+      "sha256": "af728e1cb84b1766d4e88c747b57642e6867b08d8fdfc6e498845e25214effb0"
+    },
+    {
+      "path": "app/textbook-pages/106.webp",
+      "bytes": 256432,
+      "sha256": "0cb492d67c76ba9b1302e7769681049e4e09576c14bc31b507fe11f419fa74e5"
+    },
+    {
+      "path": "app/textbook-pages/107.webp",
+      "bytes": 247922,
+      "sha256": "56dd7bff02e5abebdb6ffab880a4767e020db6e64a5d91be1c7be568287ed608"
+    },
+    {
+      "path": "app/textbook-pages/108.webp",
+      "bytes": 185008,
+      "sha256": "3b36c6b843838469fde51c45b599636498e1156e9958af0a8b6c71f096bfd5b0"
+    },
+    {
+      "path": "app/textbook-pages/109.webp",
+      "bytes": 272022,
+      "sha256": "f06579b9ecf4231d9a333f2cfb6b013e928ec7c39c6f727bddb9918c6128e320"
+    },
+    {
+      "path": "app/textbook-pages/110.webp",
+      "bytes": 220018,
+      "sha256": "9773de9d1a1c27b023df79f0bef52ebf9712df89cd20e76bee7d85ac54c22e91"
+    },
+    {
+      "path": "app/textbook-pages/111.webp",
+      "bytes": 232902,
+      "sha256": "655cd9586b89749a6066e775b3e8897c416be36c3d2c9ced2d139c268005ac2b"
+    },
+    {
+      "path": "app/textbook-pages/112.webp",
+      "bytes": 221030,
+      "sha256": "383eb2019b30d537884e90f8ed56453e21cd1cdd440f31adbf49b265e12ff2e6"
+    },
+    {
+      "path": "app/textbook-pages/113.webp",
+      "bytes": 224012,
+      "sha256": "80ca7471ac7c51fa66cb96dcc3ab98500fb99ab0ae6003312b99dda169bd7e4f"
+    },
+    {
+      "path": "app/textbook-pages/114.webp",
+      "bytes": 245906,
+      "sha256": "8167a3daa666dff96e40e1123dc0ecaf2f78e4bf674c08e36ab95f54d56eac87"
+    },
+    {
+      "path": "app/textbook-pages/115.webp",
+      "bytes": 229748,
+      "sha256": "5c95217fdd5ccacb47d71bc772df86cc5bef8bba93ca7b7c03266bf4766b380f"
+    },
+    {
+      "path": "app/textbook-pages/116.webp",
+      "bytes": 206256,
+      "sha256": "2b97323d51480a89f352316d977f6dc3cddd8b3c13dd661f503cd7cc45619be2"
+    },
+    {
+      "path": "app/textbook-pages/117.webp",
+      "bytes": 235866,
+      "sha256": "94e53566539c3d942f028901c9fbbea1d7410ad3128a7c7c0926a6526b1e0231"
+    },
+    {
+      "path": "app/textbook-pages/118.webp",
+      "bytes": 253232,
+      "sha256": "fae04e358e140627736ffb7deeaa2c58052dde7e81a3f2a3f21087ca3f59d294"
+    },
+    {
+      "path": "app/textbook-pages/119.webp",
+      "bytes": 272248,
+      "sha256": "03b4198bbaf41c9173bf243f5c6260e848a2238628e5a2ee00bc3b7ce54afdd8"
+    },
+    {
+      "path": "app/textbook-pages/120.webp",
+      "bytes": 219280,
+      "sha256": "bc1e8a8911550347aca810e7a8e1ab24fe27562fe57a579c0d53d0be71c7f6d7"
+    },
+    {
+      "path": "app/textbook-pages/121.webp",
+      "bytes": 264592,
+      "sha256": "d4baec76f826f60d6593a7057f33bfc6d57b168a4c41ba0859b03bf81a93b4e1"
+    },
+    {
+      "path": "app/textbook-pages/122.webp",
+      "bytes": 141534,
+      "sha256": "aebc4322ee773352959b3390b760a380818a3a30db02e45c5d3df2924a191014"
+    },
+    {
+      "path": "app/textbook-pages/123.webp",
+      "bytes": 260276,
+      "sha256": "5264577ebdcf4de357263dea69e2746c85bb6cfd7b2564bd6accf64a57d7fc99"
+    },
+    {
+      "path": "app/textbook-pages/124.webp",
+      "bytes": 192776,
+      "sha256": "9f4265e6b9de4af82ae6394592f13e06bf296e36b5145e92469384b6ef3a3740"
+    },
+    {
+      "path": "app/textbook-pages/125.webp",
+      "bytes": 286144,
+      "sha256": "833bc4d74a38b1990f24b882dcad5133c8c80291a755e1f98d0cf3286e0dbe24"
+    },
+    {
+      "path": "app/textbook-pages/126.webp",
+      "bytes": 294428,
+      "sha256": "47ae0b0bcf4c91d93c5b86cef3f9c66b48d9e00c477cf18e46729413926d3d32"
+    },
+    {
+      "path": "app/textbook-pages/127.webp",
+      "bytes": 287998,
+      "sha256": "4a8ba7d756467efc23d7ad1b0499f54edae524fcae479fbf53853f2304fa9325"
+    },
+    {
+      "path": "app/textbook-pages/128.webp",
+      "bytes": 240896,
+      "sha256": "83ed0b9e98101aea3db814572f44381aad679190fa11f0efa5c089eb736f0f1a"
+    },
+    {
+      "path": "app/textbook-pages/129.webp",
+      "bytes": 305894,
+      "sha256": "98580fb0b785d62b4c1dbaaafadf08dc3770d74a63881aa833651ea84c46da14"
+    },
+    {
+      "path": "app/textbook-pages/130.webp",
+      "bytes": 163440,
+      "sha256": "18d826690c3a025d6057d612ace4c693e7fdf210a34d395416bd7a52132e3ea1"
+    },
+    {
+      "path": "app/textbook-pages/131.webp",
+      "bytes": 186010,
+      "sha256": "4a9aa09ada2ebad3cad8785b960cb19d6309790b098f0508d4444f6ad4b36be9"
+    },
+    {
+      "path": "app/textbook-pages/132.webp",
+      "bytes": 266522,
+      "sha256": "94376d75ddf074c51eb17e689de37eaf4765916c057de4aa669ed1d89b98133e"
+    },
+    {
+      "path": "app/textbook-pages/133.webp",
+      "bytes": 275562,
+      "sha256": "6d429aa7ae89ddc00bf4fc18bf00ad888c5ad09aaacedc5975eeb9b3db6649ba"
+    },
+    {
+      "path": "app/textbook-pages/134.webp",
+      "bytes": 274242,
+      "sha256": "8c4fd6fa4b9fbe3e563109d8a7b4279662f67bd0f215b30a25a3d0c37963cfa1"
+    },
+    {
+      "path": "app/textbook-pages/135.webp",
+      "bytes": 127006,
+      "sha256": "8686f3da2505ec1a4d64a71c4434bfe60f41f53060d7bae5e045a75b5708d164"
+    },
+    {
+      "path": "app/textbook-pages/136.webp",
+      "bytes": 173318,
+      "sha256": "ee9fe760fc0e5d6546d8b2d8c1728ff2894c45ec80e0742c31c995de73f1a743"
+    },
+    {
+      "path": "app/textbook-pages/137.webp",
+      "bytes": 299840,
+      "sha256": "dd16c269e1adb3fefb84f8babf4ebda5e40840b7b670923926c76f75d4b9f919"
+    },
+    {
+      "path": "app/textbook-pages/138.webp",
+      "bytes": 127622,
+      "sha256": "44b01e938294f924b71d052257bdfec165f8f57263eb0306a8cac5b29e836979"
+    },
+    {
+      "path": "app/textbook-pages/139.webp",
+      "bytes": 127602,
+      "sha256": "e4a7943d4fd90e575810a4ad2fb2b193019805296eff1a52b91db8fe9b8ac2e4"
+    },
+    {
+      "path": "app/textbook-pages/140.webp",
+      "bytes": 128778,
+      "sha256": "ceffd2a1130210f6f364ab00596a4c3a3a306715ae1fdd7249b26c3868bae6b3"
+    },
+    {
+      "path": "app/textbook-pages/141.webp",
+      "bytes": 249114,
+      "sha256": "9a6f62eddc8c829c19c5826f2a515dbe91d4f12f40cbbe26214aa1a2a31dcd04"
+    },
+    {
+      "path": "app/textbook-pages/142.webp",
+      "bytes": 248574,
+      "sha256": "3a059f212c459fe5641d2ff8df77d15985a609721ffc163603c257ac9b29550b"
+    },
+    {
+      "path": "app/textbook-pages/143.webp",
+      "bytes": 266230,
+      "sha256": "0f848097463a3f8a09456aff23c4c5320c878ca5519273c6a4306b3cd1cab885"
+    },
+    {
+      "path": "app/textbook-pages/144.webp",
+      "bytes": 293986,
+      "sha256": "f0d827fdbeba3779e22ee0ebf2e9c7981746f6e55002f14dcd303bf70d396e0b"
+    },
+    {
+      "path": "app/textbook-pages/145.webp",
+      "bytes": 223808,
+      "sha256": "88ddf866176ea77209f06413a6427a95e52b322c4142d9c5e9b5d8c5e7237872"
+    },
+    {
+      "path": "app/textbook-pages/146.webp",
+      "bytes": 237324,
+      "sha256": "d7fd89c08d5cc290e174be9de14697ac9ccf10efa99cf2f19d50861603e2c0ec"
+    },
+    {
+      "path": "app/textbook-pages/147.webp",
+      "bytes": 214660,
+      "sha256": "c5f70f9ed2063a421550a83d7786964ded8ea5f08d3d6e8c977fabf1ded1e813"
+    },
+    {
+      "path": "app/textbook-pages/148.webp",
+      "bytes": 324170,
+      "sha256": "6be6274ba722f2a505d95ed0dc791409230e6f7b3306f0777eb1169c62ea967d"
+    },
+    {
+      "path": "app/textbook-pages/149.webp",
+      "bytes": 250430,
+      "sha256": "3d32add864044e3d62f2dc7c8ced91401a081eec57493d7d283701d089a10fea"
+    },
+    {
+      "path": "app/textbook-pages/150.webp",
+      "bytes": 236226,
+      "sha256": "f116848f84ae4b5e981c66135d6ed4154f445d4cee12d64c75b02a17879db19d"
+    },
+    {
+      "path": "app/textbook-pages/151.webp",
+      "bytes": 123244,
+      "sha256": "3a3e04a047d0ea4c3abf9509c3e52bbcce9ae6947d4d109e7e6df603682235f0"
+    },
+    {
+      "path": "app/textbook-pages/152.webp",
+      "bytes": 282188,
+      "sha256": "904e20cccfbffd386be952acf54738964dc0c9d82424f7d4e67b889b083488e2"
+    },
+    {
+      "path": "app/textbook-pages/153.webp",
+      "bytes": 242736,
+      "sha256": "46c30a1cf8521e9a1772ff08ebb320781d83cd36769cff4f1759552d0925a59a"
+    },
+    {
+      "path": "app/textbook-pages/154.webp",
+      "bytes": 248436,
+      "sha256": "d09dd2125357fac308809991520b130f09f8a8f9e954fa086212eab1ce09b809"
+    },
+    {
+      "path": "app/textbook-pages/155.webp",
+      "bytes": 234886,
+      "sha256": "e38dc848d5587cdea8c92c69b1611c6a7a3e5c9e3077f7e10de8b1e0377a32dc"
+    },
+    {
+      "path": "app/textbook-pages/156.webp",
+      "bytes": 209732,
+      "sha256": "bc0ae0a2e0512be31605ec88e66dd881a171841e98027caa6839a922112ad55b"
+    },
+    {
+      "path": "app/textbook-pages/157.webp",
+      "bytes": 221072,
+      "sha256": "304392b6f532551838c4ec3e1ddd0d9f6b1f6000d4960247a6ed771b8b9f6b56"
+    },
+    {
+      "path": "app/textbook-pages/158.webp",
+      "bytes": 250432,
+      "sha256": "1eeb034168622b6efa4e8a03781b9dc463e937a4e95400aaaaf0024d27a7de86"
+    },
+    {
+      "path": "app/textbook-pages/159.webp",
+      "bytes": 227382,
+      "sha256": "0e717ab103bacd10c6f4cfc6f33e9c00b904de2a5cf3c3f2756a3b1d6a3cfc02"
+    },
+    {
+      "path": "app/textbook-pages/160.webp",
+      "bytes": 237010,
+      "sha256": "7f8f1e2d495904f0560b41bdaaf171fe5c2003112f35169f54f0c6bad88cf444"
+    },
+    {
+      "path": "app/textbook-pages/161.webp",
+      "bytes": 157916,
+      "sha256": "2427b3347ae3c14cc97f5e03b0c714cc769112ed918ae3df13f0ae3270231f38"
+    },
+    {
+      "path": "app/textbook-pages/162.webp",
+      "bytes": 129568,
+      "sha256": "aaa61821924b74c61e3493e014051e48ac2b7273ec1677995a150f029d9163f2"
+    },
+    {
+      "path": "app/textbook-pages/163.webp",
+      "bytes": 192346,
+      "sha256": "02b7868de07d46c699d62c40530c6f5de5877eef1e2e9a3be2981acd8033d599"
+    },
+    {
+      "path": "app/textbook-pages/164.webp",
+      "bytes": 167360,
+      "sha256": "e60bbbf99f6bdc3d10283a8b8deb8d895cb40b513655026fab58523d4bd6e9d7"
+    },
+    {
+      "path": "app/textbook-pages/165.webp",
+      "bytes": 251578,
+      "sha256": "f9ce2b93d88f49a0503237a9af6e4b40f4d6c62e15230730b2e6f8e96b7195a3"
+    },
+    {
+      "path": "app/textbook-pages/166.webp",
+      "bytes": 251720,
+      "sha256": "f07e09ab2f8466430235e49dea7af74b097c1a131913d5fafee0e552999010d2"
+    },
+    {
+      "path": "app/textbook-pages/167.webp",
+      "bytes": 252662,
+      "sha256": "0f4ce19214cc8b11a34219d0deb69ecb7014552220d1d2983c9bb847f7c8121e"
+    },
+    {
+      "path": "app/textbook-pages/168.webp",
+      "bytes": 248464,
+      "sha256": "49cc9fa13403c3eec83da56f7c4f39eeb1871ed7bcb3c9dc222e91a0a37f8115"
+    },
+    {
+      "path": "app/textbook-pages/169.webp",
+      "bytes": 277766,
+      "sha256": "7a9f33f04bc4614520cafa1d3ed6fdb0ebfcf7f3d9ca7297e6822ce111638a73"
+    },
+    {
+      "path": "app/textbook-pages/170.webp",
+      "bytes": 250704,
+      "sha256": "a76774a086e7d726cf8b1cb04d474c84b2caf987b2dca782e15adf9f1afebe23"
+    },
+    {
+      "path": "app/textbook-pages/171.webp",
+      "bytes": 200164,
+      "sha256": "0d526aa83bf9ebb9fba19b403d9657893145eec98ddc07e4fdb9782419c18936"
+    },
+    {
+      "path": "app/textbook-pages/172.webp",
+      "bytes": 200378,
+      "sha256": "5735eeb7b896620a477d8346cbdb2adf065e04358de66de5b22c559fda510306"
+    },
+    {
+      "path": "app/textbook-pages/173.webp",
+      "bytes": 274208,
+      "sha256": "bd85ae4cf712d2c22f39804a71ec44a3f0b10c008bf43d378611c236e1765ab7"
+    },
+    {
+      "path": "app/textbook-pages/174.webp",
+      "bytes": 230586,
+      "sha256": "792b62cbbe868674d2ee2a1fe831fca292409479152d33a8c42e81804194c26d"
+    },
+    {
+      "path": "app/textbook-pages/175.webp",
+      "bytes": 312424,
+      "sha256": "92ee0a767d62d26d8b8229f1dbaea5d2144f0b41735818628f97d32f1c5aee13"
+    },
+    {
+      "path": "app/textbook-pages/176.webp",
+      "bytes": 267142,
+      "sha256": "bedde72ba9c3b1d8039b89da1b56dc9dec4af7e73b49b1698044b5217acc7056"
+    },
+    {
+      "path": "app/textbook-pages/177.webp",
+      "bytes": 296286,
+      "sha256": "6e71b9decbf650d5dfbaa9f9c2b394a1d740d3356feb9f63eb76b9fd610e2f94"
+    },
+    {
+      "path": "app/textbook-pages/178.webp",
+      "bytes": 215516,
+      "sha256": "127415a10231ba6ff1e304e33a77cd9238bba632c5eb15f3e711a559d9d3f390"
+    },
+    {
+      "path": "app/textbook-pages/179.webp",
+      "bytes": 185310,
+      "sha256": "726959cf8f44003d45da4d2f8f1ed175e2c20f5ab19e5e117a23180ac8845646"
+    },
+    {
+      "path": "app/textbook-pages/180.webp",
+      "bytes": 223914,
+      "sha256": "09de4b75b4ed4c57d7d6aee9684f1b17b5f4e7d778c697e98603ff21f5d58787"
+    },
+    {
+      "path": "app/textbook-pages/181.webp",
+      "bytes": 188354,
+      "sha256": "750c2bc7effa6ece0a2967af798dec25bb055ab12cf2de184bfb8fc164045d48"
+    },
+    {
+      "path": "app/textbook-pages/182.webp",
+      "bytes": 112500,
+      "sha256": "d9d70b992c899a97b5c7d5ff9d2403644093298c5e12f70b08e855cb46b95877"
+    },
+    {
+      "path": "app/textbook-pages/183.webp",
+      "bytes": 152278,
+      "sha256": "b87fe715e748f29a43b0139079749b43a83e7d650b83252948e8d0fa6a0e6688"
+    },
+    {
+      "path": "app/textbook-pages/184.webp",
+      "bytes": 181860,
+      "sha256": "c0d3b9fdfe5f101c70f126f6eeadddf0c44f53e0aaffe0bf49b8c8d61da030e9"
+    },
+    {
+      "path": "app/textbook-pages/185.webp",
+      "bytes": 338974,
+      "sha256": "e593ee85b43e8bdcf5950876ad9d686b48eba7dc26160b363472acf952c266ff"
+    },
+    {
+      "path": "app/textbook-pages/186.webp",
+      "bytes": 318728,
+      "sha256": "c57cc6e2b4bb3901766af6e8727410aa4bdab40133333b382582b32e8618a270"
+    },
+    {
+      "path": "app/textbook-pages/187.webp",
+      "bytes": 342330,
+      "sha256": "b7e36f32eb4d03fa7cfde951daec290753db3eddb078b95fcda7917259eaf93a"
+    },
+    {
+      "path": "app/textbook-pages/188.webp",
+      "bytes": 317020,
+      "sha256": "10b2b0db707f6b7f2066bb06b0157d6a8d8e881ec9399961662915c8e5a142a1"
+    },
+    {
+      "path": "app/textbook-pages/189.webp",
+      "bytes": 228516,
+      "sha256": "d39a32ccf623ab3d0333af063b440997068d6b0c5fd91191f7c10260f74a6ed2"
+    },
+    {
+      "path": "app/textbook-pages/190.webp",
+      "bytes": 273438,
+      "sha256": "c9bdde8328d48dbe25aea65f3ee9ecf84ff77150f771fa5399c3c105abf13b4e"
+    },
+    {
+      "path": "app/textbook-pages/191.webp",
+      "bytes": 278894,
+      "sha256": "f3ac07831697710b30c567d457383f70bfe69d172f399ffdbca3768961ec91b9"
+    },
+    {
+      "path": "app/textbook-pages/192.webp",
+      "bytes": 291280,
+      "sha256": "bbd77c9f2866da70e6c6f672d821bcbbce23ea59b9cd267a4a63d75d9c29a053"
+    },
+    {
+      "path": "app/textbook-pages/193.webp",
+      "bytes": 275006,
+      "sha256": "9185b1fcfebfba2e2313fdbab9b648c1e15ab5770b5be9aea2a0e264ab60d8bb"
+    },
+    {
+      "path": "app/textbook-pages/194.webp",
+      "bytes": 297956,
+      "sha256": "a2860115deb0af63abfb634b192da05c03c920e2ed9188d94607233f01c1c129"
+    },
+    {
+      "path": "app/textbook-pages/195.webp",
+      "bytes": 294928,
+      "sha256": "7fe8bbe6a06dc48b4af212380a151f04643a03569fe36f478ed028ca4bda67dc"
+    },
+    {
+      "path": "app/textbook-pages/196.webp",
+      "bytes": 278718,
+      "sha256": "b4524468bde0e336b1ade08d7a3627af91ce6424c2b44453912e4bd1e1b0df15"
+    },
+    {
+      "path": "app/textbook-pages/197.webp",
+      "bytes": 304836,
+      "sha256": "e39ea6fdc7c99f014f5ea3543e0b5dac5da2d7a4f5133a9f90f377eaaf1a6b74"
+    },
+    {
+      "path": "app/textbook-pages/198.webp",
+      "bytes": 279118,
+      "sha256": "bdbbd1bcf6e3a5b1a00148dea175235defda16ff10cce8cfc88ad76141ada81f"
+    },
+    {
+      "path": "app/textbook-pages/199.webp",
+      "bytes": 285990,
+      "sha256": "574000aff2d6f1a7aa7c84072f179860efb610e00d79ddc76ccd491ff5a792cb"
+    },
+    {
+      "path": "app/textbook-pages/200.webp",
+      "bytes": 291874,
+      "sha256": "7377b42e2f69a1e4f3017da270d3661ad89d944f205a04de9db810e53d6e26f4"
+    },
+    {
+      "path": "app/textbook-pages/201.webp",
+      "bytes": 256596,
+      "sha256": "3937e28eb65152645565edcc67fddb965c43e6944d6d542e7a8309bcb1cdc270"
+    },
+    {
+      "path": "app/textbook-pages/202.webp",
+      "bytes": 276784,
+      "sha256": "b50594a5acbc940fe5d48e208ede247fd4176a3e1a9d947016989a6ba2482d6a"
+    },
+    {
+      "path": "app/textbook-pages/203.webp",
+      "bytes": 278558,
+      "sha256": "93fcbee03e29eb939c9f3b960454ebca33d85c7790153edfa65d57aa5bddf62e"
+    },
+    {
+      "path": "app/textbook-pages/204.webp",
+      "bytes": 264496,
+      "sha256": "2917106e11b8005584128f03c1282243a6e23d50fdac483c65c37b1a068fe831"
+    },
+    {
+      "path": "app/textbook-pages/205.webp",
+      "bytes": 283728,
+      "sha256": "2153040dc57719f0f498b8435c088de506003eea91db494180b3e3430a6f1e45"
+    },
+    {
+      "path": "app/textbook-pages/206.webp",
+      "bytes": 270896,
+      "sha256": "71b2b00715a2f802450a2c223ceebddcc50bc04d75de24d4fc15f93214d61c6f"
+    },
+    {
+      "path": "app/textbook-pages/207.webp",
+      "bytes": 292776,
+      "sha256": "f2db0b7df809f9691ed6d1563ac6c6ffbd14e5188f3ae1bd80181728605172ea"
+    },
+    {
+      "path": "app/textbook-pages/208.webp",
+      "bytes": 292330,
+      "sha256": "fd4de686394dc6c9b4845ef860d747e634f1ab212f3e9dcf784a9a4faccd7d88"
+    },
+    {
+      "path": "app/textbook-pages/209.webp",
+      "bytes": 284776,
+      "sha256": "a6a4acc6df64499e5074409aa45299dd525660ac17605e7575b5ba280d53b6a3"
+    },
+    {
+      "path": "app/textbook-pages/210.webp",
+      "bytes": 265888,
+      "sha256": "d657242707bd0733d3324e72e56debc0917299bef704605d4f68dff14943919c"
+    },
+    {
+      "path": "app/textbook-pages/211.webp",
+      "bytes": 265224,
+      "sha256": "475632fc103afd1b5075fd55f8e50138a61e07427025e4b3efb62bfa96061615"
+    },
+    {
+      "path": "app/textbook-pages/212.webp",
+      "bytes": 190930,
+      "sha256": "3ec568d9073b6a0c0ac8c192a811a1e3cc2a84ff6ae91fbcab9ff0bc4b562995"
+    },
+    {
+      "path": "app/textbook-practice.js",
+      "bytes": 22371,
+      "sha256": "3418dd97972c2d7e1ea098eaa081ca0a058c65a5248eff8881e566b3e958b36d"
+    },
+    {
+      "path": "app/textbook-translations.js",
+      "bytes": 14644,
+      "sha256": "ce2889399d073a147ee5263d27692ee8ed74b8feeadf1a18355680f62eadd499"
+    },
+    {
+      "path": "app/textbook-u1-s1.js",
+      "bytes": 21480,
+      "sha256": "6e62ddbb3a81f43c425be734a45f1351439ceb089443c4937f49e77b883de1d7"
+    },
+    {
+      "path": "app/textbook-u1-s2.js",
+      "bytes": 23925,
+      "sha256": "096f955f3e1b456c814949451cc2f7bbf8bb980960b2c0f6dd28efeae7f387d1"
+    },
+    {
+      "path": "app/textbook-u1-s3.js",
+      "bytes": 17069,
+      "sha256": "58afc1c9e0c625cdd50b270820332f81c934401ba4780a988238e551638a727c"
+    },
+    {
+      "path": "app/textbook-u1-s5.js",
+      "bytes": 22408,
+      "sha256": "3546973171cf1fceadb94e14bfe8cd7494a829aa1433a855df00940116c5f592"
+    },
+    {
+      "path": "app/textbook-u1-s6.js",
+      "bytes": 20923,
+      "sha256": "aa9008b3c2a7c93f8cd911fb302268ade8a947cc82d07e2edd04de5526e1e869"
+    },
+    {
+      "path": "app/textbook-u2-s1.js",
+      "bytes": 16623,
+      "sha256": "8b8310cb46b7d9eb5d91b48c758ddbec207298070bf65d6cd0a540c53c1db6e7"
+    },
+    {
+      "path": "app/textbook-u2-s2.js",
+      "bytes": 25550,
+      "sha256": "aa5288371466396f5718703c4babf387e45f778cb46f389a43945273f5b3576a"
+    },
+    {
+      "path": "app/textbook-u2-s3.js",
+      "bytes": 21180,
+      "sha256": "b420ca7136819dc23f6b0da42a47b8ce8497a21472ca7a7ba8b5890d791db1fa"
+    },
+    {
+      "path": "app/textbook-u2-s4.js",
+      "bytes": 11452,
+      "sha256": "c86cab047b876e65eec533445979a3bd952e3f85ec681f250e569a40b7b78bb9"
+    },
+    {
+      "path": "app/textbook-u3-s1.js",
+      "bytes": 16217,
+      "sha256": "90af1ac6aa60dce96543e5ad3b1a5cea0719f876e3899ea7a3434392ca1c3151"
+    },
+    {
+      "path": "app/textbook-u3-s2.js",
+      "bytes": 23688,
+      "sha256": "e33c422823d9c7f0e9b89d8d94b14cf5bc3ab7806be01da972ecaee5b6744e41"
+    },
+    {
+      "path": "app/textbook-u3-s3.js",
+      "bytes": 21895,
+      "sha256": "655f9f54937be6ce7887ad3226e8e04fa8fd64422875be22a96704d4a927c784"
+    },
+    {
+      "path": "app/textbook-u3-s4.js",
+      "bytes": 14388,
+      "sha256": "5573f90244a0083cb06cc961cd65856337d9aad3da278eb174c568743595632c"
+    },
+    {
+      "path": "app/textbook-u3-s5.js",
+      "bytes": 20928,
+      "sha256": "0202452e016785d9ebbf57c1ced1690fa1e760ec39988055c8f815bfed08750a"
+    },
+    {
+      "path": "app/textbook-u3-s6.js",
+      "bytes": 21112,
+      "sha256": "88b845d41a912e29784d33c04c4084b53baa70bed3de13ca3608bec9b1f1a7aa"
+    },
+    {
+      "path": "app/textbook-u3-s7.js",
+      "bytes": 23364,
+      "sha256": "c4039fe844638fd03ac97107719e316270e6b4f6be34f34ab8865f5e955b332e"
+    },
+    {
+      "path": "app/textbook-u4-s1.js",
+      "bytes": 23306,
+      "sha256": "00e4ba0e9584453dfb3355598ee59a04f829376f0573c2614ace1530cd29b1d0"
+    },
+    {
+      "path": "app/textbook-u4-s2.js",
+      "bytes": 25140,
+      "sha256": "948e38b32a8c0a802d58496303961add48084d3f9cd9c0bee017b3f5f5bd74ba"
+    },
+    {
+      "path": "app/textbook-u4-s3.js",
+      "bytes": 16908,
+      "sha256": "e4fa3430119a7801c70db713c7c0087f150f404bbf9bb662de14cb6e3d4519f3"
+    },
+    {
+      "path": "app/textbook-u4-s4.js",
+      "bytes": 23982,
+      "sha256": "efb934f2634052c96b8651518f00f03ffb4d87216606c03fb079ecb58a94101a"
+    },
+    {
+      "path": "app/textbook-u4-s5.js",
+      "bytes": 15510,
+      "sha256": "02ac790fbb0de42659d4e13c54ae0a53539d77661c320d012ad6f5097a4a466f"
+    },
+    {
+      "path": "app/textbook.css",
+      "bytes": 2159,
+      "sha256": "ae2cb37587744cf3101acb283e11ab0a60dcb4183d690ead84861e67b2efda35"
+    },
+    {
+      "path": "app/textbook.js",
+      "bytes": 14671,
+      "sha256": "5a3c0d903f92cd30ba26c13a66927054921745fc3381d650c18a24ee4e225b11"
     },
     {
       "path": "app/training.css",
-      "bytes": 5434,
-      "sha256": "74cf2fb7617e184c642da9cc48bb7f03d7554ec44a458d7b81b2ad5d2554388d"
+      "bytes": 5401,
+      "sha256": "e5682382884fb086e0ca389dc6213eb78a310deff66930b95328a08d4284e602"
     },
     {
       "path": "app/training.js",
-      "bytes": 22659,
-      "sha256": "6d797d7d91e925744579064ba32cce0db36d30c2a21f0714f3812c1bc465c848"
+      "bytes": 22676,
+      "sha256": "da61001b8cbc720ee0978a8a228dd1174efc9ef923ba75f634fd7457b32836b9"
     },
     {
       "path": "app/travel-content.js",
-      "bytes": 34108,
-      "sha256": "32d3bd08668ad8387e584b4862493073657ffabd9dbb16963e4850680df010ae"
+      "bytes": 33846,
+      "sha256": "dfdcf69a56c5586780065dbce00af0fe95da2c152c581d61fed38d646e093814"
     },
     {
       "path": "app/updates.css",
-      "bytes": 1893,
-      "sha256": "731f2bddc74f9e25e7078f3f928440a076e9ae4f76c94198c7515088551820f4"
+      "bytes": 1891,
+      "sha256": "bf02c0cc38f3b12adfb5c030b4d00e553bdb2860ae9397f1eb902a7f30054253"
     },
     {
       "path": "app/updates.js",
-      "bytes": 7459,
-      "sha256": "8fa9d829b35f8d344ee004e3c85019f6101bccaf72020973c4744b421a17b35c"
+      "bytes": 7389,
+      "sha256": "5444ffbfa8cf389d094bbbd8a21c46d32911b5d06ffeebd319ead1e5d1c86577"
     },
     {
       "path": "content-dictionary.json",
-      "bytes": 329727,
-      "sha256": "c86ad2c4aa3d1ccc989e1d8e7d3287c9eee8b0fa6116ee9678544218d1a015bf"
+      "bytes": 316258,
+      "sha256": "5eafe19443022a9ee4dbde535468683600c1984c4f3f3742dcbb47b44da77d71"
     },
     {
       "path": "content-draft.json",
-      "bytes": 30605,
-      "sha256": "efc55c96ccb56a14c8250a616deacc09ab9d7f301d00c523eb5effdc1a688cb8"
+      "bytes": 29800,
+      "sha256": "e4572a14b0c42918274077d6803d4f15f3fe50c98864e73cd3ac5e1185b995cc"
     },
     {
       "path": "content-full.json",
-      "bytes": 499411,
-      "sha256": "48d7a829a88f63151f4041d662f6b3d446f3c28e16e7ea8b18834b3cf4be5aff"
+      "bytes": 485740,
+      "sha256": "4371c2ef09fbfffd010678e6d687d0df69ad23cb45ce0e38243a2a59d99aa54b"
     },
     {
       "path": "content-unit4.json",
-      "bytes": 23613,
-      "sha256": "b822499c499b41d91e1e84f943afa8cf85927c6c5c8ced23a0f1a4e5647eb64f"
+      "bytes": 23051,
+      "sha256": "ba4131f73e8b97ed6a7fc57801c88006721e71bf4a34adc14f4e957489f8ed04"
     },
     {
       "path": "docs/content-coverage.md",
-      "bytes": 5699,
-      "sha256": "ea63b2a8ccf5da6d06a31a4a03fc9cbe71484b91345ec173c5b2dda46a1a7b0e"
+      "bytes": 6758,
+      "sha256": "6e1f2a37c061780d768a780fd445350b21a4a7bbd725ecf2bfe36179a0b8047c"
     },
     {
       "path": "docs/content-review.md",
-      "bytes": 7948,
-      "sha256": "742dee669cb8d06fece6806cd657738eb65c6ef613aa26ca39624a7fa4d6c5eb"
+      "bytes": 7883,
+      "sha256": "a30c6d0aeab91ed37049aea3de64d5ef4c4e66490e7657fbfe9eaceb94273f54"
     },
     {
       "path": "docs/dictionary.md",
-      "bytes": 7513,
-      "sha256": "bcf8238f773bea4cacf875222380c37663c0bc8184b4efa3cbeacd730810db6b"
+      "bytes": 7812,
+      "sha256": "d0455b7fb68d3a073c1b00753ca26ae788b4e7d9405730d483f721e030d17dc4"
+    },
+    {
+      "path": "docs/github-builds.md",
+      "bytes": 7008,
+      "sha256": "647dd02a08405a91dad95581018fddf7b3f080423272cc74d26a556608696928"
+    },
+    {
+      "path": "docs/release-notes-1.3.0.md",
+      "bytes": 1398,
+      "sha256": "c8f67d8dbbefb20e520f1f2a62bf12728028f4ee870a872994a02c7af471a656"
     },
     {
       "path": "docs/rewards.md",
-      "bytes": 7544,
-      "sha256": "53231b4b6883a8d5bd47ad456c08f38a66ab57eae23646f1426c4a98e868e484"
+      "bytes": 7478,
+      "sha256": "9900da4ce9f917dbb42aeec7a5f22e691774ad828c11a7fbc9292d1944073f56"
     },
     {
       "path": "docs/source-development.md",
-      "bytes": 5392,
-      "sha256": "b34c0cc8ec49abf1c97e2db8f46529a9d3eceac3bdb2b65b25b4b4e47c7acd39"
+      "bytes": 5985,
+      "sha256": "1a7436ecf628e0d6c6123cc737db0f23e92b6cdfd0eee5d82551d0910c48596c"
+    },
+    {
+      "path": "docs/textbook-study.md",
+      "bytes": 8823,
+      "sha256": "8ac4dbd53a483767ae4c3e6605544c03b0773616f4d3f85ae101364173a7b0b8"
     },
     {
       "path": "docs/training-travel.md",
-      "bytes": 6769,
-      "sha256": "0a4cf189deec527a97f405724fdacc1a5726102d16b25890fb69910ab732e776"
+      "bytes": 6733,
+      "sha256": "cf090907fd93b651d9063c540bf3abc9d8c6cb5e0952913337b9708e6dda465e"
     },
     {
       "path": "scripts/build-android.py",
-      "bytes": 14150,
-      "sha256": "a5a4208a627418276299e86816aae8524f345e10bf5e5a5da75b510af3f93edd"
+      "bytes": 15219,
+      "sha256": "7a6e687d9700c7e0b8f8ef68c7bc240a96646fde4bb106e529d6af4fcdbfea5d"
     },
     {
       "path": "scripts/check-inapp-updates-native.cjs",
-      "bytes": 3225,
-      "sha256": "73d56b69c5b65ea1717eaa134b93268adf810871f9340a4eb8ae8d9a3d1fcd4a"
+      "bytes": 3373,
+      "sha256": "83d78bba919034a0e2d0bca7bddcd11595098adb37da4970cd7defd8b8445e54"
     },
     {
       "path": "scripts/generate-full-content.cjs",
-      "bytes": 49276,
-      "sha256": "76b126d40faa03ffb1cabc2758f0e44811a7ba0bbdb23ff17680d476df239543"
+      "bytes": 48943,
+      "sha256": "cb0d0f10a25b484262f0298bc78d8373db843bdf68c827954584de50083ab53d"
+    },
+    {
+      "path": "scripts/load-content.cjs",
+      "bytes": 794,
+      "sha256": "f6f2cdb7e4f45ebe6714acdc8657bc6113f9f230409218dec70450ae57b42c4e"
     },
     {
       "path": "scripts/merge-dictionary.cjs",
-      "bytes": 10594,
-      "sha256": "ca54b704995560584f3ebc67b79a4a6fc221363048dcf908165163dc152978b9"
+      "bytes": 10489,
+      "sha256": "3d40614a8747fd597a02e8404d5237c263c59406cb4502467b34fac2f0291e11"
     },
     {
       "path": "scripts/prepare-content.cjs",
-      "bytes": 2812,
-      "sha256": "0290ffd1da03586372a97d537bd3d225f14cb68ae20a4f11465e68ca62fe4a0a"
+      "bytes": 2786,
+      "sha256": "3930769a298ae2999077ddb2a3f90b864c3290b25334365663d4dbe6f6377a0d"
+    },
+    {
+      "path": "scripts/prepare-textbook-pages.py",
+      "bytes": 1389,
+      "sha256": "9f9225f0b8c1c09fa6c655132d9d46d576f371af6b4327be5f335ba6f8a5bfe1"
     },
     {
       "path": "scripts/serve.cjs",
-      "bytes": 986,
-      "sha256": "2e19a9eb6759e3b51042154469951e5510d50056af44de6e7a80c837af2db96f"
+      "bytes": 980,
+      "sha256": "806820126d0399253942e4c0939778fc7214000c55d0e9922578a4977f1419ba"
+    },
+    {
+      "path": "scripts/sync-textbook-sections.cjs",
+      "bytes": 847,
+      "sha256": "39516e4021343b0caebaaabaf6a44661dd167f8d1f8a885d67063721899d4d9a"
     },
     {
       "path": "scripts/validate-content.cjs",
-      "bytes": 3601,
-      "sha256": "014b425448dd37194619feeb02f91d98aa852ed371d607cedde6aff1e354aa5e"
+      "bytes": 4284,
+      "sha256": "ec617aef485b759745e528d8913a0d052a0a5a1c50b52472e06234a005a64186"
     },
     {
       "path": "scripts/verify-full.cjs",
-      "bytes": 6142,
-      "sha256": "27cbb6e6009f02953e97c8a5ebe2dd7fb1104463ce7727c3a23562bfa87e80fa"
+      "bytes": 6058,
+      "sha256": "60bf7eee1e29cf8a66c7f486f0968ace172b76143ee07abe992a5effa61bdab8"
     },
     {
       "path": "scripts/verify-reminders.cjs",
-      "bytes": 8921,
-      "sha256": "d0d34ba7923044060c789758ae1e54e0d81ff3fb6d0c61f01749ff71bb496d9d"
+      "bytes": 9094,
+      "sha256": "97a13f67bbbf5ecfdd4b152a65509d6b6bfd88f8c0266854e05f45aa973cf984"
     },
     {
       "path": "scripts/verify-rewards.cjs",
-      "bytes": 9773,
-      "sha256": "61e3da6012ebdd551321cb4803229a35e1bc4c2e17e2bccd616c91e9dfe80ea2"
+      "bytes": 9635,
+      "sha256": "cd4334bf6da085e092c66937b75cbbd815fb2ed64d2cb4573b2e40d9b9960df8"
+    },
+    {
+      "path": "scripts/verify-section-coverage.cjs",
+      "bytes": 1909,
+      "sha256": "14da536c4404d76da0e91d165d20dde8ea03e3dacf6dffb0cf9318a0b2875a27"
+    },
+    {
+      "path": "scripts/verify-textbook.cjs",
+      "bytes": 7445,
+      "sha256": "a1dc9a5442ce2985368d52c30bf0def688328eb933d152be65610e0d11595236"
     },
     {
       "path": "scripts/verify-training-travel.cjs",
-      "bytes": 13882,
-      "sha256": "c4eddf6593c48bc3bf436bc853f26652279b09994a8d78cb801d8c258ae4c7e4"
+      "bytes": 13762,
+      "sha256": "abea266e8cefb2f6f9ca3308c5fd1fc4e0311c4cfae9dce62f5be4e7edb5ba16"
     }
-  ]
+  ],
+  "importArchiveSha256": "da2cac689e190bff23dc5b8db1d229b84627c1f9f1870da75018fcf0f4a5954e",
+  "importArchiveUrl": "https://github.com/holodilow-sudo/EnglishQuest/releases/download/v1.3.0/EnglishQuest-1.3.0-public-source.zip"
 }
