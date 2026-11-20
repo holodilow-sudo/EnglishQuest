@@ -31,3 +31,12 @@
 .training-run-stats{display:flex;align-items:center;justify-content:space-between;color:var(--city-cyan);font-size:11px;margin:18px 0 22px}.training-run-stats span{display:flex;align-items:center;gap:5px}
 .training-question .question-word{padding:18px 14px;min-height:100px}.training-question .question-word strong{font-size:21px!important;line-height:1.5!important;overflow-wrap:anywhere}.training-question .option{font-size:14px;line-height:1.45;text-align:left}.training-question .feedback .text-link{margin:8px 16px 0 0;font-size:12px}
 @media(prefers-reduced-motion:reduce){.training-question,.training-hero{animation:none}}
+.practice-intro h1{font-size:34px;margin:6px 0 12px;color:var(--ink)}
+.practice-intro p{font-size:14px;line-height:1.6;color:var(--muted);margin:0 0 24px}
+.practice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:24px}
+.practice-card{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:15px;min-height:180px;padding:18px 15px;border:1px solid #4c3b59;border-radius:22px;background:#291f34;color:#fff1fc}
+.practice-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:#3d2d49;color:#edb4dd}
+.practice-card strong{font-size:18px;line-height:1.25}.practice-card small{font-size:12px;line-height:1.6;color:#ded0e6}
+.practice-errors{background:#203635;border-color:#42625b}.practice-errors .practice-icon{background:#30544d;color:#b9e4d5}
+.practice-card:focus-visible{outline:3px solid var(--city-accent);outline-offset:3px}
+.practice-card:active{transform:translateY(1px)}

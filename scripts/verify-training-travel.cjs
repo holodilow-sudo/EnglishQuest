@@ -8,9 +8,14 @@ const out=path.resolve(process.argv[2]||path.join(root,'work/training-review'));
 fs.mkdirSync(out,{recursive:true});
 const checks=[];
 (async()=>{
- const browser=await chromium.launch({channel:'chrome',headless:true});
- const ctx=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
- const p=await ctx.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
+ let browser=await chromium.launch({channel:'chrome',headless:true});
+ let ctx=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
+ // Exhaustive queue checks do not need the OS speech service. Thousands of
+ // synchronous cancel IPC calls can stall Windows Chrome; bridge routing is
+ // exercised separately below. No actual audio is claimed by this test.
+ await ctx.addInitScript(()=>{if(window.speechSynthesis)window.speechSynthesis.cancel=()=>{}});
+ let p=await ctx.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));
+ const watchdog=setTimeout(()=>{console.error('Training QA exceeded 10 minutes');process.exit(1)},600000);watchdog.unref();
  try{
   await p.goto(pathToFileURL(path.join(root,'app/index.html')).href);
   const initialize=()=>p.evaluate(()=>{CityTraining.pause();clearTimeout(toastTimer);document.querySelector('#toast').classList.remove('show');state=initial();state.sound=false;state.city={welcome:true};session=null;flash=null;currentTab='training';render()});
@@ -60,12 +65,25 @@ const checks=[];
   await initialize();await installAnswerHelper();
   const marathonTotal=await p.evaluate(()=>{CityTraining.begin({mode:'mixed',source:'textbook',count:'all'});return CityTraining.current.ids.length});
   for(let offset=0;offset<marathonTotal;offset+=50){
-   await p.evaluate(()=>{for(let i=0;i<50&&CityTraining.current;i++){answerPractice();CityTraining.next()}});
-   if(offset%500===0)console.log(`Marathon: ${Math.min(offset+50,marathonTotal)} / ${marathonTotal}`);
+   await p.evaluate(()=>{for(let i=0;i<50&&CityTraining.current;i++){const index=CityTraining.current.index;answerPractice();CityTraining.next();if(CityTraining.current&&CityTraining.current.index===index)throw Error('Question did not advance: '+index)}});
+   if((offset+50)%500===0){
+    console.log(`Marathon: ${offset+50} / ${marathonTotal}; restoring saved series`);
+    // Recreate the isolated browser between large batches so the host's
+    // rendering caches cannot accumulate across thousands of instant answers.
+    // Only synthetic app storage is transferred; restore uses the normal app code.
+    const saved=await p.evaluate(()=>({key:STORE,value:localStorage.getItem(STORE)}));
+    await browser.close();browser=await chromium.launch({channel:'chrome',headless:true});
+    ctx=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
+    await ctx.addInitScript(saved=>{if(!localStorage.getItem(saved.key))localStorage.setItem(saved.key,saved.value);if(window.speechSynthesis)window.speechSynthesis.cancel=()=>{}},saved);
+    p=await ctx.newPage();p.on('pageerror',e=>errors.push(e.message));
+    await p.goto(pathToFileURL(path.join(root,'app/index.html')).href);
+    await installAnswerHelper();await p.evaluate(()=>CityTraining.resume());
+    assert.equal(await p.evaluate(()=>CityTraining.current.index),offset+50);
+   }
   }
   const textbookMarathon=await p.evaluate(()=>({total:state.training.lastRun.total,score:state.training.lastRun.score,completed:state.completed.length,xp:state.xp}));
   assert.deepEqual(textbookMarathon,{total:marathonTotal,score:marathonTotal,completed:0,xp:marathonTotal*5});
-  checks.push(`Entire ${marathonTotal}-question textbook marathon passes through the renderer and checker, including gaps, reverse translations and sentence assembly.`);
+  checks.push(`Entire ${marathonTotal}-question textbook marathon passes through the renderer and checker, restoring the saved series every 500 questions; includes gaps, reverse translations and sentence assembly.`);
   await initialize();await installAnswerHelper();
   const allTravel=await p.evaluate(()=>{
    CityTraining.begin({mode:'mixed',source:'travel',count:'all'});
@@ -150,5 +168,5 @@ const checks=[];
   checks.push('No browser JavaScript errors.');
   fs.writeFileSync(path.join(out,'verification.json'),JSON.stringify({status:'passed',counts,checks,limitations:['No APK built or installed.','Speech bridge routing tested; actual new audio and native messenger chooser need device validation.'],date:new Date().toISOString()},null,2));
   console.log(JSON.stringify({status:'passed',checks:checks.length,counts,out}));
- }finally{await browser.close()}
+ }finally{clearTimeout(watchdog);await browser.close()}
 })().catch(e=>{console.error(e);process.exitCode=1});

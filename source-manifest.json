@@ -1,7 +1,7 @@
 {
   "format": 1,
-  "basisVersion": "1.3.0",
-  "sourceBaseCommit": "eadd5bb4c47f96f5d58d70161deb0d4d54b750ac",
+  "basisVersion": "1.3.1",
+  "sourceBaseCommit": "73a2c7134e0685169801b89af858d1b75e1ac280",
   "privacy": "No signing material, passwords, personal local paths or device progress. Stable app identifiers preserved.",
   "files": [
     {
@@ -26,13 +26,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 5060,
-      "sha256": "1317ec13c4adb3a38b66888036b92dd06662503dbb2cfec8966f724ac9ce930a"
+      "bytes": 5269,
+      "sha256": "c10373208ccf652fa2f0ec0431b0e998fdf422e43f4cd06a61db04c21352cf69"
     },
     {
       "path": "android/src/main/AndroidManifest.xml",
       "bytes": 2585,
-      "sha256": "bcb8e584539470169d5b86135cd95f19c496ce3c3948d20d566ffc6da85fb3c7"
+      "sha256": "bccd82b8f3505ebf6a76d382c210cb1b9ed6ace4ca8ab98a9b8f9e821ee39a16"
     },
     {
       "path": "android/src/main/assets/speech/000c285457fc971f862a79b7.m4a",
@@ -13346,8 +13346,8 @@
     },
     {
       "path": "app/app.js",
-      "bytes": 52482,
-      "sha256": "5a8d207412576029fb1ba404ae6bc08f83f941e802373934bf1dc595e9e5ef68"
+      "bytes": 52979,
+      "sha256": "a0b48c858b49af3b56320f0d3806610c1bca33371170ba8ff05e38bfc36e4ce0"
     },
     {
       "path": "app/city-assets/city-map.svg",
@@ -13358,6 +13358,11 @@
       "path": "app/city-assets/garage-supercar-vi.png",
       "bytes": 2104471,
       "sha256": "31d5552824a1622dc8f4eda137ed9563dba06325f9e822b36254b6d62f96f60e"
+    },
+    {
+      "path": "app/city-assets/neon-palms.svg",
+      "bytes": 1390,
+      "sha256": "7c1d0c343c86733acb97b460c6fd0580b491a6bb11d3fb39b0a18954b79600df"
     },
     {
       "path": "app/city-assets/reference-scenes-1.png",
@@ -13381,8 +13386,8 @@
     },
     {
       "path": "app/city-integration.js",
-      "bytes": 15273,
-      "sha256": "56d86dc0e77c88d183014c2cb0e2b5baf39f0cbc6ec39bac6f57a89b28e7a818"
+      "bytes": 15370,
+      "sha256": "b6fb9bea2441cea5e29f9d6870b16da774e42c458de50750f7c3e7ed44d4117f"
     },
     {
       "path": "app/city-play.css",
@@ -13436,8 +13441,13 @@
     },
     {
       "path": "app/index.html",
-      "bytes": 2668,
-      "sha256": "5c79f6c6f3615f3010d9729b741fe3077ce120fd2103c719336e0ecb4b95bfed"
+      "bytes": 2792,
+      "sha256": "f73e5c2dbf69b2341ff3941c3c99953397ba006a29340554af307c1259abc424"
+    },
+    {
+      "path": "app/practice-queue.js",
+      "bytes": 2468,
+      "sha256": "3e062dbf2ff87fc1d9201c1fb3cee027a023dd93cda2713b2c9ed03947f2880f"
     },
     {
       "path": "app/reminders.css",
@@ -13471,8 +13481,8 @@
     },
     {
       "path": "app/textbook-content.js",
-      "bytes": 23339,
-      "sha256": "aebff3d0598e8f26dcfd022304943f22a46e46b2e80d7d294165097428578fc8"
+      "bytes": 23248,
+      "sha256": "88375d6350b97816bdef6d00211a1e9cf060657434510bf1cd77a8858cb2cf48"
     },
     {
       "path": "app/textbook-dialogues.js",
@@ -13486,8 +13496,8 @@
     },
     {
       "path": "app/textbook-pages.js",
-      "bytes": 17998,
-      "sha256": "83609c6a16840e4ce2349315e187e405b322a2406e130ba3d3578d0d6c628590"
+      "bytes": 17996,
+      "sha256": "a2e619ead7482a52d96b18de9874485ddfa9ccd92d30a88bdd98cbaec362123a"
     },
     {
       "path": "app/textbook-pages/001.webp",
@@ -14671,18 +14681,28 @@
     },
     {
       "path": "app/textbook.js",
-      "bytes": 14671,
-      "sha256": "5a3c0d903f92cd30ba26c13a66927054921745fc3381d650c18a24ee4e225b11"
+      "bytes": 14605,
+      "sha256": "372fe663b966a85f6ebbc46ed29b142cd4acf65a23274f74eee4f1fe84ac7aa5"
+    },
+    {
+      "path": "app/themes.css",
+      "bytes": 15956,
+      "sha256": "41c5e6130af8eedad4cc35c7fd67c6fe35a99e61083a71745c7fd89a2e629ac4"
+    },
+    {
+      "path": "app/themes.js",
+      "bytes": 3449,
+      "sha256": "886c881370331667c6c10962df70dd9b6cf02f46293291292a7da8f886dd61d7"
     },
     {
       "path": "app/training.css",
-      "bytes": 5401,
-      "sha256": "e5682382884fb086e0ca389dc6213eb78a310deff66930b95328a08d4284e602"
+      "bytes": 6372,
+      "sha256": "65227381d648f42d1bae530f73136fca1996576f8e566f287379e2edf0699047"
     },
     {
       "path": "app/training.js",
-      "bytes": 22676,
-      "sha256": "da61001b8cbc720ee0978a8a228dd1174efc9ef923ba75f634fd7457b32836b9"
+      "bytes": 24170,
+      "sha256": "d1f5961e2d473d5a86385c12da6161f57f4ac3cf44197ca3a007d7a7d488da80"
     },
     {
       "path": "app/travel-content.js",
@@ -14697,7 +14717,7 @@
     {
       "path": "app/updates.js",
       "bytes": 7389,
-      "sha256": "5444ffbfa8cf389d094bbbd8a21c46d32911b5d06ffeebd319ead1e5d1c86577"
+      "sha256": "2d491e8f2ddb5afbee7756444b3cc25e63b31ea2ffc89f48ccb97d599c9082fc"
     },
     {
       "path": "content-dictionary.json",
@@ -14745,14 +14765,19 @@
       "sha256": "c8f67d8dbbefb20e520f1f2a62bf12728028f4ee870a872994a02c7af471a656"
     },
     {
+      "path": "docs/release-notes-1.3.1.md",
+      "bytes": 1617,
+      "sha256": "0881518ead7ad5e692b45a9a229b4978ab251927681ce3d9927d336652f7532d"
+    },
+    {
       "path": "docs/rewards.md",
       "bytes": 7478,
       "sha256": "9900da4ce9f917dbb42aeec7a5f22e691774ad828c11a7fbc9292d1944073f56"
     },
     {
       "path": "docs/source-development.md",
-      "bytes": 5985,
-      "sha256": "1a7436ecf628e0d6c6123cc737db0f23e92b6cdfd0eee5d82551d0910c48596c"
+      "bytes": 5983,
+      "sha256": "b82d2c04a01f8e039f4dcac06943d6897711faf9a2e356e6d3dd0d3bbdd162d9"
     },
     {
       "path": "docs/textbook-study.md",
@@ -14772,7 +14797,7 @@
     {
       "path": "scripts/check-inapp-updates-native.cjs",
       "bytes": 3373,
-      "sha256": "83d78bba919034a0e2d0bca7bddcd11595098adb37da4970cd7defd8b8445e54"
+      "sha256": "c9c847e873c5cebfe55d4ee9656e791552f9bbc6c67b9e7c5bd8c028c24b32aa"
     },
     {
       "path": "scripts/generate-full-content.cjs",
@@ -14820,6 +14845,11 @@
       "sha256": "60bf7eee1e29cf8a66c7f486f0968ace172b76143ee07abe992a5effa61bdab8"
     },
     {
+      "path": "scripts/verify-practice.cjs",
+      "bytes": 5799,
+      "sha256": "54b51863e5290c30859375e6adc329b9814fb46f8d418008b8790ec40c387b9e"
+    },
+    {
       "path": "scripts/verify-reminders.cjs",
       "bytes": 9094,
       "sha256": "97a13f67bbbf5ecfdd4b152a65509d6b6bfd88f8c0266854e05f45aa973cf984"
@@ -14836,15 +14866,18 @@
     },
     {
       "path": "scripts/verify-textbook.cjs",
-      "bytes": 7445,
-      "sha256": "a1dc9a5442ce2985368d52c30bf0def688328eb933d152be65610e0d11595236"
+      "bytes": 7482,
+      "sha256": "93d79a744fa062e34362b1c5751f996d53705fedaf75fda46c21b1e3cb8a9fe1"
+    },
+    {
+      "path": "scripts/verify-themes.cjs",
+      "bytes": 4417,
+      "sha256": "f711a95bce973e43ba883ad000a07927de53c2a00d97da20e0b790826bd64562"
     },
     {
       "path": "scripts/verify-training-travel.cjs",
-      "bytes": 13762,
-      "sha256": "abea266e8cefb2f6f9ca3308c5fd1fc4e0311c4cfae9dce62f5be4e7edb5ba16"
+      "bytes": 15433,
+      "sha256": "7a6844c613fe2d72a254d3575545d14a2aa80d4dc78dd9b81a735dd0b1436de7"
     }
-  ],
-  "importArchiveSha256": "da2cac689e190bff23dc5b8db1d229b84627c1f9f1870da75018fcf0f4a5954e",
-  "importArchiveUrl": "https://github.com/holodilow-sudo/EnglishQuest/releases/download/v1.3.0/EnglishQuest-1.3.0-public-source.zip"
+  ]
 }

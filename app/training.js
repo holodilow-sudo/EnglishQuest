@@ -2,7 +2,7 @@
 (() => {
   'use strict';
   const trip = window.TravelContent;
-  const originalTasks = CONTENT.lessons.flatMap(l=>l.tasks.map(q=>({...q,lessonTitle:l.title})));
+  const originalTasks = CONTENT.lessons.flatMap(l=>l.tasks.map(q=>({...q,lessonTitle:l.title,lessonId:l.id})));
   const bank = [...originalTasks,...trip.tasks];
   const byId = new Map(bank.map(q=>[q.id,q]));
   let running = false, tick = 0, lastRun = null, timer = null;
@@ -30,8 +30,10 @@
   function startTimer(){clearInterval(timer);timer=setInterval(()=>{const label=document.querySelector('[data-training-time]');if(running&&label&&!document.hidden)label.textContent=elapsed()},1000)}
   function available(mode=settings.mode,source=settings.source,topic=null){
     let pool=bank.filter(q=>source==='all'||(source==='travel'?q.travel:!q.travel));
+    if(source==='learned')pool=pool.filter(q=>state.completed.includes(q.lessonId)||state.awarded[q.id]||data().tasks[q.id]||(q.wordId&&state.words[q.wordId]));
     if(topic)pool=pool.filter(q=>q.topic===topic);
     if(mode==='blitz')pool=pool.filter(q=>q.type!=='order');
+    if(mode==='build')pool=pool.filter(q=>q.type==='order');
     if(mode==='errors')pool=pool.filter(q=>data().tasks[q.id]?data().tasks[q.id].difficult:(!q.travel&&q.wordId&&state.words[q.wordId]?.difficult));
     if(mode==='review')pool=pool.filter(q=>state.awarded[q.id]||data().tasks[q.id]||(!q.travel&&q.wordId&&state.words[q.wordId]));
     pool=shuffle(pool);
@@ -40,10 +42,10 @@
       const bDue=(data().tasks[b.id]?.due??state.words[b.wordId]?.due??Infinity)<=Date.now();
       return Number(bDue)-Number(aDue);
     });
-    return pool;
+    return mode==='mixed'?PracticeQueue.spread(pool):PracticeQueue.unique(pool,PracticeQueue.taskKey);
   }
   const action = (label,name,attrs='',style='primary')=>`<button class="${style}" data-training="${name}" ${attrs}>${label}</button>`;
-  function shortcuts(){return '<div class="training-tabs" aria-label="Дополнительные разделы">'+[['training','bolt','Тренировки'],['travel','globe','Путешествия']].map(([id,ic,label])=>`<button data-action="tab" data-value="${id}" class="${currentTab===id?'active':''}" ${currentTab===id?'aria-current="page"':''}>${icon(ic,18)} ${label}</button>`).join('')+'</div>'}
+  function shortcuts(){return ['training','travel'].includes(currentTab)?'<div class="training-tabs" aria-label="Разделы практики">'+[['training','bolt','Тренировки'],['travel','globe','Путешествия']].map(([id,ic,label])=>`<button data-action="tab" data-value="${id}" class="${currentTab===id?'active':''}" ${currentTab===id?'aria-current="page"':''}>${icon(ic,18)} ${label}</button>`).join('')+'</div>':''}
   const coreShell=shell;
   shell=function(html){coreShell(html);document.querySelector('.topbar')?.insertAdjacentHTML('afterend',shortcuts())};
   const coreRender=render;
@@ -55,7 +57,13 @@
   function hub(){
     const s=data(),count=available().length;
     const modes=[['blitz','Блиц','Быстрый выбор ответа. Счётчик времени без ограничения.'],['mixed','Большая тренировка','Переводы, пропуски и сборка предложений.'],['review','Повторение','Знакомые задания; сначала те, которые пора вспомнить.'],['errors','Мои ошибки','Вопросы и слова, с которыми было трудно.']];
-    shell(header()+`<section class="training-hero"><span class="eyebrow">ТРЕНИРОВОЧНЫЙ ЦЕНТР</span><h1>Ещё один<br>личный рекорд.</h1><p>Большие серии, быстрые ответы и уверенный английский.</p><div class="training-stats"><span><b>${s.runs}</b> серий</span><span><b>${s.answers}</b> ответов</span><span><b>${s.bestStreak}</b> подряд</span></div></section>`+resumeCard()+
+    shell(header()+`<section class="practice-intro"><h1>Практика</h1><p>Выбери короткую тренировку под настроение.</p></section>
+      <div class="practice-grid">
+        <button class="practice-card" data-training="words"><span class="practice-icon">${icon('card',24)}</span><strong>Слова</strong><small>Вспомни перевод и послушай пример</small></button>
+        <button class="practice-card" data-training="course-blitz"><span class="practice-icon">${icon('bolt',24)}</span><strong>Блиц по курсу</strong><small>Вопросы по пройденным темам</small></button>
+        <button class="practice-card" data-training="build"><span class="practice-icon">${icon('puzzle',24)}</span><strong>Собери мысль</strong><small>От подсказки к своей фразе</small></button>
+        <button class="practice-card practice-errors" data-training="errors"><span class="practice-icon">${icon('repeat',24)}</span><strong>Мои ошибки</strong><small>Пойми причину и попробуй снова</small></button>
+      </div>`+resumeCard()+
       `<h2 class="training-heading">Выбери режим</h2><div class="training-modes">${modes.map(([id,title,description])=>`<button data-training="mode" data-value="${id}" class="training-mode ${settings.mode===id?'selected':''}" aria-pressed="${settings.mode===id}"><strong>${title}</strong><small>${description}</small></button>`).join('')}</div>
       <section class="training-config"><label for="training-source">Откуда вопросы</label><select id="training-source"><option value="textbook" ${settings.source==='textbook'?'selected':''}>Учебник Enjoy English 6</option><option value="travel" ${settings.source==='travel'?'selected':''}>Путешествия</option><option value="all" ${settings.source==='all'?'selected':''}>Всё вместе</option></select><p>Длина серии</p><div class="training-lengths">${[10,25,50,100,'all'].map(n=>action(n==='all'?'Все':n,'count',`data-value="${n}" aria-pressed="${settings.count===n}"`,settings.count===n?'selected':'')).join('')}</div><p class="muted">${count?`Доступно ${count} заданий. В серии — ${settings.count==='all'?count:Math.min(settings.count,count)}, без повторов.`:settings.mode==='errors'?'Ошибок пока нет. Пройди блиц или большую тренировку.':'Пока нет знакомых заданий. Начни с блица или учебной миссии.'}</p>${action('Начать тренировку '+icon('arrow',18),'start',count?'':'disabled')}<p class="training-note">Можно сделать паузу в любой момент. Серия сохранится.</p></section>
       <button class="lesson-tile" data-action="review"><span class="tile-art mint">${icon('card',24)}</span><span class="tile-copy"><strong>Карточки слов</strong><small>Вспомни перевод и послушай произношение</small></span>${icon('chevron',18)}</button>`);
@@ -86,10 +94,10 @@
     dismiss();pause();cityStop();session=null;flash=null;
     const mode=config.mode||settings.mode,source=config.source||settings.source,topic=config.topic||null;
     const count=config.count||settings.count;
-    let questions=config.ids?config.ids.map(id=>byId.get(id)).filter(Boolean):available(mode,source,topic);
-    if(!questions.length){toast(mode==='errors'?'Ошибок пока нет — можно начать новую тренировку.':'В этом режиме пока нет заданий.');return}
+    let questions=config.ids?PracticeQueue.spread(PracticeQueue.unique(config.ids.map(id=>byId.get(id)).filter(Boolean),q=>q.id)):available(mode,source,topic);
+    if(!questions.length){toast(mode==='errors'?'Ошибок пока нет — можно начать новую тренировку.':source==='learned'?'Сначала пройди задания в «Миссиях»: они появятся в блице по курсу.':'В этом режиме пока нет заданий.');return}
     questions=questions.slice(0,count==='all'?questions.length:Number(count));
-    const title=config.title||(topic?trip.topics.find(t=>t.id===topic).title:({blitz:'Блиц',review:'Повторение',errors:'Работа над ошибками',mixed:'Большая тренировка'}[mode]));
+    const title=config.title||(topic?trip.topics.find(t=>t.id===topic).title:({blitz:'Блиц',build:'Собери мысль',review:'Повторение',errors:'Работа над ошибками',mixed:'Большая тренировка'}[mode]));
     data().active={version:1,ids:questions.map(q=>q.id),index:0,mode,source,topic,title,selected:null,answer:[],checked:false,correct:false,score:0,streak:0,bestStreak:0,xp:0,coins:0,mistakes:[],elapsedMs:0,options:null,tokens:null};
     running=true;tick=performance.now();startTimer();cityScreen='training-run';screen();persist();
   }
@@ -161,7 +169,11 @@
   document.addEventListener('click',event=>{
     const b=event.target.closest('[data-training]');if(!b||b.disabled)return;
     const name=b.dataset.training,a=active(),q=a?byId.get(a.ids[a.index]):null;
-    if(name==='mode'){settings.mode=b.dataset.value;hub()}
+    if(name==='words'){pause();searchTerm='';vocabFilter='all';vocabUnit=0;vocabSection=0;startReview()}
+    else if(name==='course-blitz')requestStart({mode:'blitz',source:'learned',count:10,title:'Блиц по курсу'});
+    else if(name==='build')requestStart({mode:'build',source:'textbook',count:10});
+    else if(name==='errors')requestStart({mode:'errors',source:'all',count:10});
+    else if(name==='mode'){settings.mode=b.dataset.value;hub()}
     else if(name==='count'){settings.count=b.dataset.value==='all'?'all':Number(b.dataset.value);hub()}
     else if(name==='start')requestStart({...settings});
     else if(name==='replace'){const config=window.__trainingNext;delete window.__trainingNext;begin(config)}
