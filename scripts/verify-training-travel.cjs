@@ -8,13 +8,13 @@ const out=path.resolve(process.argv[2]||path.join(root,'work/training-review'));
 fs.mkdirSync(out,{recursive:true});
 const checks=[];
 (async()=>{
- const browser=await chromium.launch({channel:'chrome',headless:true});
- const ctx=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
+ let browser=await chromium.launch({channel:'chrome',headless:true});
+ let ctx=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
  // Exhaustive queue checks do not need the OS speech service. Thousands of
  // synchronous cancel IPC calls can stall Windows Chrome; bridge routing is
  // exercised separately below. No actual audio is claimed by this test.
  await ctx.addInitScript(()=>{if(window.speechSynthesis)window.speechSynthesis.cancel=()=>{}});
- const p=await ctx.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
+ let p=await ctx.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));
  const watchdog=setTimeout(()=>{console.error('Training QA exceeded 10 minutes');process.exit(1)},600000);watchdog.unref();
  try{
   await p.goto(pathToFileURL(path.join(root,'app/index.html')).href);
@@ -68,7 +68,16 @@ const checks=[];
    await p.evaluate(()=>{for(let i=0;i<50&&CityTraining.current;i++){const index=CityTraining.current.index;answerPractice();CityTraining.next();if(CityTraining.current&&CityTraining.current.index===index)throw Error('Question did not advance: '+index)}});
    if((offset+50)%500===0){
     console.log(`Marathon: ${offset+50} / ${marathonTotal}; restoring saved series`);
-    await p.reload();await installAnswerHelper();await p.evaluate(()=>CityTraining.resume());
+    // Recreate the isolated browser between large batches so the host's
+    // rendering caches cannot accumulate across thousands of instant answers.
+    // Only synthetic app storage is transferred; restore uses the normal app code.
+    const saved=await p.evaluate(()=>({key:STORE,value:localStorage.getItem(STORE)}));
+    await browser.close();browser=await chromium.launch({channel:'chrome',headless:true});
+    ctx=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
+    await ctx.addInitScript(saved=>{localStorage.setItem(saved.key,saved.value);if(window.speechSynthesis)window.speechSynthesis.cancel=()=>{}},saved);
+    p=await ctx.newPage();p.on('pageerror',e=>errors.push(e.message));
+    await p.goto(pathToFileURL(path.join(root,'app/index.html')).href);
+    await installAnswerHelper();await p.evaluate(()=>CityTraining.resume());
     assert.equal(await p.evaluate(()=>CityTraining.current.index),offset+50);
    }
   }
