@@ -1,7 +1,7 @@
 /* Downloaded APK state is native; learning progress stays in its original store. */
 (() => {
   'use strict';
-  let info={state:'preview',installed:'1.3.0',native:false,inApp:true},prompted=new Set(),timer;
+  let info={state:'preview',installed:'1.3.1',native:false,inApp:true},prompted=new Set(),timer;
   const hasVersion=()=>/^\d+\.\d+\.\d+$/.test(info.version||'');
   const ready=()=>['ready','install-permission','installing'].includes(info.state)&&hasVersion();
   const busy=()=>['downloading','verifying'].includes(info.state);
