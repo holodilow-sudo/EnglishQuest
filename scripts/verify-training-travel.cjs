@@ -74,7 +74,7 @@ const checks=[];
     const saved=await p.evaluate(()=>({key:STORE,value:localStorage.getItem(STORE)}));
     await browser.close();browser=await chromium.launch({channel:'chrome',headless:true});
     ctx=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
-    await ctx.addInitScript(saved=>{localStorage.setItem(saved.key,saved.value);if(window.speechSynthesis)window.speechSynthesis.cancel=()=>{}},saved);
+    await ctx.addInitScript(saved=>{if(!localStorage.getItem(saved.key))localStorage.setItem(saved.key,saved.value);if(window.speechSynthesis)window.speechSynthesis.cancel=()=>{}},saved);
     p=await ctx.newPage();p.on('pageerror',e=>errors.push(e.message));
     await p.goto(pathToFileURL(path.join(root,'app/index.html')).href);
     await installAnswerHelper();await p.evaluate(()=>CityTraining.resume());
