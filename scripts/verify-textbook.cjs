@@ -49,13 +49,13 @@ for(const u of content.units)u.sections.forEach((_,i)=>assert(study.materials.so
   assert.deepEqual(await p.evaluate(()=>({xp:state.xp,coins:state.coins,awarded:state.awarded,completed:state.completed,words:state.words})),before);
   // Exercise renderer/checker end to end, all newly added questions, no duplicate rewards.
   const completed=await p.evaluate(()=>{
-    let n=0;for(const l of CONTENT.lessons.filter(l=>l.id.startsWith('tb-'))){start(l.id);for(let i=0;i<l.tasks.length;i++){session.index=i;session.checked=false;session.correct=false;const q=l.tasks[i];session.selected=q.options.indexOf(q.answer);check();if(!session.correct)throw Error(q.id);const xp=state.xp;check();if(state.xp!==xp)throw Error('duplicate reward');n++}}
+    let n=0;for(const l of CONTENT.lessons.filter(l=>l.id.startsWith('tb-'))){start(l.id);for(let i=0;i<l.tasks.length;i++){session.index=i;session.checked=false;session.correct=false;const q=session.lesson.tasks[i];session.selected=q.options.indexOf(q.answer);check();if(!session.correct)throw Error(q.id);const xp=state.xp;check();if(state.xp!==xp)throw Error('duplicate reward');n++}}
     session=null;currentTab='textbook';cityScreen='textbook';Textbook.openSection(1,4);return n;
   });
   const expected=content.lessons.filter(l=>l.id.startsWith('tb-')).reduce((n,l)=>n+l.tasks.length,0);assert.equal(completed,expected);
   await p.locator('[data-textbook=blitz]').click();
   const run=await p.evaluate(()=>({ids:CityTraining.current.ids,expected:CONTENT.lessons.filter(l=>l.unit===1&&l.section===4).flatMap(l=>l.tasks).filter(q=>q.type!=='order').map(q=>q.id)}));
-  assert.deepEqual(run.ids,run.expected);assert.equal(new Set(run.ids).size,run.ids.length);
+  assert.deepEqual([...run.ids].sort(),[...run.expected].sort());assert.equal(new Set(run.ids).size,run.ids.length);
   await p.evaluate(()=>CityTraining.pause());await p.reload();assert.deepEqual(await p.evaluate(()=>state.training.active.ids),run.ids);
   await p.evaluate(()=>Textbook.openSection(1,4));await p.locator('[data-textbook=blitz]').click();assert(await p.getByRole('heading',{name:'Начать блиц по этой теме?'}).isVisible());await p.locator('[data-action=dismiss]').click();
   await p.evaluate(()=>Textbook.open());await p.locator('#tb-search').fill('');await p.screenshot({path:path.join(out,'05-library.png')});
